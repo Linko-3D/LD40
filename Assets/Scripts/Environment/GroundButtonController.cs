@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class GroundButtonController : MonoBehaviour {
 
     public float PositionOffsetYOnPressed = -.06f;
@@ -8,7 +9,7 @@ public class GroundButtonController : MonoBehaviour {
     protected GroundButtonModel _model;
 
     protected virtual void Start () {
-        _model = new GroundButtonModel(Settings, Game.Instance.PrincessCakeSettings);
+        _model = new GroundButtonModel(Settings, Game.Instance.PrincessCake.Settings);
     }
 
     protected virtual void OnCollisionEnter(Collision collision) {
@@ -19,7 +20,7 @@ public class GroundButtonController : MonoBehaviour {
         IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
 
         if (controller != null) {
-            HopedOn(controller.Model);
+            HopedOn(controller);
         }
     }
 
@@ -27,7 +28,7 @@ public class GroundButtonController : MonoBehaviour {
         IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
 
         if (controller != null) {
-            HopedOff(controller.Model);
+            HopedOff(controller);
         }
     }
 
@@ -46,11 +47,11 @@ public class GroundButtonController : MonoBehaviour {
     }
 
     // To be overriden by elevator.
-    protected virtual void OnHopedOnBy(IWeightableModel model) {
+    protected virtual void OnHopedOnBy(IWeightableController controller) {
         transform.SetPosY(transform.position.y + PositionOffsetYOnPressed);
     }
 
-    protected virtual void OnHopedOffBy(IWeightableModel model) {
+    protected virtual void OnHopedOffBy(IWeightableController controller) {
 
     }
 
@@ -59,15 +60,15 @@ public class GroundButtonController : MonoBehaviour {
     }
 
 
-    private void HopedOn(IWeightableModel model) {
-        if (_model.HopedOn(model)) {
-            OnHopedOnBy(model);
+    private void HopedOn(IWeightableController controller) {
+        if (_model.HopedOn(controller.Model)) {
+            OnHopedOnBy(controller);
         }
     }
 
-    private void HopedOff(IWeightableModel model) {
-        if (_model.HopedOff(model, Time.time)) {
-            OnHopedOffBy(model);
+    private void HopedOff(IWeightableController controller) {
+        if (_model.HopedOff(controller.Model, Time.time)) {
+            OnHopedOffBy(controller);
         }
     }
 
