@@ -11,7 +11,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
-public class SceneInitializer : MonoBehaviour {
+public class SceneInitializer : SingletonMonobehavior<SceneInitializer> {
 
 #if UNITY_EDITOR
     [SerializeField]
@@ -20,8 +20,7 @@ public class SceneInitializer : MonoBehaviour {
 
     [SerializeField]
     private List<string> m_SubSceneNames;
-
-    ///----------------------------------------------------------------------------------------------
+    
     protected void Awake() {
 
 #if UNITY_EDITOR
