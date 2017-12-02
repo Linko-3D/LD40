@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class DoorModel {
+public class DoorModel: IModel {
 
     public enum State {
         Opened,

@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GroundButtonModel {
+public class GroundButtonModel : IModel {
 
     [Serializable]
     public class Settings {

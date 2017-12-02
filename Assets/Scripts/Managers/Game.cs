@@ -21,4 +21,5 @@ public class Game : SingletonMonobehavior<Game> {
     public Logger LoggerFactory(string context) {
         return new Logger(context);
     }
+
 }

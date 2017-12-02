@@ -5,11 +5,11 @@ public class GroundButtonController : MonoBehaviour {
 
     public float PositionOffsetYOnPressed = -.06f;
     public GroundButtonModel.Settings Settings;
-
-    protected GroundButtonModel _model;
+    
+    public GroundButtonModel Model { get; private set; }
 
     protected virtual void Start () {
-        _model = new GroundButtonModel(Settings, Game.Instance.PrincessCake.Settings);
+        Model = new GroundButtonModel(Settings, Game.Instance.PrincessCake.Settings);
     }
 
     protected virtual void OnCollisionEnter(Collision collision) {
@@ -61,19 +61,19 @@ public class GroundButtonController : MonoBehaviour {
 
 
     private void HopedOn(IWeightableController controller) {
-        if (_model.HopedOn(controller.Model)) {
+        if (Model.HopedOn(controller.Model)) {
             OnHopedOnBy(controller);
         }
     }
 
     private void HopedOff(IWeightableController controller) {
-        if (_model.HopedOff(controller.Model, Time.time)) {
+        if (Model.HopedOff(controller.Model, Time.time)) {
             OnHopedOffBy(controller);
         }
     }
 
     private void TryDepress() {
-        if (_model.Depressed(Time.time)) {
+        if (Model.Depressed(Time.time)) {
             OnDepressed();
         }
     }
