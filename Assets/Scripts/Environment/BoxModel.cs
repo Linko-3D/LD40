@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class BoxModel : IWeightable {
+public class BoxModel : IWeightableModel {
 
     [Serializable]
     public class Settings {

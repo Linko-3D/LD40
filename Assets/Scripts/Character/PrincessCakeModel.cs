@@ -1,11 +1,12 @@
 ﻿using System;
 
-public class PrincessCakeModel : IWeightable {
+public class PrincessCakeModel : IWeightableModel {
 
     [Serializable]
     public class Settings {
         public int MaxWeight = 10;
         public int MinWeight = 1;
+        public int WeightStartsAt = 1;
         public int WeightToAddOnEatCake = 1;
         public int WeightToSetOnDrinkTea = 1;
     }
@@ -28,7 +29,11 @@ public class PrincessCakeModel : IWeightable {
         _logger.Assert(_settings.WeightToAddOnEatCake < _settings.MaxWeight, "WeightToAddOnEatCake should be less than MaxWeight(" + _settings.MaxWeight + ")");
         _logger.Assert(_settings.WeightToSetOnDrinkTea < _settings.MaxWeight, "WeightToSetOnDrinkTea should be less than MaxWeight(" + _settings.MaxWeight + ")");
         _logger.Assert(_settings.WeightToSetOnDrinkTea >= _settings.MinWeight, "WeightToSetOnDrinkTea should be less than or equal to MinWeight(" + _settings.MinWeight + ")");
-    }
+        _logger.Assert(_settings.WeightStartsAt <= _settings.MaxWeight, "WeightStartsAt should be less than or equal MaxWeight(" + _settings.MaxWeight + ")");
+        _logger.Assert(_settings.WeightStartsAt >= _settings.MinWeight, "WeightStartsAt should be less than or equal to MinWeight(" + _settings.MinWeight + ")");
+
+        Weight = _settings.WeightStartsAt;
+}
 
     public void EatCake() {
         ++CakesEaten;
