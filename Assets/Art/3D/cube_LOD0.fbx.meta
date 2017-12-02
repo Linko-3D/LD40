@@ -1,23 +1,21 @@
 fileFormatVersion: 2
-guid: 04a1a41fb1da1fc40afcf2bd0789ca89
-timeCreated: 1512221328
+guid: 9ca99cb28b6d56545894a86cf744e3a9
+timeCreated: 1512248685
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: default
     400000: //RootNode
-    400002: default
-    2300000: default
-    3300000: default
-    4300000: default
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: cube_LOD0
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: defaultMat
-    second: {fileID: 2100000, guid: 6db902a4290638a4cb12657e0b73dc7a, type: 2}
+      name: cube_PBR
+    second: {fileID: 2100000, guid: f76ae20a1645a0246b6002f1a064d787, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -55,7 +53,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
