@@ -6,10 +6,25 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: block_LOD0
+    100004: block_LOD1
+    100006: block_LOD2
     400000: //RootNode
+    400002: block_LOD0
+    400004: block_LOD1
+    400006: block_LOD2
     2300000: //RootNode
+    2300002: block_LOD0
+    2300004: block_LOD1
+    2300006: block_LOD2
     3300000: //RootNode
+    3300002: block_LOD0
+    3300004: block_LOD1
+    3300006: block_LOD2
     4300000: block_LOD0
+    4300002: block_LOD2
+    4300004: block_LOD1
+    20500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -44,7 +59,10 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0
