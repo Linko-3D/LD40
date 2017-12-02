@@ -34,21 +34,22 @@ public class GroundButtonModel {
 
     public int PressDurationInSeconds { get { return _settings.PressDurationInSeconds; } }
 
-    public bool CanBePressedBy(IWeightable model) {
-        return model.Weight >= _settings.WeightRequiredToPress;
-    }
+    public bool IsPressed { get { return _state != State.Depressed; } }
 
     /// <returns>whether state changed to PressedHopedOn</returns>
-    public bool HopedOn(IWeightable model) {
-        if (CanBePressedBy(model)) {
-            _state = State.PressedHopedOn;
-            return true;
+    public bool HopedOn(IWeightableModel model) {
+        if (_state != State.PressedHopedOn) {
+            if (CanBePressedBy(model)) {
+                _state = State.PressedHopedOn;
+                return true;
+            }
         }
+
         return false;
     }
 
     /// <returns>whether state changed to PressedHopedOff</returns>
-    public bool HopedOff(IWeightable model, float timeInSeconds) {
+    public bool HopedOff(IWeightableModel model, float timeInSeconds) {
         if (_state == State.PressedHopedOn) {
             _state = State.PressedHopedOff;
             _pressDecayStartedAt = timeInSeconds;
@@ -58,19 +59,30 @@ public class GroundButtonModel {
     }
 
     /// <returns>whether state changed to Depressed</returns>
-    public void Depress() {
-        _state = State.Depressed;
+    public bool Depressed(float timeInSeconds) {
+        if (_state == State.PressedHopedOff) {
+            if (PressEffectIsDecayed(timeInSeconds)) {
+                _state = State.Depressed;
+                return true;
+            }
+        }
+
+        return false;
     }
 
-    public float PressEffectDecaysInSeconds(float timeInSeconds) {
-        if (_state != State.Depressed) {
+    public bool CanBePressedBy(IWeightableModel model) {
+        return model.Weight >= _settings.WeightRequiredToPress;
+    }
+
+    protected float PressEffectDecaysInSeconds(float timeInSeconds) {
+        if (!IsPressed) {
             return 0;
         }
 
-        return timeInSeconds - _pressDecayStartedAt;
+        return _settings.PressDurationInSeconds - (timeInSeconds - _pressDecayStartedAt);
     }
 
-    public bool PressEffectHasDecayed(float timeInSeconds) {
+    protected bool PressEffectIsDecayed(float timeInSeconds) {
         return PressEffectDecaysInSeconds(timeInSeconds) <= 0;
     }
 }

@@ -3,7 +3,7 @@
 public class Game : SingletonMonobehavior<Game> {
 
     [SerializeField]
-    private PrincessCakeModel.Settings _princessSettings;
+    public PrincessCakeModel.Settings PrincessCakeSettings;
 
     public Logger Logger { get; private set; }
 
@@ -11,7 +11,7 @@ public class Game : SingletonMonobehavior<Game> {
     
     protected void Awake() {
         Logger = new Logger("Game");
-        PrincessCake = new PrincessCakeModel(_princessSettings);
+        PrincessCake = new PrincessCakeModel(PrincessCakeSettings);
     }
 
     public Logger LoggerFactory(string context) {
