@@ -74,7 +74,7 @@ public class GroundButtonModel : IModel {
         return model.Weight >= _settings.WeightRequiredToPress;
     }
 
-    protected float PressEffectDecaysInSeconds(float timeInSeconds) {
+    public float PressEffectDecaysInSeconds(float timeInSeconds) {
         if (!IsPressed) {
             return 0;
         }

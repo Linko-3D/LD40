@@ -43,7 +43,7 @@ public class DoorModel: IModel {
             return 0;
         }
 
-        return timeInSeconds - _openedAt;
+        return _settings.AutoCloseAfterSeconds - (timeInSeconds - _openedAt);
     }
 
     public bool ShouldAutoClose(float timeInSeconds) {

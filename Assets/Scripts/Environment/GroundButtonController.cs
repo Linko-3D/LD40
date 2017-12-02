@@ -2,7 +2,7 @@
 
 [RequireComponent(typeof(BoxCollider))]
 public class GroundButtonController : MonoBehaviour {
-
+    
     public float PositionOffsetYOnPressed = -.06f;
     public GroundButtonModel.Settings Settings;
     
@@ -61,13 +61,13 @@ public class GroundButtonController : MonoBehaviour {
 
 
     private void HopedOn(IWeightableController controller) {
-        if (Model.HopedOn(controller.Model)) {
+        if (Model.HopedOn(controller.Model())) {
             OnHopedOnBy(controller);
         }
     }
 
     private void HopedOff(IWeightableController controller) {
-        if (Model.HopedOff(controller.Model, Time.time)) {
+        if (Model.HopedOff(controller.Model(), Time.time)) {
             OnHopedOffBy(controller);
         }
     }

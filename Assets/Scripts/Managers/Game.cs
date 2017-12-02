@@ -1,20 +1,26 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(GameData))]
 public class Game : SingletonMonobehavior<Game> {
 
+    private GameData _gameData;
+    
     [SerializeField]
     private PrincessCakeController _princessCake;
 
     public Logger Logger { get; private set; }
+    public GameData _GameData { get { return _gameData; } }
     public PrincessCakeController PrincessCake { get { return _princessCake; } }
 
     protected void Awake() {
         Logger = new Logger("Game");
 
+        _gameData = GetComponent<GameData>();
+
         if (_princessCake == null) {
             _princessCake = transform.GetOrAddComponent<PrincessCakeController>();
 
-            Logger.Error("PrincessCakeController reference not found. Drag and Drop it and restart the game.");
+            //Logger.Error("PrincessCakeController reference not found. Drag and Drop it and restart the game.");
         }
     }
 

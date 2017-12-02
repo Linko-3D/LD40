@@ -1,3 +1,3 @@
 ﻿public interface IWeightableController {
-    IWeightableModel Model { get; }
+    IWeightableModel Model();
 }

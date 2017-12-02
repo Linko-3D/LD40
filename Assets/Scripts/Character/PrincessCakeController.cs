@@ -2,14 +2,16 @@
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
-    public PrincessCakeModel.Settings Settings;
+    public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
+    
+    public PrincessCakeModel Model { get; private set; }
 
-    protected PrincessCakeModel _model;
-
-    public IWeightableModel Model { get { return _model; } }
+    IWeightableModel IWeightableController.Model() {
+        return Model;
+    }
 
     protected virtual void Start() {
-        _model = new PrincessCakeModel(Settings);
+        Model = new PrincessCakeModel(Settings);
     }
 
 }
