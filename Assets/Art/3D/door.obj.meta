@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 7934fb937bcbdf843bcb088a33a7b828
-timeCreated: 1512228058
+guid: aee977894fccb6746be34ab6924ed25a
+timeCreated: 1512228396
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -16,13 +16,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: wall_orange
-    second: {fileID: 2100000, guid: 07d2fb17a8cd5b64d9ee692747aba68f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wall_white
-    second: {fileID: 2100000, guid: fdf4089fb3e71de4f9f59fa6b2bb8b46, type: 2}
+      name: door
+    second: {fileID: 2100000, guid: 1b7bce333f5be8e458fffd87f780e880, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
