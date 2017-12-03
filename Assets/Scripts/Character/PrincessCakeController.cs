@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
+
+    [SerializeField]
+    private AudioClip _theme;
     [SerializeField]
     private AudioClip _onConsumeCake;
     [SerializeField]
@@ -29,6 +32,8 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
         Model.OnConsumeCake += () => _audio.TryPlaySFX(_onConsumeCake);
         Model.OnConsumeTea += () => _audio.TryPlaySFX(_onConsumeTea);
+
+        _audio.TryPlayTheme(_theme);
     }
 
 #if UNITY_EDITOR

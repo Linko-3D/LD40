@@ -10,6 +10,7 @@ public static class AudioSourceExtensions {
 
     public static void TryPlayTheme(this AudioSource source, AudioClip clip) {
         if (clip != null) {
+            source.loop = true;
             source.clip = clip;
             source.Play();
         }
