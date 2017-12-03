@@ -16450,6 +16450,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4284304592608948, guid: bdbfa81bb1e08cf49b3c0faa94a0b814,
     type: 2}
   m_PrefabInternal: {fileID: 1330918234}
+--- !u!114 &1335900276 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114951697259573264, guid: d6ca131ee6b2bc14293904b63773cd53,
+    type: 2}
+  m_PrefabInternal: {fileID: 1085830508}
+  m_Script: {fileID: 11500000, guid: 8b09301802983d743b3dd04675e4c5c8, type: 3}
 --- !u!1001 &1355061578
 Prefab:
   m_ObjectHideFlags: 0
@@ -20060,6 +20066,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 230
       objectReference: {fileID: 0}
+    - target: {fileID: 114610488041446494, guid: 0ec26c9e8b96397458b2da344f908604,
+        type: 2}
+      propertyPath: TweensOnAtPress.Array.data[1]
+      value: 
+      objectReference: {fileID: 1335900276}
+    - target: {fileID: 114610488041446494, guid: 0ec26c9e8b96397458b2da344f908604,
+        type: 2}
+      propertyPath: TweensOnAtPress.Array.data[2]
+      value: 
+      objectReference: {fileID: 1802783822}
+    - target: {fileID: 114610488041446494, guid: 0ec26c9e8b96397458b2da344f908604,
+        type: 2}
+      propertyPath: TweensOffAtDepress.Array.data[1]
+      value: 
+      objectReference: {fileID: 1335900276}
+    - target: {fileID: 114610488041446494, guid: 0ec26c9e8b96397458b2da344f908604,
+        type: 2}
+      propertyPath: TweensOffAtDepress.Array.data[2]
+      value: 
+      objectReference: {fileID: 1802783822}
     - target: {fileID: 1551252536707708, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_Name
       value: button_frame_LOD0 (1)
@@ -23045,6 +23071,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4697206574902896, guid: 71ff61559b595dc4c8a9c8df5188bbfd,
     type: 2}
   m_PrefabInternal: {fileID: 1799854909}
+--- !u!114 &1802783822 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114344615756227584, guid: d6ca131ee6b2bc14293904b63773cd53,
+    type: 2}
+  m_PrefabInternal: {fileID: 1085830508}
+  m_Script: {fileID: 11500000, guid: 8b09301802983d743b3dd04675e4c5c8, type: 3}
 --- !u!1001 &1806518799
 Prefab:
   m_ObjectHideFlags: 0
