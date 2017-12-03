@@ -15,7 +15,10 @@ public class EntityStateJumping : EntityState
 		if (this.entityController._EntityData.IsGrounded)
 		{
 			this.entityController._EntityData._RigidBody.velocity = Vector3.zero;
-			this.entityController._EntityData._RigidBody.AddForce(Vector3.up * this.entityController._EntityData._JumpForce);
+			this.entityController._EntityData._RigidBody.AddForce(
+				Vector3.up * 
+				this.entityController._EntityData._JumpForce * 
+				(Game.Instance.PrincessCake.Model.Weight / Game.Instance.PrincessCake.Settings.MaxWeight));
 
 			this.HandleInput();
 		}
