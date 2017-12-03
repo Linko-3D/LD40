@@ -2,6 +2,9 @@
 
 public class PrincessCakeModel : IWeightableModel {
 
+    public event Action OnConsumeCake;
+    public event Action OnConsumeTea;
+
     [Serializable]
     public class Settings {
         public int MaxWeight = 10;
@@ -46,6 +49,10 @@ public class PrincessCakeModel : IWeightableModel {
         }
 
         _logger.Info("CakeEaten", "CakesEaten: " + CakesEaten + ", Weight: " + Weight);
+
+        if (OnConsumeCake != null) {
+            OnConsumeCake();
+        }
     }
 
     public void DrinkTea() {
@@ -53,6 +60,10 @@ public class PrincessCakeModel : IWeightableModel {
         Weight = _settings.WeightToSetOnDrinkTea;
 
         _logger.Info("TeaDrunk", "TeasDrunk: " + TeasDrunk + ", Weight: " + Weight);
+
+        if (OnConsumeTea != null) {
+            OnConsumeTea();
+        }
     }
 
     public bool CanMove(BoxModel box) {

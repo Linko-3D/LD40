@@ -5,6 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class TerrainButtonController : MonoBehaviour, IController {
 
+    [SerializeField]
+    private AudioClip _onPressed;
+    [SerializeField]
+    private AudioClip _onDepressed;
+
     public List<TweenController> TweensOnAtPress = new List<TweenController>();
     public List<TweenController> TweensOffAtDepress = new List<TweenController>();
     public TerrainButtonModel.Settings Settings;
@@ -13,11 +18,14 @@ public class TerrainButtonController : MonoBehaviour, IController {
     public string Name { get { return name; } }
 
     private Logger _logger;
+    private AudioSource _audio;
 
     protected virtual void Start () {
         _logger = Game.Instance.LoggerFactory(name + "::TerrainButtonController");
 
         Model = new TerrainButtonModel(name, Settings, Game.Instance.PrincessCake.Settings);
+
+        _audio = this.GetOrAddComponent<AudioSource>();
     }
 
     protected virtual void OnTriggerEnter(Collider collider) {
@@ -61,6 +69,8 @@ public class TerrainButtonController : MonoBehaviour, IController {
         foreach (TweenController tweensToOn in TweensOnAtPress) {
             tweensToOn.TryTweenToOn(true);
         }
+
+        _audio.TryPlaySFX(_onPressed);
     }
 
     protected virtual void OnHopedOffBy(IWeightableController controller) {
@@ -73,6 +83,8 @@ public class TerrainButtonController : MonoBehaviour, IController {
         foreach (TweenController tweensToOff in TweensOffAtDepress) {
             tweensToOff.TryTweenToOff(true);
         }
+
+        _audio.TryPlaySFX(_onDepressed);
     }
 
     private void HopedOn(IWeightableController controller) {

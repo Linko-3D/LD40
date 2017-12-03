@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
+    [SerializeField]
+    private AudioClip _onConsumeCake;
+    [SerializeField]
+    private AudioClip _onConsumeTea;
+
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
 
     public PrincessCakeModel Model { get; private set; }
@@ -15,8 +20,15 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         return Model;
     }
 
+    private AudioSource _audio;
+
     protected void Start() {
         Model = new PrincessCakeModel(name, Settings);
+
+        _audio = this.GetOrAddComponent<AudioSource>();
+
+        Model.OnConsumeCake += () => _audio.TryPlaySFX(_onConsumeCake);
+        Model.OnConsumeTea += () => _audio.TryPlaySFX(_onConsumeTea);
     }
 
 #if UNITY_EDITOR

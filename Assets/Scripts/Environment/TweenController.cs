@@ -29,11 +29,16 @@ public class TweenController : MonoBehaviour, IController {
     private bool _isFloatingPlatform = false;
     [SerializeField]
     private bool _startAutoFloat = true;
+    [SerializeField]
+    private AudioClip _onTweenOn;
+    [SerializeField]
+    private AudioClip _onTweenOff;
 
     private Logger _logger;
     private State _state = State.Off;
     private bool _isAutoFloating = false;
     private Vector3 _velocity = Vector3.zero;
+    private AudioSource _audio;
 
     public string Name { get { return name; } }
 
@@ -86,6 +91,8 @@ public class TweenController : MonoBehaviour, IController {
         if (_isFloatingPlatform && _startAutoFloat) {
             TryTweenToOn(true);
         }
+
+        _audio = this.GetOrAddComponent<AudioSource>();
     }
 
     protected virtual void Update() {
@@ -153,9 +160,13 @@ public class TweenController : MonoBehaviour, IController {
                 }
                 break;
         }
+        
+        if (tweenStarted) {
+            _audio.TryPlaySFX(_onTweenOn);
 
-        if (_isFloatingPlatform && tweenStarted && force) {
-            _isAutoFloating = true;
+            if (_isFloatingPlatform && force) {
+                _isAutoFloating = true;
+            }
         }
 
         return tweenStarted;
@@ -179,9 +190,14 @@ public class TweenController : MonoBehaviour, IController {
                 break;
         }
 
-        if (_isFloatingPlatform && tweenStarted && force) {
-            _isAutoFloating = false;
+        if (tweenStarted) {
+            _audio.TryPlaySFX(_onTweenOff);
+
+            if (_isFloatingPlatform && force) {
+                _isAutoFloating = false;
+            }
         }
+
         
         return tweenStarted;
     }
