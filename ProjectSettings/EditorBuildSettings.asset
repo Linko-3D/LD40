@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Master Scene.unity
     guid: 8130acbbb40c5154abb4e850138fc54c
+  - enabled: 1
+    path: Assets/level1.unity
+    guid: 039046f1c5bef244ab3076940900e0af
