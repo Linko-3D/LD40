@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33239562906034240}
   - component: {fileID: 23579845489688714}
   m_Layer: 0
-  m_Name: floating_platform_LOD0
+  m_Name: floating_platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

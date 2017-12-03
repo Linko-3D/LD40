@@ -160,6 +160,21 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 108571619511653798, guid: a57232a2e2028e44eb11e4d0b756e26b,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114388983878569338, guid: a57232a2e2028e44eb11e4d0b756e26b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114388983878569338, guid: a57232a2e2028e44eb11e4d0b756e26b,
+        type: 2}
+      propertyPath: ScatteringCoef
+      value: 0.002
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a57232a2e2028e44eb11e4d0b756e26b, type: 2}
   m_IsPrefabParent: 0
