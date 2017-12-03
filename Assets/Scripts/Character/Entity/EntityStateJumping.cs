@@ -18,7 +18,7 @@ public class EntityStateJumping : EntityState
 			this.entityController._EntityData._RigidBody.AddForce(
 				Vector3.up * 
 				this.entityController._EntityData._JumpForce * 
-				(Game.Instance.PrincessCake.Model.Weight / Game.Instance.PrincessCake.Settings.MaxWeight));
+				(1 - (Game.Instance.PrincessCake.Model.Weight / (float)Game.Instance.PrincessCake.Settings.MaxWeight)));
 
 			this.HandleInput();
 		}

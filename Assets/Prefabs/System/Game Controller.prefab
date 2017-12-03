@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1694398666934928}
   m_IsPrefabParent: 1
+--- !u!1 &1143370648939122
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4886230487237974}
+  - component: {fileID: 33739087041161984}
+  - component: {fileID: 23504267153402078}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1243040773227006
 GameObject:
   m_ObjectHideFlags: 1
@@ -49,11 +66,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4764207925615244}
-  - component: {fileID: 135879415639479696}
   - component: {fileID: 114684023210243202}
   - component: {fileID: 54229789018857928}
   - component: {fileID: 114710614857097478}
   - component: {fileID: 114420835090136454}
+  - component: {fileID: 136386823143338066}
   m_Layer: 0
   m_Name: PrincessCake
   m_TagString: Untagged
@@ -73,8 +90,6 @@ GameObject:
   - component: {fileID: 124029632617292254}
   - component: {fileID: 81492481835485242}
   - component: {fileID: 114001334020466740}
-  - component: {fileID: 33178482697155402}
-  - component: {fileID: 23979258609881086}
   - component: {fileID: 114397784896006148}
   m_Layer: 0
   m_Name: Main Camera
@@ -100,6 +115,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1972299656731438
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4292770986268394}
+  m_Layer: 0
+  m_Name: Camera Target Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4292770986268394
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1972299656731438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4764207925615244}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4548359035474852
 Transform:
   m_ObjectHideFlags: 1
@@ -138,6 +181,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4886230487237974}
+  - {fileID: 4292770986268394}
   - {fileID: 4828440580746226}
   m_Father: {fileID: 4548359035474852}
   m_RootOrder: 1
@@ -149,7 +194,20 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243040773227006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4764207925615244}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4886230487237974
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1143370648939122}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4764207925615244}
@@ -204,12 +262,12 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!23 &23979258609881086
+--- !u!23 &23504267153402078
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668238688501438}
+  m_GameObject: {fileID: 1143370648939122}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -238,12 +296,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33178482697155402
+--- !u!33 &33739087041161984
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668238688501438}
+  m_GameObject: {fileID: 1143370648939122}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54229789018857928
 Rigidbody:
@@ -290,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46092bff77a20f34283ae7554f44770f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 4764207925615244}
+  _target: {fileID: 4292770986268394}
   _smoothingFactor: 6
 --- !u!114 &114420835090136454
 MonoBehaviour:
@@ -306,7 +364,7 @@ MonoBehaviour:
   Settings:
     MaxWeight: 10
     MinWeight: 1
-    WeightStartsAt: 5
+    WeightStartsAt: 1
     WeightToAddOnEatCake: 1
     WeightToSetOnDrinkTea: 1
 --- !u!114 &114455825303002446
@@ -321,6 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _princessCake: {fileID: 114420835090136454}
+  _logLevel: 2
 --- !u!114 &114560540238621422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -370,8 +429,8 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668238688501438}
   m_Enabled: 1
---- !u!135 &135879415639479696
-SphereCollider:
+--- !u!136 &136386823143338066
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -379,6 +438,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 2.01
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
