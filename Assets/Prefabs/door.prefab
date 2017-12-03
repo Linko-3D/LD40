@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 33780735602892848}
   - component: {fileID: 23698868561533696}
   m_Layer: 0
-  m_Name: door_LOD0
+  m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,6 +388,8 @@ MonoBehaviour:
   _movementSpeed: 0.2
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _onTweenOn: {fileID: 0}
+  _onTweenOff: {fileID: 0}
 --- !u!114 &114951697259573264
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,3 +407,5 @@ MonoBehaviour:
   _movementSpeed: 0.2
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _onTweenOn: {fileID: 0}
+  _onTweenOff: {fileID: 0}

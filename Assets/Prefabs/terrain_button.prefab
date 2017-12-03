@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 65467383136480912}
   - component: {fileID: 114610488041446494}
   m_Layer: 0
-  m_Name: terrain_button_LOD0
+  m_Name: terrain_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,9 +238,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b09301802983d743b3dd04675e4c5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tweenType: 0
   _targetOn: {fileID: 4128641004655886}
   _targetOff: {fileID: 4169666098366280}
   _movementSpeed: 5
+  _isFloatingPlatform: 0
+  _startAutoFloat: 1
+  _onTweenOn: {fileID: 0}
+  _onTweenOff: {fileID: 0}
 --- !u!114 &114610488041446494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -252,6 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8055ae9b516d24e4faf102ce0a081036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onPressed: {fileID: 0}
+  _onDepressed: {fileID: 0}
   TweensOnAtPress:
   - {fileID: 114084727984505164}
   TweensOffAtDepress:
