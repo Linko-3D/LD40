@@ -19,10 +19,12 @@ ModelImporter:
     2300002: button_LOD1
     2300004: button_LOD2
     2300006: button_LOD3
+    2300008: //RootNode
     3300000: button_LOD0
     3300002: button_LOD1
     3300004: button_LOD2
     3300006: button_LOD3
+    3300008: //RootNode
     4300000: button_LOD3
     4300002: button_LOD2
     4300004: button_LOD1
