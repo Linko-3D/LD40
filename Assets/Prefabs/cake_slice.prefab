@@ -72,7 +72,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4898989123558314}
   - component: {fileID: 54964397133001404}
+  - component: {fileID: 114854031831997514}
   - component: {fileID: 114001524161736310}
+  - component: {fileID: 65462816560254122}
   m_Layer: 0
   m_Name: cake_slice
   m_TagString: Untagged
@@ -189,7 +191,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1614799548477032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 0.718, z: 0}
+  m_LocalPosition: {x: -5.500436, y: 0.00089996995, z: 0.92755103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4127884048314384}
@@ -385,8 +387,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.006118362, y: 0.009740271, z: 0.005955321}
-  m_Center: {x: -0.00000080128666, y: 0.00061781716, z: 0.002566387}
+  m_Size: {x: 0.006, y: 0.01, z: 0.006}
+  m_Center: {x: 0, y: 0, z: 0.0025}
+--- !u!65 &65462816560254122
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614799548477032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 1.2, z: 1.2}
+  m_Center: {x: 0, y: 0, z: 0.0025}
 --- !u!114 &114001524161736310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -396,6 +410,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31f07b283000f9341ac88a15e299c7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 200
+--- !u!114 &114854031831997514
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614799548477032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a72c13ed5d7819b48afa5025a7d4b5c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!205 &205623995103777618

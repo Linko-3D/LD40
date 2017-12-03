@@ -36,7 +36,7 @@ public class PrincessCakeModel : IWeightableModel {
         _logger.Assert(_settings.WeightStartsAt >= _settings.MinWeight, "WeightStartsAt should be less than or equal to MinWeight(" + _settings.MinWeight + ")");
 
         Weight = _settings.WeightStartsAt;
-}
+    }
 
     public void EatCake() {
         ++CakesEaten;
@@ -44,11 +44,15 @@ public class PrincessCakeModel : IWeightableModel {
         if (Weight > _settings.MaxWeight) {
             Weight = _settings.MaxWeight;
         }
+
+        _logger.Info("CakeEaten", "CakesEaten: " + CakesEaten + ", Weight: " + Weight);
     }
 
     public void DrinkTea() {
         ++TeasDrunk;
         Weight = _settings.WeightToSetOnDrinkTea;
+
+        _logger.Info("TeaDrunk", "TeasDrunk: " + TeasDrunk + ", Weight: " + Weight);
     }
 
     public bool CanMove(BoxModel box) {
