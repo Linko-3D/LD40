@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class GroundButtonController : MonoBehaviour {
-
-    public List<TweenController> TweensToToggleOnPress = new List<TweenController>();
-    public List<TweenController> TweensToToggleOnDepress = new List<TweenController>();
+    
     public float PositionOffsetYOnPressed = -.06f;
     public GroundButtonModel.Settings Settings;
     
@@ -53,10 +49,6 @@ public class GroundButtonController : MonoBehaviour {
     // To be overriden by elevator.
     protected virtual void OnHopedOnBy(IWeightableController controller) {
         transform.SetPosY(transform.position.y + PositionOffsetYOnPressed);
-
-        foreach(TweenController tweenable in TweensToToggleOnPress) {
-            tweenable.TryToggle(true);
-        }
     }
 
     protected virtual void OnHopedOffBy(IWeightableController controller) {
@@ -65,11 +57,8 @@ public class GroundButtonController : MonoBehaviour {
 
     protected virtual void OnDepressed() {
         transform.SetPosY(transform.position.y - PositionOffsetYOnPressed);
-
-        foreach (TweenController tweenable in TweensToToggleOnDepress) {
-            tweenable.TryToggle(true);
-        }
     }
+
 
     private void HopedOn(IWeightableController controller) {
         if (Model.HopedOn(controller.Model())) {

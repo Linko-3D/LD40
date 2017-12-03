@@ -12,31 +12,54 @@ public class EntityStateWalking : EntityState
 {
 	public EntityStateWalking(EntityController entityConctoller) : base(entityConctoller)
 	{
+		this.HandleInput();
+	}
+
+	public override bool HandleInput()
+	{
+		bool isInputDetected = false;
+		Vector3 movement = Vector3.zero;
+
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+		{
+			movement += this.entityController.transform.forward;
+			movement.y = 0;
+			
+			isInputDetected = true;
+		}
+		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+		{
+			movement -= this.entityController.transform.forward;
+			movement.y = 0;
+			
+			isInputDetected = true;
+		}
+
 		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
 		{
-			this.entityController.Move(Vector3.left * this.entityController._EntityData._MovementSpeedWalkingState);
+			movement -= this.entityController.transform.right;
+			
+			isInputDetected = true;
 		}
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 		{
-			this.entityController.Move(Vector3.right * this.entityController._EntityData._MovementSpeedWalkingState);
+			movement += this.entityController.transform.right;
+
+			isInputDetected = true;
 		}
+
+		this.entityController.Move(movement.normalized * this.entityController._EntityData._MovementSpeedWalkingState);
+
+		return isInputDetected;
 	}
 
 	public override void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+		if (Input.GetKey(KeyCode.Space))
 		{
 			this.entityController._EntityData.EntityState = new EntityStateJumping(this.entityController);
 		}
-		else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-		{
-			this.entityController.Move(Vector3.left * this.entityController._EntityData._MovementSpeedWalkingState);
-		}
-		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-		{
-			this.entityController.Move(Vector3.right * this.entityController._EntityData._MovementSpeedWalkingState);
-		}
-		else
+		else if (!this.HandleInput())
 		{
 			this.entityController._EntityData.EntityState = new EntityStateIdle(this.entityController);
 		}

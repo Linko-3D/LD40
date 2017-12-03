@@ -17,17 +17,48 @@ public class EntityStateJumping : EntityState
 			this.entityController._EntityData._RigidBody.velocity = Vector3.zero;
 			this.entityController._EntityData._RigidBody.AddForce(Vector3.up * this.entityController._EntityData._JumpForce);
 
-			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			{
-				this.entityController.Move(Vector3.left * this.entityController._EntityData._MovementSpeedJumpingState);
-			}
-			else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			{
-				this.entityController.Move(Vector3.right * this.entityController._EntityData._MovementSpeedJumpingState);
-			}
+			this.HandleInput();
 		}
 
 		this.entityController._EntityData._GroundCheckCooldown = 0;
+	}
+
+	public override bool HandleInput()
+	{
+		bool isInputDetected = false;
+		Vector3 movement = Vector3.zero;
+
+		if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+		{
+			movement += this.entityController.transform.forward;
+			movement.y = 0;
+
+			isInputDetected = true;
+		}
+		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+		{
+			movement -= this.entityController.transform.forward;
+			movement.y = 0;
+
+			isInputDetected = true;
+		}
+
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+		{
+			movement -= this.entityController.transform.right;
+
+			isInputDetected = true;
+		}
+		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+		{
+			movement += this.entityController.transform.right;
+
+			isInputDetected = true;
+		}
+
+		this.entityController.Move(movement.normalized * this.entityController._EntityData._MovementSpeedJumpingState);
+
+		return isInputDetected;
 	}
 
 	public override void Update()
@@ -38,14 +69,7 @@ public class EntityStateJumping : EntityState
 		}
 		else
 		{
-			if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-			{
-				this.entityController.Move(Vector3.left * this.entityController._EntityData._MovementSpeedJumpingState);
-			}
-			else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			{
-				this.entityController.Move(Vector3.right * this.entityController._EntityData._MovementSpeedJumpingState);
-			}
+			this.HandleInput();
 		}
 	}
 
