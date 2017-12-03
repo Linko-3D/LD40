@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4276044249754152}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TweenOnTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4132215072205092}
   - component: {fileID: 33920669285698032}
   - component: {fileID: 23970820638159280}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Block_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,9 @@ GameObject:
   - component: {fileID: 205430388850749452}
   - component: {fileID: 114682470366637892}
   - component: {fileID: 114021307269676648}
-  m_Layer: 0
+  - component: {fileID: 65186667007321392}
+  - component: {fileID: 54085548242931520}
+  m_Layer: 11
   m_Name: box_interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +73,7 @@ GameObject:
   - component: {fileID: 4344754260036468}
   - component: {fileID: 33205817440560726}
   - component: {fileID: 23922328911773884}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Block_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4938569924279896}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TweenOffTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,8 +105,7 @@ GameObject:
   - component: {fileID: 4453861049423604}
   - component: {fileID: 33601608458286806}
   - component: {fileID: 23506488269067604}
-  - component: {fileID: 65264230007791948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Block_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +122,7 @@ GameObject:
   - component: {fileID: 4437725612203054}
   - component: {fileID: 33729304448219828}
   - component: {fileID: 23081900419952524}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Block_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434558155968472}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.12, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4453861049423604}
@@ -389,18 +390,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425784886245464}
   m_Mesh: {fileID: 4300010, guid: 4ac88b8e7ee2128468f4a7f90102bd95, type: 3}
---- !u!65 &65264230007791948
+--- !u!54 &54085548242931520
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434558155968472}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65186667007321392
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638727772595498}
+  m_GameObject: {fileID: 1434558155968472}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.02}
-  m_Center: {x: 0, y: 0, z: 0.01}
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &114021307269676648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,6 +434,8 @@ MonoBehaviour:
   _movementSpeed: 1
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _onTweenOn: {fileID: 0}
+  _onTweenOff: {fileID: 0}
 --- !u!114 &114682470366637892
 MonoBehaviour:
   m_ObjectHideFlags: 1
