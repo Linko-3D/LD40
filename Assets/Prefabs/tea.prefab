@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4787111916825178}
   - component: {fileID: 205190141730527366}
+  - component: {fileID: 135936918948478258}
+  - component: {fileID: 114578480279436374}
   m_Layer: 0
   m_Name: tea
   m_TagString: Untagged
@@ -128,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1381991484733702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4101288, y: 0, z: 1.8837726}
+  m_LocalPosition: {x: 2.4101288, y: 0.302, z: 1.8837726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4798238259209352}
@@ -328,6 +330,29 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1759723350106068}
   m_Mesh: {fileID: 4300002, guid: 249d16e2fbeed2e458f4cb40802630ab, type: 3}
+--- !u!114 &114578480279436374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381991484733702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a68b2911464e9db42bdfe17b74ccd0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &135936918948478258
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1381991484733702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!205 &205190141730527366
 LODGroup:
   m_ObjectHideFlags: 1
