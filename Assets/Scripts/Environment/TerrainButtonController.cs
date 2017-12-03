@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+
+using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class GroundButtonController : MonoBehaviour {
+public class TerrainButtonController : MonoBehaviour, IController {
+
+    public List<TweenController> TweensOnAtPress = new List<TweenController>();
+    public List<TweenController> TweensOffAtDepress = new List<TweenController>();
+    public TerrainButtonModel.Settings Settings;
     
-    public float PositionOffsetYOnPressed = -.06f;
-    public GroundButtonModel.Settings Settings;
-    
-    public GroundButtonModel Model { get; private set; }
+    public TerrainButtonModel Model { get; private set; }
+    public string Name { get { return name; } }
+
+    private Logger _logger;
 
     protected virtual void Start () {
-        Model = new GroundButtonModel(Settings, Game.Instance.PrincessCake.Settings);
+        _logger = Game.Instance.LoggerFactory(name + "::TerrainButtonController");
+
+        Model = new TerrainButtonModel(name, Settings, Game.Instance.PrincessCake.Settings);
     }
 
     protected virtual void OnCollisionEnter(Collision collision) {
@@ -19,6 +27,8 @@ public class GroundButtonController : MonoBehaviour {
 
         IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
 
+        _logger.Info("OnCollisionEnter", collision.gameObject.name + " entered");
+
         if (controller != null) {
             HopedOn(controller);
         }
@@ -26,6 +36,8 @@ public class GroundButtonController : MonoBehaviour {
 
     protected virtual void OnCollisionExit(Collision collision) {
         IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
+
+        _logger.Info("OnCollisionEnter", collision.gameObject.name + " left");
 
         if (controller != null) {
             HopedOff(controller);
@@ -48,17 +60,24 @@ public class GroundButtonController : MonoBehaviour {
 
     // To be overriden by elevator.
     protected virtual void OnHopedOnBy(IWeightableController controller) {
-        transform.SetPosY(transform.position.y + PositionOffsetYOnPressed);
+        _logger.Info("OnHopedOnBy", controller.Name + " hoped on");
+
+        foreach (TweenController tweensToOn in TweensOnAtPress) {
+            tweensToOn.TryTweenToOn(true);
+        }
     }
 
     protected virtual void OnHopedOffBy(IWeightableController controller) {
-
+        _logger.Info("OnHopedOnBy", controller.Name + " hoped off");
     }
 
     protected virtual void OnDepressed() {
-        transform.SetPosY(transform.position.y - PositionOffsetYOnPressed);
-    }
+        _logger.Info("OnDepressed");
 
+        foreach (TweenController tweensToOff in TweensOffAtDepress) {
+            tweensToOff.TryTweenToOff(true);
+        }
+    }
 
     private void HopedOn(IWeightableController controller) {
         if (Model.HopedOn(controller.Model())) {

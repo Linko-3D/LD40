@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class GroundButtonModel : IModel {
+public class TerrainButtonModel : IModel {
 
     [Serializable]
     public class Settings {
@@ -19,15 +19,19 @@ public class GroundButtonModel : IModel {
     private State _state;
     private float _pressDecayStartedAt;
 
-    public GroundButtonModel(Settings settings, PrincessCakeModel.Settings princessCakeSettings) {
-        _logger = Game.Instance.LoggerFactory("Box");
+    public string Name { get; private set; }
+
+    public TerrainButtonModel(string name, Settings settings, PrincessCakeModel.Settings princessCakeSettings) {
+        Name = name;
         _settings = settings;
         _state = State.Depressed;
+
+        _logger = Game.Instance.LoggerFactory(Name + "::TerrainButtonModel");
 
         _logger.Assert(_settings.WeightRequiredToPress <= princessCakeSettings.MaxWeight, "WeightRequiredToPress should be less than or equal to pricessCake.MaxWeight");
         _logger.Assert(_settings.WeightRequiredToPress >= princessCakeSettings.MinWeight, "WeightRequiredToPress should be greater than or equal to pricessCake.MinWeight");
 
-        _logger.Info("Starting at state: " + _state);
+        _logger.Info("State: " + _state, "Initialized.");
     }
 
     public int WeightRequiredToPress { get { return _settings.WeightRequiredToPress; } }
@@ -41,6 +45,7 @@ public class GroundButtonModel : IModel {
         if (_state != State.PressedHopedOn) {
             if (CanBePressedBy(model)) {
                 _state = State.PressedHopedOn;
+                _logger.Info("State: " + _state, " state updated");
                 return true;
             }
         }
@@ -53,6 +58,7 @@ public class GroundButtonModel : IModel {
         if (_state == State.PressedHopedOn) {
             _state = State.PressedHopedOff;
             _pressDecayStartedAt = timeInSeconds;
+            _logger.Info("State: " + _state, " state updated at time: " + timeInSeconds);
             return true;
         }
         return false;
@@ -63,6 +69,7 @@ public class GroundButtonModel : IModel {
         if (_state == State.PressedHopedOff) {
             if (PressEffectIsDecayed(timeInSeconds)) {
                 _state = State.Depressed;
+                _logger.Info("State: " + _state, " state updated at time: " + timeInSeconds);
                 return true;
             }
         }

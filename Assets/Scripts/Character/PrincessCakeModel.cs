@@ -14,13 +14,16 @@ public class PrincessCakeModel : IWeightableModel {
     private Logger _logger;
     private Settings _settings;
 
+    public string Name { get; private set; }
+    public int Weight { get; private set; }
     public int CakesEaten { get; private set; }
     public int TeasDrunk { get; private set; }
-    public int Weight { get; private set; }
 
-    public PrincessCakeModel(Settings settings) {
-        _logger = Game.Instance.LoggerFactory("PrincessCake");
+    public PrincessCakeModel(string name, Settings settings) {
+        Name = name;
         _settings = settings;
+
+        _logger = Game.Instance.LoggerFactory(Name + "::PrincessCakeModel");
 
         _logger.Assert(_settings != null, "PrincessCakeModel Config should not be null");
         _logger.Assert(_settings.MinWeight > 0, "MinWeight should be greater than zero");
@@ -52,7 +55,7 @@ public class PrincessCakeModel : IWeightableModel {
         return Weight >= box.Weight;
     }
 
-    public bool CanPress(GroundButtonModel groudButton) {
+    public bool CanPress(TerrainButtonModel groudButton) {
         return groudButton.CanBePressedBy(this);
     }
 }

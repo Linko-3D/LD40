@@ -10,9 +10,13 @@ public class BoxModel : IWeightableModel {
     private Logger _logger;
     private Settings _settings;
 
-    public BoxModel(Settings settings, PrincessCakeModel.Settings princessCakeSettings) {
-        _logger = Game.Instance.LoggerFactory("Box");
+    public string Name { get; private set; }
+
+    public BoxModel(string name, Settings settings, PrincessCakeModel.Settings princessCakeSettings) {
+        Name = name;
         _settings = settings;
+
+        _logger = Game.Instance.LoggerFactory(Name + "::BoxModel");
 
         _logger.Assert(_settings.Weight <= princessCakeSettings.MaxWeight, "WeightRequiredToMove should be less than or equal to pricessCake.MaxWeight");
         _logger.Assert(_settings.Weight >= princessCakeSettings.MinWeight, "WeightRequiredToMove should be greater than or equal to pricessCake.MinWeight");
@@ -24,7 +28,7 @@ public class BoxModel : IWeightableModel {
         return princessCake.CanMove(this);
     }
 
-    public bool CanMoveBy(GroundButtonModel groundButton) {
+    public bool CanMoveBy(TerrainButtonModel groundButton) {
         return groundButton.CanBePressedBy(this);
     }
 }
