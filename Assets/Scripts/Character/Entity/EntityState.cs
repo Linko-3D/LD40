@@ -18,6 +18,7 @@ public abstract class EntityState
 		this.entityController = entityConctoller;
 	}
 
+	public abstract bool HandleInput();
 	public abstract void Update();
 
 #if UNITY_EDITOR
