@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RotationController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    private float _speed = 200;
+    
+    private readonly Vector3 _rotationToApply = Vector3.up;
+
+    protected void FixedUpdate() {
+        transform.Rotate(Vector3.up * _speed * Time.fixedDeltaTime);
+    }
 }
