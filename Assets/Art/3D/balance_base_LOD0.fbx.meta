@@ -1,41 +1,21 @@
 fileFormatVersion: 2
-guid: 249d16e2fbeed2e458f4cb40802630ab
-timeCreated: 1512317401
+guid: a62cbd3a7aafa4743b3f694e1f87e5f0
+timeCreated: 1512319745
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: tea_LOD0
-    100004: tea_LOD1
-    100006: tea_LOD2
-    100008: tea_LOD3
     400000: //RootNode
-    400002: tea_LOD0
-    400004: tea_LOD1
-    400006: tea_LOD2
-    400008: tea_LOD3
     2300000: //RootNode
-    2300002: tea_LOD0
-    2300004: tea_LOD1
-    2300006: tea_LOD2
-    2300008: tea_LOD3
     3300000: //RootNode
-    3300002: tea_LOD0
-    3300004: tea_LOD1
-    3300006: tea_LOD2
-    3300008: tea_LOD3
-    4300000: tea_LOD0
-    4300002: tea_LOD3
-    4300004: tea_LOD2
-    4300006: tea_LOD1
-    20500000: //RootNode
+    4300000: balance_base_LOD0
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: tea_PBR
-    second: {fileID: 2100000, guid: 9eccef69315b6d549878c55e894c31c7, type: 2}
+      name: balance_base_PBR
+    second: {fileID: 2100000, guid: 6e0ea62001fb549419c276f21fdbc191, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -64,11 +44,7 @@ ModelImporter:
     clipAnimations: []
     isReadable: 1
   meshes:
-    lODScreenPercentages:
-    - 0.25
-    - 0.125
-    - 0.0625
-    - 0.01
+    lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
