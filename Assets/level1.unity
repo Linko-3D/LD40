@@ -5655,7 +5655,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4896474979744694, guid: adee7d87b6b5fc34d89ee72e6ea8f31c, type: 2}
       propertyPath: m_RootOrder
-      value: 394
+      value: 393
       objectReference: {fileID: 0}
     - target: {fileID: 1859627285420364, guid: adee7d87b6b5fc34d89ee72e6ea8f31c, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -20030,7 +20030,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: -2.73
       objectReference: {fileID: 0}
     - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20038,7 +20038,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_LocalRotation.x
@@ -20063,14 +20063,6 @@ Prefab:
     - target: {fileID: 1551252536707708, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
       propertyPath: m_Name
       value: button_frame_LOD0 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 99.99997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4500273117503130, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 99.99997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ec26c9e8b96397458b2da344f908604, type: 2}
@@ -26668,7 +26660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4896474979744694, guid: adee7d87b6b5fc34d89ee72e6ea8f31c, type: 2}
       propertyPath: m_RootOrder
-      value: 395
+      value: 394
       objectReference: {fileID: 0}
     - target: {fileID: 1859627285420364, guid: adee7d87b6b5fc34d89ee72e6ea8f31c, type: 2}
       propertyPath: m_StaticEditorFlags
