@@ -8,32 +8,39 @@
 /// </summary>
 public class Logger {
     
+    public enum Level {
+        Info,
+        Warn,
+        Error
+    }
+
     private string _globalContext;
+    private Level _level;
     private UnityEngine.Logger _logger;
 
-    public Logger(string globalContext) {
+    public Logger(string globalContext, Level lvl) {
+        _level = lvl;
         _globalContext = globalContext;
         _logger = new UnityEngine.Logger(Debug.unityLogger.logHandler);
     }
 
-    public Logger(string globalContext, ILogHandler handler) {
-        _globalContext = globalContext;
-        _logger = new UnityEngine.Logger(handler);
-    }
-    
     public void Info(object obj) {
+        if (_level != Level.Info) return;
         _logger.Log(_globalContext, obj.ToString());
     }
     
     public void Info(string localContext, object obj) {
+        if (_level != Level.Info) return;
         _logger.Log(_globalContext + "::" + localContext, obj.ToString());
     }
     
     public void Warn(object obj) {
+        if (_level < Level.Warn) return;
         _logger.LogWarning(_globalContext, obj.ToString());
     }
     
     public void Warn(string localContext, object obj) {
+        if (_level < Level.Warn) return;
         _logger.LogWarning(_globalContext + "::" + localContext, obj.ToString());
     }
     

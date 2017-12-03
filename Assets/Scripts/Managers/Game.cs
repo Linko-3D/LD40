@@ -3,17 +3,21 @@
 [RequireComponent(typeof(GameData))]
 public class Game : SingletonMonobehavior<Game> {
 
+
     private GameData _gameData;
     
     [SerializeField]
     private PrincessCakeController _princessCake;
+
+    [SerializeField]
+    private Logger.Level _logLevel = Logger.Level.Error;
 
     public Logger Logger { get; private set; }
     public GameData _GameData { get { return _gameData; } }
     public PrincessCakeController PrincessCake { get { return _princessCake; } }
 
     protected void Awake() {
-        Logger = new Logger("Game");
+        Logger = new Logger("Game", _logLevel);
 
         _gameData = GetComponent<GameData>();
 
@@ -25,7 +29,7 @@ public class Game : SingletonMonobehavior<Game> {
     }
 
     public Logger LoggerFactory(string context) {
-        return new Logger(context);
+        return new Logger(context, _logLevel);
     }
 
 }
