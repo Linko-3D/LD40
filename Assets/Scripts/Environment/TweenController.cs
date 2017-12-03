@@ -61,10 +61,12 @@ public class TweenController : MonoBehaviour, IController {
         // cause the tween to move forever as the target transforms will move along
         // with the tweened transform.
         if (_targetOn.IsChildOf(transform) || _targetOff.IsChildOf(transform)) {
-            GameObject parent = new GameObject(Name + "TweenGroup");
-            transform.parent = parent.transform;
-            _targetOff.parent = parent.transform;
-            _targetOn.parent = parent.transform;
+            GameObject tweenGroupParent = new GameObject(Name + "TweenGroup");
+            tweenGroupParent.transform.parent = transform.parent;
+
+            transform.parent = tweenGroupParent.transform;
+            _targetOff.parent = tweenGroupParent.transform;
+            _targetOn.parent = tweenGroupParent.transform;
         }
 
         _logger.Assert(
@@ -178,7 +180,6 @@ public class TweenController : MonoBehaviour, IController {
                 }
                 break;
         }
-
 
         if (_isFloatingPlatform && tweenStarted && force) {
             _isAutoFloating = false;

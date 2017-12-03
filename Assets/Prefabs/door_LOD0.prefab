@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1337051926249548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.005, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4216163608015902}
@@ -158,7 +158,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1424225477298746}
-  m_LocalRotation: {x: -0.00001180172, y: 0.7071068, z: 0.7071068, w: 0.00001180172}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: -1, y: 0, z: 7}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
@@ -166,7 +166,7 @@ Transform:
   - {fileID: 4414393606103206}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 179.998}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
 --- !u!4 &4414393606103206
 Transform:
   m_ObjectHideFlags: 1
@@ -190,7 +190,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1829664727197246}
   m_LocalRotation: {x: -0.000000059604638, y: 1.0471622e-12, z: 7.8479323e-16, w: 1}
-  m_LocalPosition: {x: 0.005, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.0000015, y: 1.000001, z: 1.000001}
   m_Children: []
   m_Father: {fileID: 4414393606103206}
@@ -203,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483812097337660}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.005, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4414393606103206}
@@ -216,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1147396730048546}
   m_LocalRotation: {x: 1.7347233e-18, y: -0, z: 7.411962e-21, w: 1}
-  m_LocalPosition: {x: -0.005, y: -0, z: -0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4216163608015902}
@@ -359,7 +359,7 @@ MonoBehaviour:
   _tweenType: 0
   _targetOn: {fileID: 4836370856910452}
   _targetOff: {fileID: 4642950880634100}
-  _movementSpeed: 1
+  _movementSpeed: 0.2
   _isFloatingPlatform: 0
   _startAutoFloat: 1
 --- !u!114 &114951697259573264
@@ -376,6 +376,6 @@ MonoBehaviour:
   _tweenType: 0
   _targetOn: {fileID: 4324259116407826}
   _targetOff: {fileID: 4949546016047626}
-  _movementSpeed: 1
+  _movementSpeed: 0.2
   _isFloatingPlatform: 0
   _startAutoFloat: 1

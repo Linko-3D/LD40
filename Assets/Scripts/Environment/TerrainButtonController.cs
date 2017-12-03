@@ -20,24 +20,20 @@ public class TerrainButtonController : MonoBehaviour, IController {
         Model = new TerrainButtonModel(name, Settings, Game.Instance.PrincessCake.Settings);
     }
 
-    protected virtual void OnCollisionEnter(Collision collision) {
-        foreach (ContactPoint contact in collision.contacts) {
-            Debug.DrawRay(contact.point, contact.normal, Color.white);
-        }
+    protected virtual void OnTriggerEnter(Collider collider) {
+        IWeightableController controller = collider.gameObject.GetComponent<IWeightableController>();
 
-        IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
-
-        _logger.Info("OnCollisionEnter", collision.gameObject.name + " entered");
+        _logger.Info("OnTriggerEnter", collider.gameObject.name + " entered");
 
         if (controller != null) {
             HopedOn(controller);
         }
     }
 
-    protected virtual void OnCollisionExit(Collision collision) {
-        IWeightableController controller = collision.gameObject.GetComponent<IWeightableController>();
+    protected virtual void OnTriggerExit(Collider collider) {
+        IWeightableController controller = collider.gameObject.GetComponent<IWeightableController>();
 
-        _logger.Info("OnCollisionEnter", collision.gameObject.name + " left");
+        _logger.Info("OnTriggerExit", collider.gameObject.name + " left");
 
         if (controller != null) {
             HopedOff(controller);
