@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 67fcce6e91e3f5d4abca07c755949190
-timeCreated: 1512247432
+guid: 6e0b3cf3816b493429d6160eb22de971
+timeCreated: 1512258695
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -9,13 +9,13 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: rood_LOD0
+    4300000: button_frame_LOD0
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: rood_PBR
-    second: {fileID: 2100000, guid: 51ed78b5e7b90ed45a701e84f01dce94, type: 2}
+      name: button_frame_PBR
+    second: {fileID: 2100000, guid: a40f19768020d6e429e0b1481cc0d6f5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
