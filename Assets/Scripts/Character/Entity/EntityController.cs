@@ -15,14 +15,28 @@ public class EntityController : MonoBehaviour
 
 	private void Awake()
 	{
+		Cursor.visible = false;
+
 		this._entityData = this.GetComponent<EntityData>();
 
 		this._entityData.Initialize(this);
 	}
 
+	[SerializeField] private float _mouseSensitivity;
+
 	private void Update()
 	{
 		this._entityData.EntityState.Update();
+
+		float XRotation = Input.GetAxis("Mouse X") * this._mouseSensitivity;
+		float YRotation = Input.GetAxis("Mouse Y") * this._mouseSensitivity;
+
+		Vector3 targetRotationEuler = this.transform.rotation.eulerAngles;
+
+		targetRotationEuler.y += XRotation;
+		targetRotationEuler.x -= YRotation;
+
+		this.transform.rotation = Quaternion.Euler(targetRotationEuler);
 	}
 
 	public void Move(Vector3 velocity)
