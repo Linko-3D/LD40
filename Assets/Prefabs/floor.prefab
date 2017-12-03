@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 65953557564103552}
   - component: {fileID: 114480275562200174}
   m_Layer: 0
-  m_Name: floor_LOD0
+  m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,3 +171,5 @@ MonoBehaviour:
   _movementSpeed: 1
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _onTweenOn: {fileID: 0}
+  _onTweenOff: {fileID: 0}
