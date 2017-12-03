@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 114710614857097478}
   - component: {fileID: 114420835090136454}
   m_Layer: 0
-  m_Name: Princess
+  m_Name: PrincessCake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,6 +200,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 0
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -306,7 +307,7 @@ MonoBehaviour:
   Settings:
     MaxWeight: 10
     MinWeight: 1
-    WeightStartsAt: 1
+    WeightStartsAt: 5
     WeightToAddOnEatCake: 1
     WeightToSetOnDrinkTea: 1
 --- !u!114 &114455825303002446
