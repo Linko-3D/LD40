@@ -52,11 +52,11 @@ public class TerrainButtonController : MonoBehaviour, IController {
         TryDepress();
 
 #if UNITY_EDITOR
-        if (Input.GetKeyUp(KeyCode.E)) {
+        if (Input.GetKeyUp(KeyCode.I)) {
             HopedOn(Game.Instance.PrincessCake);
         }
 
-        if (Input.GetKeyUp(KeyCode.L)) {
+        if (Input.GetKeyUp(KeyCode.J)) {
             HopedOff(Game.Instance.PrincessCake);
         }
 #endif
