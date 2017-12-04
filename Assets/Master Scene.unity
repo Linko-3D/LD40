@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1023270054}
   m_IndirectSpecularColor: {r: 0.17930107, g: 0.22451073, b: 0.30621755, a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -88,7 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-  m_LightingDataAsset: {fileID: 112000796, guid: 3c0c11e83964b8941b4c494cbb5f795b,
+  m_LightingDataAsset: {fileID: 112000834, guid: 3c0c11e83964b8941b4c494cbb5f795b,
     type: 2}
   m_UseShadowmask: 0
 --- !u!196 &4
@@ -209,7 +209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4571555738225664, guid: 447191938f142e14ab531d594792c67d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.02
+      value: 0.026
       objectReference: {fileID: 0}
     - target: {fileID: 4571555738225664, guid: 447191938f142e14ab531d594792c67d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -289,7 +289,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4537618824341476, guid: 4064db8810896374196a8e4189920cb8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.83
+      value: -2.89
       objectReference: {fileID: 0}
     - target: {fileID: 4537618824341476, guid: 4064db8810896374196a8e4189920cb8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -297,7 +297,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4537618824341476, guid: 4064db8810896374196a8e4189920cb8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3.56
+      value: 5.18
       objectReference: {fileID: 0}
     - target: {fileID: 4537618824341476, guid: 4064db8810896374196a8e4189920cb8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -327,6 +327,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4064db8810896374196a8e4189920cb8, type: 2}
   m_IsPrefabParent: 0
+--- !u!108 &1023270054 stripped
+Light:
+  m_PrefabParentObject: {fileID: 108571619511653798, guid: a57232a2e2028e44eb11e4d0b756e26b,
+    type: 2}
+  m_PrefabInternal: {fileID: 229849872}
 --- !u!1001 &1037479296
 Prefab:
   m_ObjectHideFlags: 0

@@ -19,12 +19,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4843023459619526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TargetOff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1722664742326338
 GameObject:
@@ -38,12 +38,12 @@ GameObject:
   - component: {fileID: 23117339922458246}
   - component: {fileID: 65953557564103552}
   - component: {fileID: 114480275562200174}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1929706336653238
 GameObject:
@@ -53,12 +53,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4650086515253468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TargetOn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4650086515253468
 Transform:
@@ -79,9 +79,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1722664742326338}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -12.670643, y: 0.059645653, z: 2.4916801}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -2, y: 0, z: 13}
+  m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
   m_Children:
   - {fileID: 4650086515253468}
   - {fileID: 4843023459619526}
@@ -171,5 +171,6 @@ MonoBehaviour:
   _movementSpeed: 1
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _applyRotation: 0
   _onTweenOn: {fileID: 0}
   _onTweenOff: {fileID: 0}
