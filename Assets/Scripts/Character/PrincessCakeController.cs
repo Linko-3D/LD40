@@ -42,6 +42,12 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         _lastCheckpoint = transform.position;
     }
 
+    protected void Update() {
+        if (Input.GetKeyUp(KeyCode.R)) {
+            ResetToLastCheckpoint();
+        }
+    }
+
     public void SetCheckpoint(Vector3 pos) {
         _lastCheckpoint = pos;
         _audio.TryPlaySFX(_onCheckpointAcquired);

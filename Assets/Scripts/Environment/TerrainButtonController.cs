@@ -12,8 +12,10 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
     public List<TweenController> TweensOnAtPress = new List<TweenController>();
     public List<TweenController> TweensOffAtDepress = new List<TweenController>();
+    public List<GameObject> DestroyAtPress = new List<GameObject>();
+
     public TerrainButtonModel.Settings Settings;
-    
+
     public TerrainButtonModel Model { get; private set; }
     public string Name { get { return name; } }
 
@@ -68,6 +70,10 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
         foreach (TweenController tweensToOn in TweensOnAtPress) {
             tweensToOn.TryTweenToOn(true);
+        }
+
+        foreach (GameObject gameObj in DestroyAtPress) {
+            Destroy(gameObj);
         }
 
         _audio.TryPlaySFX(_onPressed);

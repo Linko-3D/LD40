@@ -30,6 +30,8 @@ public class TweenController : MonoBehaviour, IController {
     [SerializeField]
     private bool _startAutoFloat = true;
     [SerializeField]
+    private bool _applyRotation = false;
+    [SerializeField]
     private AudioClip _onTweenOn;
     [SerializeField]
     private AudioClip _onTweenOff;
@@ -100,12 +102,18 @@ public class TweenController : MonoBehaviour, IController {
             case State.MovingToOff:
                 if (MoveStepToTarget(_targetOff)) {
                     _state = State.Off;
+                    if (_applyRotation) {
+                        transform.rotation = _targetOff.rotation;
+                    }
                     _logger.Info("State " + _state.ToString(), "Tween Finished.");
                 }
                 break;
             case State.MovingToOn:
                 if (MoveStepToTarget(_targetOn)) {
                     _state = State.On;
+                    if (_applyRotation) {
+                        transform.rotation = _targetOn.rotation;
+                    }
                     _logger.Info("State " + _state.ToString(), "Tween Finished.");
                 }
                 break;
