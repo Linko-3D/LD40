@@ -41,7 +41,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     private float _characterCtrlDefaultRadius;
     private AudioSource _audio;
     
-    private void Start() {
+    private void Awake() {
         Model = new PrincessCakeModel(name, Settings);
 
         _characterCtrl = this.GetOrAddComponent<CharacterController>();
