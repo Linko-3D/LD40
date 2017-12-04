@@ -8,7 +8,10 @@ using UnityEngine;
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     public event Action OnResetToCheckpoint;
-    public event Action OnCheckpoitAcquired;
+    public event Action OnCheckpointAcquired;
+
+    [SerializeField]
+    private float _weightRadiusModifier = .1f;
 
     [SerializeField]
     private AudioClip _theme;
@@ -23,7 +26,6 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
 
-    [SerializeField]
     public PrincessCakeModel Model { get; private set; }
 
     public string Name { get { return name; } }
@@ -32,20 +34,28 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         return Model;
     }
 
-    [SerializeField]
     private Vector3 _lastCheckpoint;
-    [SerializeField]
     private PrincessCakeModel _lastCheckpointState;
 
+    private CharacterController _characterCtrl;
+    private float _characterCtrlDefaultRadius;
     private AudioSource _audio;
-
-    protected void Start() {
+    
+    private void Start() {
         Model = new PrincessCakeModel(name, Settings);
 
+        _characterCtrl = this.GetOrAddComponent<CharacterController>();
+        _characterCtrlDefaultRadius = _characterCtrl.radius;
         _audio = this.GetOrAddComponent<AudioSource>();
 
-        Model.OnConsumeCake += () => _audio.TryPlaySFX(_onConsumeCake);
-        Model.OnConsumeTea += () => _audio.TryPlaySFX(_onConsumeTea);
+        Model.OnConsumeCake += () => {
+            _audio.TryPlaySFX(_onConsumeCake);
+            UpdateCharacterCtrlRadius();
+        };
+        Model.OnConsumeTea += () => {
+            _audio.TryPlaySFX(_onConsumeTea);
+            UpdateCharacterCtrlRadius();
+        };
 
         _audio.TryPlayTheme(_theme);
 
@@ -53,10 +63,14 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         _lastCheckpointState = new PrincessCakeModel(Model);
     }
 
-    protected void Update() {
+    private void Update() {
         if (Input.GetKeyUp(KeyCode.R)) {
             OnResetEvent();
         }
+    }
+
+    private void UpdateCharacterCtrlRadius() {
+        _characterCtrl.radius = _characterCtrlDefaultRadius + Model.Weight * _weightRadiusModifier;
     }
 
     public void SetCheckpoint(Vector3 pos) {
@@ -67,14 +81,16 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
         _audio.TryPlaySFX(_onCheckpointAcquired);
 
-        if (OnCheckpoitAcquired != null) {
-            OnCheckpoitAcquired();
+        if (OnCheckpointAcquired != null) {
+            OnCheckpointAcquired();
         }
     }
     
     public void OnResetEvent() {
         transform.position = _lastCheckpoint;
         Model.CopyStats(_lastCheckpointState);
+
+        UpdateCharacterCtrlRadius();
 
         _audio.TryPlaySFX(_onResetToCheckpoint);
 
@@ -88,7 +104,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     }
 
 #if UNITY_EDITOR
-    protected void OnDrawGizmosSelected() {
+    private void OnDrawGizmosSelected() {
         if (Model == null) return;
 
         Handles.Label(transform.position, Name);

@@ -2,7 +2,7 @@
 
 public class ItemController : MonoBehaviour, IController {
 
-    protected bool _consumeOnce = false;
+    //protected bool _consumeOnce = false;
 
     protected Logger _logger;
     protected Collider _collider;
@@ -37,7 +37,7 @@ public class ItemController : MonoBehaviour, IController {
     public virtual void OnConsumedBy(PrincessCakeController controller) {
         Game.Instance.Disable(this);
 
-        _collider.enabled = !_consumeOnce;
+        //_collider.enabled = !_consumeOnce;
     }
 
     public virtual void OnResetEvent() {
