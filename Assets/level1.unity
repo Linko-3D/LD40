@@ -7757,6 +7757,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114187777839953192, guid: 40396601816895c46ad0599146c63b84,
+        type: 2}
+      propertyPath: Settings.WeightRequiredToPress
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40396601816895c46ad0599146c63b84, type: 2}
   m_IsPrefabParent: 0
@@ -19089,7 +19094,6 @@ Transform:
   - {fileID: 1329008577}
   - {fileID: 1348629275}
   - {fileID: 1665386409}
-  - {fileID: 2091667664}
   - {fileID: 33070827}
   - {fileID: 1181238068}
   - {fileID: 1926707778}
@@ -19105,6 +19109,7 @@ Transform:
   - {fileID: 807172201}
   - {fileID: 209616354}
   - {fileID: 2100523915}
+  - {fileID: 2091667664}
   - {fileID: 353100313}
   - {fileID: 156604419}
   - {fileID: 1600684135}
