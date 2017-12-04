@@ -16,6 +16,8 @@ public class MainMenuDisplay : Display
 	{
 		this._playButtonTextField.text = "Resume";
 		this.Close();
+
+		Cursor.visible = false;
 	}
 
 	public void OnExitClick()

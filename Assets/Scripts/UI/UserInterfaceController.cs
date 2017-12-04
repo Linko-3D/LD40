@@ -9,6 +9,7 @@ using UnityEditor;
 
 public class UserInterfaceController : MonoBehaviour
 {
+	[SerializeField] private GameplayDisplay _gameplayDisplay;
 	[SerializeField] private MainMenuDisplay _mainMenuDisplay;
 
 	private void Update()
@@ -16,6 +17,7 @@ public class UserInterfaceController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			this._mainMenuDisplay.Open();
+			Cursor.visible = true;
 		}
 	}
 
