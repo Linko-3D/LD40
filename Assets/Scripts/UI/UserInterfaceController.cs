@@ -8,10 +8,12 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-public class UserInterfaceController : MonoBehaviour
+public class UserInterfaceController : MonoBehaviourSingleton<UserInterfaceController>
 {
 	[Header("Displays")]
 	[SerializeField] private GameplayDisplay _gameplayDisplay;
+	public GameplayDisplay GameplayDisplay { get { return this._gameplayDisplay; } }
+
 	[SerializeField] private MainMenuDisplay _mainMenuDisplay;
 
 	[Header("Fonts")]
