@@ -31,8 +31,9 @@ public class Game : SingletonMonobehavior<Game> {
             Logger.Error("PrincessCakeController reference not found. Drag and Drop it and restart the game.");
         }
 
-        _princessCake.OnResetToCheckpoint += ResetDisabled;
-        _princessCake.OnCheckpoitAcquired += _disabledControllers.Clear;
+        _princessCake.OnResetToCheckpoint += ResetAllDisabled;
+        // uncomment to reset only the disabled objects between current and previous checkpoint.
+        //_princessCake.OnCheckpoitAcquired += _disabledControllers.Clear;
     }
     
     public Logger LoggerFactory(string context) {
@@ -55,7 +56,7 @@ public class Game : SingletonMonobehavior<Game> {
         controller.OnResetEvent();
     }
 
-    private void ResetDisabled() {
+    private void ResetAllDisabled() {
         foreach(IController ctrl in _disabledControllers) {
             ctrl.OnResetEvent();
         }
