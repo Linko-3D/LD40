@@ -115,7 +115,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                 if (m_Jump)
                 {
-                    m_MoveDir.y = m_JumpSpeed * (1 - (Game.Instance.PrincessCake.Model.Weight / (float)Game.Instance.PrincessCake.Settings.MaxWeight));
+                    m_MoveDir.y = m_JumpSpeed;
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
