@@ -459,7 +459,7 @@ Prefab:
     - target: {fileID: 143257381443450190, guid: 7012476a66f0091408dd4372f698f7ce,
         type: 2}
       propertyPath: m_Radius
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7012476a66f0091408dd4372f698f7ce, type: 2}
