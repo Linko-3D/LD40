@@ -27,12 +27,14 @@ public class PickUpController : MonoBehaviour
 		{
 			this._pickedUpBox = other.GetComponent<BoxController>();
 
+			Game.Instance.Logger.Info(this._pickedUpBox);
+
 			if (this._pickedUpBox != null && this._pickedUpBox.Model.CanMoveBy(Game.Instance.PrincessCake.Model))
 			{
 				this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
 				this._pickedUpBox.transform.position = this.transform.position;
 				this._pickedUpBox.transform.SetParent(this.transform);
-				
+
 				this.StopAllCoroutines();
 				this.StartCoroutine(this.HandleInput());
 
