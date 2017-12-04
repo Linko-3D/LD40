@@ -707,6 +707,8 @@ MonoBehaviour:
   _isFloatingPlatform: 0
   _startAutoFloat: 0
   _isRotationTween: 1
+  _disable: 0
+  _disableOnState: 1
   _onTweenOn: {fileID: 0}
   _onTweenOff: {fileID: 0}
 --- !u!114 &114545333257450460
@@ -723,10 +725,12 @@ MonoBehaviour:
   _tweenType: 0
   _targetOn: {fileID: 4730431424121206}
   _targetOff: {fileID: 4248180958509964}
-  _movementSpeed: 1
+  _movementSpeed: 0.15
   _isFloatingPlatform: 0
-  _startAutoFloat: 1
+  _startAutoFloat: 0
   _isRotationTween: 0
+  _disable: 1
+  _disableOnState: 1
   _onTweenOn: {fileID: 0}
   _onTweenOff: {fileID: 0}
 --- !u!114 &114566442000250630
@@ -744,11 +748,8 @@ MonoBehaviour:
   _onDepressed: {fileID: 0}
   TweensOnAtPress:
   - {fileID: 114498269273652534}
-  TweensOffAtDepress:
-  - {fileID: 114498269273652534}
-  DestroyAtPress:
-  - {fileID: 1359960616688730}
-  - {fileID: 1549986002081922}
+  - {fileID: 114545333257450460}
+  TweensOffAtDepress: []
   Settings:
     WeightRequiredToPress: 3
     PressDurationInSeconds: 0

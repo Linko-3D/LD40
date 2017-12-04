@@ -12,7 +12,8 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
     public List<TweenController> TweensOnAtPress = new List<TweenController>();
     public List<TweenController> TweensOffAtDepress = new List<TweenController>();
-    public List<GameObject> DestroyAtPress = new List<GameObject>();
+    public List<IController> DisableAtPress = new List<IController>();
+    public List<IController> DisableAtDepress = new List<IController>();
 
     public TerrainButtonModel.Settings Settings;
 
@@ -72,13 +73,8 @@ public class TerrainButtonController : MonoBehaviour, IController {
             tweensToOn.TryTweenToOn(true);
         }
 
-        foreach (GameObject gameObj in DestroyAtPress) {
-            IController ctrl = gameObj.GetComponent<IController>();
-            if (ctrl != null) {
-                Game.Instance.Disable(ctrl);
-            } else {
-                Destroy(gameObj);
-            }
+        foreach (IController ctrl in DisableAtPress) {
+            Game.Instance.Disable(ctrl);
         }
 
         _audio.TryPlaySFX(_onPressed);
@@ -93,6 +89,10 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
         foreach (TweenController tweensToOff in TweensOffAtDepress) {
             tweensToOff.TryTweenToOff(true);
+        }
+
+        foreach (IController ctrl in DisableAtDepress) {
+            Game.Instance.Disable(ctrl);
         }
 
         _audio.TryPlaySFX(_onDepressed);

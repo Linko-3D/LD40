@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+using System;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -16,7 +17,7 @@ public class TweenController : MonoBehaviour, IController {
         Lerp,
         SmoothDump
     }
-    
+
     [SerializeField]
     private TweenType _tweenType = TweenType.Lerp;
     [SerializeField]
@@ -31,6 +32,10 @@ public class TweenController : MonoBehaviour, IController {
     private bool _startAutoFloat = true;
     [SerializeField]
     private bool _isRotationTween = false;
+    [SerializeField]
+    private bool _disable = false;
+    [SerializeField]
+    private State _disableOnState = State.On;
     [SerializeField]
     private AudioClip _onTweenOn;
     [SerializeField]
@@ -139,6 +144,12 @@ public class TweenController : MonoBehaviour, IController {
             TryTweenToOn();
             TryTweenToOff();
         }
+        if (Name == "box_interactable") {
+            _logger.Info("_disable: " + _disable + ", _state: " + _state + ", _disableOnState: " + _disableOnState);
+        }
+        if (_disable && _state == _disableOnState) {
+            Game.Instance.Disable(this);
+        }
     }
 
 #if UNITY_EDITOR
@@ -178,8 +189,7 @@ public class TweenController : MonoBehaviour, IController {
                 transform.position = Vector3.SmoothDamp(transform.position, target.position, ref _velocity, _movementSpeed);
                 break;
         }
-
-        return transform.position == target.position;
+        return Mathf.Abs((transform.position - target.position).sqrMagnitude) < .00001f;
     }
 
     public virtual bool TryTweenToOn(bool force = false) {
@@ -236,8 +246,7 @@ public class TweenController : MonoBehaviour, IController {
                 _isAutoFloating = false;
             }
         }
-
-        
+   
         return tweenStarted;
     }
 
