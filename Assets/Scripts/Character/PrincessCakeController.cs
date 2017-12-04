@@ -39,6 +39,8 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     private AudioSource _audio;
 
+    // the radius is at 0.5 at 1 weight
+
     protected void Start() {
         Model = new PrincessCakeModel(name, Settings);
 
