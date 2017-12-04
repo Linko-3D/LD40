@@ -104,13 +104,21 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     }
 
 #if UNITY_EDITOR
+    private GUIStyle _gizmosStyle;
+
     private void OnDrawGizmosSelected() {
         if (Model == null) return;
 
-        Handles.Label(transform.position, Name);
-        Handles.Label(transform.position + Vector3.down, "Weight: " + Model.Weight);
-        Handles.Label(transform.position + Vector3.down * 2, "CakesEaten: " + Model.CakesEaten);
-        Handles.Label(transform.position + Vector3.down * 3, "TeasDrunk: " + Model.TeasDrunk);
+        if (_gizmosStyle == null) {
+            _gizmosStyle = new GUIStyle() { fontSize = 20 };
+        }
+
+        Gizmos.color = Color.red;
+        Handles.color = Color.red;
+        Handles.Label(transform.position, Name, _gizmosStyle);
+        Handles.Label(transform.position + Vector3.back * 3, "Weight: " + Model.Weight, _gizmosStyle);
+        Handles.Label(transform.position + Vector3.back * 6, "CakesEaten: " + Model.CakesEaten, _gizmosStyle);
+        Handles.Label(transform.position + Vector3.back * 9, "TeasDrunk: " + Model.TeasDrunk, _gizmosStyle);
     }
 
 #endif
