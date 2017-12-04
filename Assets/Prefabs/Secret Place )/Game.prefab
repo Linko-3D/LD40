@@ -579,6 +579,7 @@ GameObject:
   - component: {fileID: 54594002034402070}
   - component: {fileID: 82078534645846002}
   - component: {fileID: 114963686738322698}
+  - component: {fileID: 65173914904734040}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -1856,7 +1857,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329569072661310}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1864,7 +1865,7 @@ Transform:
   - {fileID: 4610578855000486}
   m_Father: {fileID: 4603055772464044}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4587639220840576
 Transform:
   m_ObjectHideFlags: 1
@@ -1951,6 +1952,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -1981,6 +1983,18 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65173914904734040
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1329569072661310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 1.5, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!81 &81511440991479776
 AudioListener:
@@ -4154,9 +4168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsWalking: 0
   m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_RunSpeed: 5
   m_RunstepLenghten: 0.7
-  m_JumpSpeed: 10
+  m_JumpSpeed: 4.5
   m_StickToGroundForce: 10
   m_GravityMultiplier: 2
   m_MouseLook:
@@ -5032,7 +5046,7 @@ MonoBehaviour:
   _onCheckpointAcquired: {fileID: 0}
   _onResetToCheckpoint: {fileID: 0}
   Settings:
-    MaxWeight: 10
+    MaxWeight: 5
     MinWeight: 1
     WeightStartsAt: 1
     WeightToAddOnEatCake: 1

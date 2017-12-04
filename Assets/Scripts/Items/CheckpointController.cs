@@ -1,10 +1,5 @@
-﻿using UnityEngine;
-
-public class CheckpointController : ItemController {
-
-    [SerializeField]
-    private bool _triggerOnce = true;
-
+﻿public class CheckpointController : ItemController {
+    
     public override void OnConsumedBy(PrincessCakeController controller) {
         controller.SetCheckpoint(transform.position);
 
