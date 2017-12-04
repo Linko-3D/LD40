@@ -12,18 +12,31 @@ public class UserInterfaceController : MonoBehaviourSingleton<UserInterfaceContr
 {
 	[Header("Displays")]
 	[SerializeField] private GameplayDisplay _gameplayDisplay;
-	public GameplayDisplay GameplayDisplay { get { return this._gameplayDisplay; } }
+	public GameplayDisplay _GameplayDisplay { get { return this._gameplayDisplay; } }
 
 	[SerializeField] private MainMenuDisplay _mainMenuDisplay;
 
+	[SerializeField] private PopUpDisplay _popUpDisplay;
+	public PopUpDisplay _PopUpDisplay { get { return this._popUpDisplay; } }
+
 	[Header("Fonts")]
 	[SerializeField] private Font _globalFont;
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		Time.timeScale = 0;
+	}
 
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			this._mainMenuDisplay.Open();
+
+			Time.timeScale = 0;
+
 			Cursor.visible = true;
 		}
 	}

@@ -104,33 +104,33 @@ public class TerrainButtonModel : IModel {
 	{
 		if (this._timerCoroutine != null)
 		{
-			UserInterfaceController.Instance_.GameplayDisplay.StopCoroutine(this._timerCoroutine);
+			UserInterfaceController.Instance_._GameplayDisplay.StopCoroutine(this._timerCoroutine);
 		}
 
-		this._timerCoroutine = UserInterfaceController.Instance_.GameplayDisplay.StartCoroutine(this.UpdateCountdownGrpahics());
+		this._timerCoroutine = UserInterfaceController.Instance_._GameplayDisplay.StartCoroutine(this.UpdateCountdownGrpahics());
 	}
 
 	private void StopCountdown()
 	{
-		UserInterfaceController.Instance_.GameplayDisplay.DeactivateTimer();
+		UserInterfaceController.Instance_._GameplayDisplay.DeactivateTimer();
 
 		if (this._timerCoroutine != null)
 		{
-			UserInterfaceController.Instance_.GameplayDisplay.StopCoroutine(this._timerCoroutine);
+			UserInterfaceController.Instance_._GameplayDisplay.StopCoroutine(this._timerCoroutine);
 		}
 	}
 
 	private IEnumerator UpdateCountdownGrpahics()
 	{
-		UserInterfaceController.Instance_.GameplayDisplay.ActivateTimer();
+		UserInterfaceController.Instance_._GameplayDisplay.ActivateTimer();
 
 		while (!PressEffectIsDecayed(Time.time))
 		{
-			UserInterfaceController.Instance_.GameplayDisplay.DisplayTimer(this.PressEffectDecaysInSeconds(Time.time));
+			UserInterfaceController.Instance_._GameplayDisplay.DisplayTimer(this.PressEffectDecaysInSeconds(Time.time));
 
 			yield return new WaitForSecondsRealtime(0.1f);
 		}
 
-		UserInterfaceController.Instance_.GameplayDisplay.DeactivateTimer();
+		UserInterfaceController.Instance_._GameplayDisplay.DeactivateTimer();
 	}
 }
