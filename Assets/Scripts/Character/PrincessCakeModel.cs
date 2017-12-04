@@ -1,5 +1,6 @@
 ﻿using System;
 
+[Serializable]
 public class PrincessCakeModel : IWeightableModel {
 
     public event Action OnConsumeCake;
@@ -16,14 +17,18 @@ public class PrincessCakeModel : IWeightableModel {
 
     private Logger _logger;
     private Settings _settings;
+    private string _name;
+    private int _weight;
+    private int _cakesEaten;
+    private int _teasDrunk;
 
-    public string Name { get; private set; }
-    public int Weight { get; private set; }
-    public int CakesEaten { get; private set; }
-    public int TeasDrunk { get; private set; }
+    public string Name { get { return _name; } }
+    public int Weight { get { return _weight; } }
+    public int CakesEaten { get { return _cakesEaten; } }
+    public int TeasDrunk { get { return _teasDrunk; } }
 
     public PrincessCakeModel(string name, Settings settings) {
-        Name = name;
+        _name = name;
         _settings = settings;
 
         _logger = Game.Instance.LoggerFactory(Name + "::PrincessCakeModel");
@@ -38,17 +43,31 @@ public class PrincessCakeModel : IWeightableModel {
         _logger.Assert(_settings.WeightStartsAt <= _settings.MaxWeight, "WeightStartsAt should be less than or equal MaxWeight(" + _settings.MaxWeight + ")");
         _logger.Assert(_settings.WeightStartsAt >= _settings.MinWeight, "WeightStartsAt should be less than or equal to MinWeight(" + _settings.MinWeight + ")");
 
-        Weight = _settings.WeightStartsAt;
+        _weight = _settings.WeightStartsAt;
+        _cakesEaten = 0;
+        _teasDrunk = 0;
+    }
+
+    public PrincessCakeModel(PrincessCakeModel other)
+        : this(other.Name, other._settings) {
+
+        CopyStats(other);
+    }
+
+    public void CopyStats(PrincessCakeModel other) {
+        _weight = other.Weight;
+        _cakesEaten = other.CakesEaten;
+        _teasDrunk = other.TeasDrunk;
     }
 
     public void EatCake() {
-        ++CakesEaten;
-        Weight += _settings.WeightToAddOnEatCake;
-        if (Weight > _settings.MaxWeight) {
-            Weight = _settings.MaxWeight;
+        ++_cakesEaten;
+        _weight += _settings.WeightToAddOnEatCake;
+        if (_weight > _settings.MaxWeight) {
+            _weight = _settings.MaxWeight;
         }
 
-        _logger.Info("CakeEaten", "CakesEaten: " + CakesEaten + ", Weight: " + Weight);
+        _logger.Info("CakeEaten", "CakesEaten: " + CakesEaten + ", Weight: " + _weight);
 
         if (OnConsumeCake != null) {
             OnConsumeCake();
@@ -56,8 +75,8 @@ public class PrincessCakeModel : IWeightableModel {
     }
 
     public void DrinkTea() {
-        ++TeasDrunk;
-        Weight = _settings.WeightToSetOnDrinkTea;
+        ++_teasDrunk;
+        _weight = _settings.WeightToSetOnDrinkTea;
 
         _logger.Info("TeaDrunk", "TeasDrunk: " + TeasDrunk + ", Weight: " + Weight);
 
@@ -67,7 +86,7 @@ public class PrincessCakeModel : IWeightableModel {
     }
 
     public bool CanMove(BoxModel box) {
-        return Weight >= box.Weight;
+        return box.IsMovable && Weight >= box.Weight;
     }
 
     public bool CanPress(TerrainButtonModel groudButton) {

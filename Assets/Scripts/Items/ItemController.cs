@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
-public class ItemController : MonoBehaviour {
+public class ItemController : MonoBehaviour, IController {
 
     private Logger _logger;
+
+    public string Name { get { return name; } }
 
     protected virtual void Start() {
         _logger = Game.Instance.LoggerFactory(name + "::ItemController");
@@ -19,6 +21,14 @@ public class ItemController : MonoBehaviour {
     }
 
     public virtual void OnConsumedBy(PrincessCakeController controller) {
+        Game.Instance.Disable(this);
+    }
+
+    public virtual void OnResetEvent() {
+        gameObject.SetActive(true);
+    }
+
+    public virtual void OnDisableEvent() {
         gameObject.SetActive(false);
     }
 }

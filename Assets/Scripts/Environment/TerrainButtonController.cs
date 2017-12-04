@@ -73,7 +73,12 @@ public class TerrainButtonController : MonoBehaviour, IController {
         }
 
         foreach (GameObject gameObj in DestroyAtPress) {
-            Destroy(gameObj);
+            IController ctrl = gameObj.GetComponent<IController>();
+            if (ctrl != null) {
+                Game.Instance.Disable(ctrl);
+            } else {
+                Destroy(gameObj);
+            }
         }
 
         _audio.TryPlaySFX(_onPressed);
@@ -109,5 +114,13 @@ public class TerrainButtonController : MonoBehaviour, IController {
         if (Model.Depressed(Time.time)) {
             OnDepressed();
         }
+    }
+
+    public void OnResetEvent() {
+        gameObject.SetActive(true);
+    }
+
+    public void OnDisableEvent() {
+        gameObject.SetActive(false);
     }
 }

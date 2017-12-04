@@ -1,9 +1,14 @@
-﻿#if UNITY_EDITOR
+﻿using System;
+
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
+
+    public event Action OnResetToCheckpoint;
+    public event Action OnCheckpoitAcquired;
 
     [SerializeField]
     private AudioClip _theme;
@@ -18,6 +23,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
 
+    [SerializeField]
     public PrincessCakeModel Model { get; private set; }
 
     public string Name { get { return name; } }
@@ -26,7 +32,11 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         return Model;
     }
 
+    [SerializeField]
     private Vector3 _lastCheckpoint;
+    [SerializeField]
+    private PrincessCakeModel _lastCheckpointState;
+
     private AudioSource _audio;
 
     protected void Start() {
@@ -40,22 +50,39 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         _audio.TryPlayTheme(_theme);
 
         _lastCheckpoint = transform.position;
+        _lastCheckpointState = new PrincessCakeModel(Model);
     }
 
     protected void Update() {
         if (Input.GetKeyUp(KeyCode.R)) {
-            ResetToLastCheckpoint();
+            OnResetEvent();
         }
     }
 
     public void SetCheckpoint(Vector3 pos) {
         _lastCheckpoint = pos;
+        _lastCheckpointState.CopyStats(Model);
+
         _audio.TryPlaySFX(_onCheckpointAcquired);
+
+        if (OnCheckpoitAcquired != null) {
+            OnCheckpoitAcquired();
+        }
+    }
+    
+    public void OnResetEvent() {
+        transform.position = _lastCheckpoint;
+        Model.CopyStats(_lastCheckpointState);
+
+        _audio.TryPlaySFX(_onResetToCheckpoint);
+
+        if (OnResetToCheckpoint != null) {
+            OnResetToCheckpoint();
+        }
     }
 
-    public void ResetToLastCheckpoint() {
-        transform.position = _lastCheckpoint;
-        _audio.TryPlaySFX(_onResetToCheckpoint);
+    public void OnDisableEvent() {
+        gameObject.SetActive(false);
     }
 
 #if UNITY_EDITOR
@@ -67,5 +94,6 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         Handles.Label(transform.position + Vector3.down * 2, "CakesEaten: " + Model.CakesEaten);
         Handles.Label(transform.position + Vector3.down * 3, "TeasDrunk: " + Model.TeasDrunk);
     }
+
 #endif
 }

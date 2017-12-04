@@ -25,4 +25,12 @@ public class BoxController : MonoBehaviour, IWeightableController {
 
         _logger.Assert(collider != null, "No collider was found at object. Make sure to assign one (.eg BoxCollider).");
     }
+
+    public void OnResetEvent() {
+        gameObject.SetActive(true);
+    }
+
+    public void OnDisableEvent() {
+        gameObject.SetActive(false);
+    }
 }

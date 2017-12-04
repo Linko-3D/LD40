@@ -30,16 +30,16 @@ public class TweenController : MonoBehaviour, IController {
     [SerializeField]
     private bool _startAutoFloat = true;
     [SerializeField]
-    private bool _applyRotation = false;
+    private bool _isRotationTween = false;
     [SerializeField]
     private AudioClip _onTweenOn;
     [SerializeField]
     private AudioClip _onTweenOff;
 
     private Logger _logger;
-    private State _state = State.Off;
-    private bool _isAutoFloating = false;
-    private Vector3 _velocity = Vector3.zero;
+    private State _state;
+    private bool _isAutoFloating;
+    private Vector3 _velocity;
     private AudioSource _audio;
 
     public string Name { get { return name; } }
@@ -61,40 +61,55 @@ public class TweenController : MonoBehaviour, IController {
         _logger.Assert(_targetOn != null, "TargetOn not found. Drag and drop a game object.");
         _logger.Assert(_targetOff != null, "TargetOff not found. Drag and drop a game object.");
 
-        // reparent transform & target transforms under the same transform.
-        // Leaving the target transforms as childs of this transform will
-        // cause the tween to move forever as the target transforms will move along
-        // with the tweened transform.
-        if (_targetOn.IsChildOf(transform) || _targetOff.IsChildOf(transform)) {
-            GameObject tweenGroupParent = new GameObject(Name + "TweenGroup");
-            tweenGroupParent.transform.parent = transform.parent;
+        if (!_isRotationTween) {
+            // reparent transform & target transforms under the same transform.
+            // Leaving the target transforms as childs of this transform will
+            // cause the tween to move forever as the target transforms will move along
+            // with the tweened transform.
+            if (_targetOn.IsChildOf(transform) || _targetOff.IsChildOf(transform)) {
+                GameObject tweenGroupParent = new GameObject(Name + "TweenGroup");
+                tweenGroupParent.transform.parent = transform.parent;
 
-            transform.parent = tweenGroupParent.transform;
-            _targetOff.parent = tweenGroupParent.transform;
-            _targetOn.parent = tweenGroupParent.transform;
+                transform.parent = tweenGroupParent.transform;
+                _targetOff.parent = tweenGroupParent.transform;
+                _targetOn.parent = tweenGroupParent.transform;
+            }
+
+            _logger.Assert(
+                _targetOn.parent != transform,
+                "TargetOn Transform should not be a child of a TweenController. "
+                + "Group up TweenController, targetOn & TargetOff gameobjects "
+                + "under the same parent object."
+            );
+
+            _logger.Assert(
+                _targetOff.parent != transform,
+                "TargetOff Transform should not be a child of a TweenController. "
+                + "Group up TweenController, targetOn & TargetOff gameobjects "
+                + "under the same parent object."
+            );
+
+        } else {
+            // rotation is applied at the local axis.
+            // the targets should be set as children
+            // of the controller.
+            _targetOff.transform.parent = transform;
+            _targetOn.transform.parent = transform;
+
+            _targetOff.transform.position = transform.position;
+            _targetOn.transform.position = transform.position;
+            
+            _startAutoFloat = false;
+            _isFloatingPlatform = false;
         }
-
-        _logger.Assert(
-            _targetOn.parent != transform,
-            "TargetOn Transform should not be a child of a TweenController. "
-            + "Group up TweenController, targetOn & TargetOff gameobjects "
-            + "under the same parent object."
-        );
-
-        _logger.Assert(
-            _targetOff.parent != transform,
-            "TargetOff Transform should not be a child of a TweenController. "
-            + "Group up TweenController, targetOn & TargetOff gameobjects "
-            + "under the same parent object."
-        );
 
         _logger.Info("State " + _state.ToString(), " Tween Initialized.");
-
-        if (_isFloatingPlatform && _startAutoFloat) {
-            TryTweenToOn(true);
-        }
-
+        
         _audio = this.GetOrAddComponent<AudioSource>();
+
+        OnReset();
+
+        Game.Instance.RegisterOnResetEvent(this);
     }
 
     protected virtual void Update() {
@@ -102,8 +117,8 @@ public class TweenController : MonoBehaviour, IController {
             case State.MovingToOff:
                 if (MoveStepToTarget(_targetOff)) {
                     _state = State.Off;
-                    if (_applyRotation) {
-                        transform.rotation = _targetOff.rotation;
+                    if (_isRotationTween) {
+                        transform.localRotation = _targetOff.localRotation;
                     }
                     _logger.Info("State " + _state.ToString(), "Tween Finished.");
                 }
@@ -111,8 +126,8 @@ public class TweenController : MonoBehaviour, IController {
             case State.MovingToOn:
                 if (MoveStepToTarget(_targetOn)) {
                     _state = State.On;
-                    if (_applyRotation) {
-                        transform.rotation = _targetOn.rotation;
+                    if (_isRotationTween) {
+                        transform.localRotation = _targetOn.localRotation;
                     }
                     _logger.Info("State " + _state.ToString(), "Tween Finished.");
                 }
@@ -138,6 +153,22 @@ public class TweenController : MonoBehaviour, IController {
         }
     }
 #endif
+
+    private void OnReset() {
+        _state = State.Off;
+        _isAutoFloating = false;
+        _velocity = Vector3.zero;
+
+        transform.position = _targetOff.position;
+        if (_isRotationTween) {
+            transform.localRotation = _targetOff.localRotation;
+        }
+
+        if (_isFloatingPlatform && _startAutoFloat) {
+            TryTweenToOn(true);
+        }
+    }
+
     private bool MoveStepToTarget(Transform target) {
         switch(_tweenType) {
             case TweenType.Lerp:
@@ -208,5 +239,17 @@ public class TweenController : MonoBehaviour, IController {
 
         
         return tweenStarted;
+    }
+
+    public void OnResetEvent() {
+        if (!gameObject.activeSelf) {
+            gameObject.SetActive(true);
+        }
+
+        OnReset();
+    }
+
+    public void OnDisableEvent() {
+        gameObject.SetActive(false);
     }
 }
