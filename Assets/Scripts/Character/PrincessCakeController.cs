@@ -5,13 +5,16 @@ using UnityEngine;
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
-
     [SerializeField]
     private AudioClip _theme;
     [SerializeField]
     private AudioClip _onConsumeCake;
     [SerializeField]
     private AudioClip _onConsumeTea;
+    [SerializeField]
+    private AudioClip _onCheckpointAcquired;
+    [SerializeField]
+    private AudioClip _onResetToCheckpoint;
 
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
 
@@ -23,6 +26,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         return Model;
     }
 
+    private Vector3 _lastCheckpoint;
     private AudioSource _audio;
 
     protected void Start() {
@@ -34,6 +38,18 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         Model.OnConsumeTea += () => _audio.TryPlaySFX(_onConsumeTea);
 
         _audio.TryPlayTheme(_theme);
+
+        _lastCheckpoint = transform.position;
+    }
+
+    public void SetCheckpoint(Vector3 pos) {
+        _lastCheckpoint = pos;
+        _audio.TryPlaySFX(_onCheckpointAcquired);
+    }
+
+    public void ResetToLastCheckpoint() {
+        transform.position = _lastCheckpoint;
+        _audio.TryPlaySFX(_onResetToCheckpoint);
     }
 
 #if UNITY_EDITOR
