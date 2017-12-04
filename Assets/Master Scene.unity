@@ -237,36 +237,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7bc80f4262825664f83de6e55586d01b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &951837810 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1737745537578160, guid: 7012476a66f0091408dd4372f698f7ce,
-    type: 2}
-  m_PrefabInternal: {fileID: 1885202228}
---- !u!114 &951837812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 951837810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 9e1981d9e8e829949b63ca515f34303a, type: 2}
---- !u!114 &951837815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 951837810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Resolution: 0
-  DefaultSpotCookie: {fileID: 2800000, guid: 5157bf6d690b6df458f6c0ce0c06d329, type: 3}
 --- !u!108 &1023270054 stripped
 Light:
   m_PrefabParentObject: {fileID: 108571619511653798, guid: a57232a2e2028e44eb11e4d0b756e26b,
@@ -525,12 +495,12 @@ Prefab:
     - target: {fileID: 224193543394604422, guid: 7012476a66f0091408dd4372f698f7ce,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 963.67
+      value: 450.67
       objectReference: {fileID: 0}
     - target: {fileID: 224193543394604422, guid: 7012476a66f0091408dd4372f698f7ce,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 453.299
+      value: 257.799
       objectReference: {fileID: 0}
     - target: {fileID: 224154534892501304, guid: 7012476a66f0091408dd4372f698f7ce,
         type: 2}
