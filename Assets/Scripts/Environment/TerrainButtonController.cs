@@ -88,7 +88,7 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
         _audio.TryPlaySFX(_onPressed);
 
-        if (!_firstTimeHopedOnButton) {
+        if (!_firstTimeHopedOnButton && controller == Game.Instance.PrincessCake) {
             UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonText);
             _firstTimeHopedOnButton = true;
         }
