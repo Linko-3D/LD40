@@ -10,11 +10,14 @@ using UnityEditor;
 
 public class PopUpDisplay : Display
 {
-	[SerializeField] private Text _popUpTextField;
+    [SerializeField] private string _welcomMessage = "Welcome, eat them ALL!!! AHAHAHAHA!";
+    [SerializeField] private float _autoCloseTimer = 3f;
+
+    [SerializeField] private Text _popUpTextField;
 
 	private void Start()
 	{
-		this.Display("Welcome, eat them ALL!!! AHAHAHAHA!");
+		this.Display(_welcomMessage);
 	}
 
 	public void Display(string message)
@@ -37,7 +40,7 @@ public class PopUpDisplay : Display
 
 	private IEnumerator CloseTimer()
 	{
-		yield return new WaitForSecondsRealtime (4f);
+		yield return new WaitForSecondsRealtime (_autoCloseTimer);
 
 		this.Close ();
 	}

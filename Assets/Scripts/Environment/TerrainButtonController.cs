@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class TerrainButtonController : MonoBehaviour, IController {
 
+    [SerializeField]
+    private bool _triggeredByPlayerOnly = false;
 
     [SerializeField]
     private string _firstTimeHopedOnButtonText = "Good job. Did you know that you can use 'E' to move boxes on buttons ?";
@@ -46,6 +48,11 @@ public class TerrainButtonController : MonoBehaviour, IController {
         _logger.Info("OnTriggerEnter", collider.gameObject.name + " entered");
 
         if (controller != null) {
+
+            if (_triggeredByPlayerOnly && controller != Game.Instance.PrincessCake) {
+                return;
+            }
+
             HopedOn(controller);
         }
     }
