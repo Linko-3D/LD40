@@ -264,7 +264,7 @@ Prefab:
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
       propertyPath: m_SubSceneNames.Array.data[0]
-      value: System SubScene
+      value: SystemSubScene
       objectReference: {fileID: 0}
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
