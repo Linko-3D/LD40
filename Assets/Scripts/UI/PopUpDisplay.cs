@@ -12,19 +12,20 @@ public class PopUpDisplay : Display
 {
 	[SerializeField] private Text _popUpTextField;
 
-	private void Awake()
+	private void Start()
 	{
 		this.Display("Welcome, eat them ALL!!! AHAHAHAHA!");
 	}
 
 	public void Display(string message)
 	{
-		this.gameObject.SetActive(true);
 		this._popUpTextField.text = message;
 
 		Cursor.visible = true;
 
 		this.Open();
+
+		this.StartCoroutine (this.CloseTimer ());
 	}
 
 	public void OnOkClick()
@@ -32,6 +33,13 @@ public class PopUpDisplay : Display
 		Cursor.visible = false;
 
 		this.Close();
+	}
+
+	private IEnumerator CloseTimer()
+	{
+		yield return new WaitForSecondsRealtime (4f);
+
+		this.Close ();
 	}
 
 #if UNITY_EDITOR
