@@ -71,12 +71,6 @@ public class GameplayDisplay : Display, IController
 		this._timerTextField.gameObject.SetActive(false);
 	}
 
-#if UNITY_EDITOR
-	protected override void OnDrawGizmos()
-	{
-		base.OnDrawGizmos();
-	}
-
 	public void OnResetEvent()
 	{
 		this.DeactivateTimer();
@@ -88,7 +82,13 @@ public class GameplayDisplay : Display, IController
 
 	public void OnDisableEvent()
 	{
-		
+
+	}
+
+#if UNITY_EDITOR
+	protected override void OnDrawGizmos()
+	{
+		base.OnDrawGizmos();
 	}
 #endif
 }
