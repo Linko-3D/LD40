@@ -4,7 +4,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
 
-namespace UnityStandardAssets.Characters.FirstPerson
+namespace UnityStandardAssets.Characters.FirstPerson.PrincessCake
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
@@ -51,6 +51,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+
+        // CAKE PRINCESS
+        private bool m_MouseLookLocked = false;
 
         // Use this for initialization
         private void Start()
@@ -273,7 +276,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            if (!m_MouseLookLocked)
+            {
+                m_MouseLook.LookRotation(transform, m_Camera.transform);
+            }
         }
 
 
@@ -291,6 +297,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 return;
             }
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+        }
+
+        public bool IsMouseLookEnabled
+        {
+            get {
+                return !m_MouseLookLocked;
+            }
+        }
+
+        public void DisableMouseLook()
+        {
+            m_MouseLookLocked = true;
+        }
+
+        public void EnableMouseLook()
+        {
+            m_MouseLookLocked = false;
         }
     }
 }

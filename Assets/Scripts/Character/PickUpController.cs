@@ -28,7 +28,7 @@ public class PickUpController : MonoBehaviour {
             Game.Instance.Logger.Info(this._pickedUpBox);
 
             if (this._pickedUpBox != null && this._pickedUpBox.Model.CanMoveBy(Game.Instance.PrincessCake.Model)) {
-                this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
+                //this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
                 this._pickedUpBox.transform.position = this.transform.position;
                 this._pickedUpBox.transform.SetParent(this.transform);
 
@@ -48,7 +48,7 @@ public class PickUpController : MonoBehaviour {
 
         while (this._pickedUpBox != null) {
             if (Input.GetKeyDown(KeyCode.E)) {
-                this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = false;
+                //this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = false;
                 this._pickedUpBox.transform.SetParent(null);
                 this._pickedUpBox = null;
 

@@ -4,7 +4,9 @@ using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson.PrincessCake;
 
 public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
@@ -13,7 +15,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     [SerializeField]
     private float _weightRadiusModifier = .1f;
-    
+
     [SerializeField]
     private AudioClip _onConsumeCake;
     [SerializeField]
@@ -61,6 +63,9 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     private CharacterController _characterCtrl;
     private float _characterCtrlDefaultRadius;
+
+    private FirstPersonController _fpsCtrl;
+
     private AudioSource _audio;
 
     private void Awake() {
@@ -68,6 +73,9 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
         _characterCtrl = this.GetOrAddComponent<CharacterController>();
         _characterCtrlDefaultRadius = _characterCtrl.radius;
+
+        _fpsCtrl = this.GetOrAddComponent<FirstPersonController>();
+
         _audio = this.GetOrAddComponent<AudioSource>();
 
         Model.OnConsumeCake += () => {
@@ -86,7 +94,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             UpdateCharacterCtrlRadius();
 
             if (!_firstCakeConsumed) {
-                
+
                 _firstCakeConsumed = true;
 
                 UserInterfaceController.Instance_._PopUpDisplay.Display(_firstCakeConsumedNomNomText, () => {
@@ -125,7 +133,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
                 _firstCakeConsumed = true;
             }
         };
-        
+
         _lastCheckpoint = transform.position;
         _lastCheckpointState = new PrincessCakeModel(Model);
     }
@@ -139,6 +147,16 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     private void Update() {
         if (Input.GetKeyUp(KeyCode.R)) {
             OnResetEvent();
+        }
+
+        if (Game.Instance.IsPaused) {
+            if (_fpsCtrl.IsMouseLookEnabled) {
+                _fpsCtrl.DisableMouseLook();
+            }
+        } else {
+            if (!_fpsCtrl.IsMouseLookEnabled) {
+                _fpsCtrl.EnableMouseLook();
+            }
         }
     }
 
@@ -158,7 +176,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             OnCheckpointAcquired();
         }
     }
-    
+
     public void OnResetEvent() {
         transform.position = _lastCheckpoint;
         Model.CopyStats(_lastCheckpointState);

@@ -21,6 +21,8 @@ public class Game : SingletonMonobehavior<Game> {
     private HashSet<IController> _disabledControllers = new HashSet<IController>();
     private HashSet<IController> _resetOnCheckpoint = new HashSet<IController>();
 
+    private int _isPausedMutex = 0;
+
     protected void Awake() {
         Logger = new Logger("Game", _logLevel);
 
@@ -36,7 +38,37 @@ public class Game : SingletonMonobehavior<Game> {
         // uncomment to reset only the disabled objects between current and previous checkpoint.
         //_princessCake.OnCheckpoitAcquired += _disabledControllers.Clear;
     }
-    
+
+
+    public bool IsPaused {
+        get {
+            return _isPausedMutex > 0;
+        }
+    }
+
+    public void Pause() {
+        ++_isPausedMutex;
+
+        if (!IsPaused) {
+            Time.timeScale = 0;
+        }
+    }
+
+    public void Resume() {
+        --_isPausedMutex;
+
+        if (_isPausedMutex < 0) {
+
+            Logger.Error("Pause Error", "Resumed more times than paused. isPausedMutex: " + _isPausedMutex);
+
+            _isPausedMutex = 0;
+        }
+
+        if (!IsPaused) {
+            Time.timeScale = 1;
+        }
+    }
+
     public Logger LoggerFactory(string context) {
         return new Logger(context, _logLevel);
     }

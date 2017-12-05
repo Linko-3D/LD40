@@ -27,14 +27,6 @@ public class UserInterfaceController : MonoBehaviourSingleton<UserInterfaceContr
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			this._mainMenuDisplay.Toggle();
-
-            if (this._mainMenuDisplay.IsOpen) {
-                Time.timeScale = 0;
-                Cursor.visible = true;
-            } else {
-                Time.timeScale = 1;
-                Cursor.visible = false;
-            }
 		}
 	}
 

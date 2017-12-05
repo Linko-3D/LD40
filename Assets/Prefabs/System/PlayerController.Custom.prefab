@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4250510051964964}
   m_Layer: 0
-  m_Name: PlayerController
+  m_Name: PlayerController.Custom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,9 +273,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eba19da014a520548bd259f1b279b7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _theme: {fileID: 0}
+  _weightRadiusModifier: 0.1
   _onConsumeCake: {fileID: 0}
+  _onConsumeCakeChubby: {fileID: 0}
+  _onConsumeCakeFat: {fileID: 0}
+  _onGainWeight: {fileID: 0}
+  _gainWeightSFXDelayAfterEatInSeconds: 0.5
   _onConsumeTea: {fileID: 0}
+  _onLoseWeight: {fileID: 0}
+  _onCheckpointAcquired: {fileID: 0}
+  _onResetToCheckpoint: {fileID: 0}
+  _firstCakeConsumedNomNomText: Nom nom nom, YUMMY !!!
+  _firstCakeConsumedMaximizeWeightText: Eat more cakes to maximize your weight.
+  _firstTimeFatPressButtonsText: You've put on some pounds, You are able to press
+    buttons now !!
+  _firstTimeFatPickupBoxText: Try to pick up a box with.
+  _firstTeaConsumedResetWeightText: Wow ! Looking gooood. The tea resets your weight
+    !!
+  _firstTeaConsumeJumpHighText: You can jump up high again now.
+  _firstTeaConsumeFitCorridorsText: And maybe fit through narrow corridors.
   Settings:
     MaxWeight: 10
     MinWeight: 1

@@ -22,11 +22,22 @@ public class MainMenuDisplay : Display
         this.Open();
     }
 
+    public override void Open()
+    {
+        base.Open();
+
+        Game.Instance.Pause();
+        Cursor.visible = true;
+    }
+
     public override void Close() {
         if (_controlsDisplay.IsOpen) {
             _controlsDisplay.Close();
         } else {
             base.Close();
+
+            Game.Instance.Resume();
+            Cursor.visible = false;
         }
     }
 
@@ -34,11 +45,7 @@ public class MainMenuDisplay : Display
 	{
 		this._playButtonTextField.text = "Resume";
 		this.Close();
-
-		Time.timeScale = 1;
-
-		Cursor.visible = false;
-
+        
         UserInterfaceController.Instance_._PopUpDisplay.TryWelcomeDisplay();
 	}
 
