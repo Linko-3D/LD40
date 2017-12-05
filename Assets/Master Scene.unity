@@ -700,7 +700,7 @@ Prefab:
     - target: {fileID: 82330835183074290, guid: c7236eea9df35db45bca9248c9324c3d,
         type: 2}
       propertyPath: m_Volume
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 114065095907134312, guid: c7236eea9df35db45bca9248c9324c3d,
         type: 2}
@@ -716,6 +716,11 @@ Prefab:
         type: 2}
       propertyPath: m_HDR
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82979120004126632, guid: c7236eea9df35db45bca9248c9324c3d,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7236eea9df35db45bca9248c9324c3d, type: 2}
