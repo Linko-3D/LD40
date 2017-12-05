@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.26
+      value: -3.076
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalPosition.y
@@ -130,23 +130,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.43
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.22495107
+      value: -0.99995637
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9743701
+      value: -0.00933861
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_RootOrder
@@ -158,7 +158,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4610302528913152, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -26
+      value: -181.06999
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454944609778386, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef,
+        type: 2}
+      propertyPath: _firstTimeFatPickupBoxText
+      value: Try to pick up a box by pressing 'E'.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454944609778386, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef,
+        type: 2}
+      propertyPath: _firstTeaConsumedResetWeightText
+      value: Wow ! Looking gooood. The tea resets your weight !
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454944609778386, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef,
+        type: 2}
+      propertyPath: _firstTimeFatPressButtonsText
+      value: You've put on some pounds, You are able to press buttons now !
+      objectReference: {fileID: 0}
+    - target: {fileID: 114454944609778386, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef,
+        type: 2}
+      propertyPath: _firstCakeConsumedNomNomText
+      value: Nom nom nom, YUMMY !
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cc3f0b97ad6cc143b51ba8c40dcdbef, type: 2}
