@@ -630,8 +630,8 @@ MonoBehaviour:
   _isRotationTween: 0
   _disable: 0
   _disableOnState: 1
-  _onTweenOn: {fileID: 0}
-  _onTweenOff: {fileID: 0}
+  _onTweenOn: {fileID: 8300000, guid: 77e78a3f901825243b6d24d33ef3c90e, type: 3}
+  _onTweenOff: {fileID: 8300000, guid: 77e78a3f901825243b6d24d33ef3c90e, type: 3}
 --- !u!114 &114386532638600624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -665,8 +665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8055ae9b516d24e4faf102ce0a081036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onPressed: {fileID: 0}
-  _onDepressed: {fileID: 0}
+  _onPressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
+  _onDepressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   TweensOnAtPress:
   - {fileID: 114029875473427386}
   - {fileID: 114300650032207600}

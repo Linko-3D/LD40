@@ -201,7 +201,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1434558155968472}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -8.412576, y: 0.6300001, z: -2.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4453861049423604}
@@ -434,7 +434,10 @@ MonoBehaviour:
   _movementSpeed: 1
   _isFloatingPlatform: 0
   _startAutoFloat: 1
-  _onTweenOn: {fileID: 0}
+  _isRotationTween: 0
+  _disable: 0
+  _disableOnState: 1
+  _onTweenOn: {fileID: 8300000, guid: 0f14ebb189798c041b52c4036ba07cf8, type: 3}
   _onTweenOff: {fileID: 0}
 --- !u!114 &114682470366637892
 MonoBehaviour:

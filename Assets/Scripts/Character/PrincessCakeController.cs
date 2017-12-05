@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -12,13 +13,21 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
 
     [SerializeField]
     private float _weightRadiusModifier = .1f;
-
-    [SerializeField]
-    private AudioClip _theme;
+    
     [SerializeField]
     private AudioClip _onConsumeCake;
     [SerializeField]
+    private AudioClip _onConsumeCakeChubby;
+    [SerializeField]
+    private AudioClip _onConsumeCakeFat;
+    [SerializeField]
+    private AudioClip _onGainWeight;
+    [SerializeField]
+    private float _gainWeightSFXDelayAfterEatInSeconds = .5f;
+    [SerializeField]
     private AudioClip _onConsumeTea;
+    [SerializeField]
+    private AudioClip _onLoseWeight;
     [SerializeField]
     private AudioClip _onCheckpointAcquired;
     [SerializeField]
@@ -49,18 +58,38 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
         _audio = this.GetOrAddComponent<AudioSource>();
 
         Model.OnConsumeCake += () => {
-            _audio.TryPlaySFX(_onConsumeCake);
+            if (Model.IsThin) {
+                _audio.TryPlaySFX(_onConsumeCake);
+            } else if (Model.IsChubby) {
+                _audio.TryPlaySFX(_onConsumeCakeChubby);
+            } else {
+                _audio.TryPlaySFX(_onConsumeCakeFat);
+            }
+
+            StartCoroutine(
+                TryPlaySFXAfterSeconds(_gainWeightSFXDelayAfterEatInSeconds, _onGainWeight)
+            );
+
             UpdateCharacterCtrlRadius();
         };
         Model.OnConsumeTea += () => {
             _audio.TryPlaySFX(_onConsumeTea);
+
+            StartCoroutine(
+                TryPlaySFXAfterSeconds(_gainWeightSFXDelayAfterEatInSeconds, _onLoseWeight)
+            );
+
             UpdateCharacterCtrlRadius();
         };
-
-        _audio.TryPlayTheme(_theme);
-
+        
         _lastCheckpoint = transform.position;
         _lastCheckpointState = new PrincessCakeModel(Model);
+    }
+
+    private IEnumerator TryPlaySFXAfterSeconds(float sec, AudioClip clip) {
+        yield return new WaitForSeconds(sec);
+
+        _audio.TryPlaySFX(clip);
     }
 
     private void Update() {

@@ -41,11 +41,11 @@ public class TweenController : MonoBehaviour, IController {
     [SerializeField]
     private AudioClip _onTweenOff;
 
-    private Logger _logger;
-    private State _state;
-    private bool _isAutoFloating;
-    private Vector3 _velocity;
-    private AudioSource _audio;
+    protected Logger _logger;
+    protected State _state;
+    protected bool _isAutoFloating;
+    protected Vector3 _velocity;
+    protected AudioSource _audio;
 
     public string Name { get { return name; } }
 
@@ -121,20 +121,12 @@ public class TweenController : MonoBehaviour, IController {
         switch (_state) {
             case State.MovingToOff:
                 if (MoveStepToTarget(_targetOff)) {
-                    _state = State.Off;
-                    if (_isRotationTween) {
-                        transform.localRotation = _targetOff.localRotation;
-                    }
-                    _logger.Info("State " + _state.ToString(), "Tween Finished.");
+                    OnTweenOffFinished();
                 }
                 break;
             case State.MovingToOn:
                 if (MoveStepToTarget(_targetOn)) {
-                    _state = State.On;
-                    if (_isRotationTween) {
-                        transform.localRotation = _targetOn.localRotation;
-                    }
-                    _logger.Info("State " + _state.ToString(), "Tween Finished.");
+                    OnTweenOnFinished();
                 }
                 break;
         }
@@ -150,6 +142,35 @@ public class TweenController : MonoBehaviour, IController {
         if (_disable && _state == _disableOnState) {
             Game.Instance.Disable(this);
         }
+    }
+
+    protected virtual void OnTweenOffStarted() {
+        _state = State.MovingToOff;
+
+        _logger.Info("State " + _state.ToString(), "Tween Started.");
+    }
+
+    protected virtual void OnTweenOffFinished() {
+        _state = State.Off;
+
+        if (_isRotationTween) {
+            transform.localRotation = _targetOff.localRotation;
+        }
+        _logger.Info("State " + _state.ToString(), "Tween Finished.");
+    }
+
+    protected virtual void OnTweenOnStarted() {
+        _state = State.MovingToOn;
+        _logger.Info("State " + _state.ToString(), "Tween Started.");
+    }
+
+    protected virtual void OnTweenOnFinished() {
+        _state = State.On;
+
+        if (_isRotationTween) {
+            transform.localRotation = _targetOn.localRotation;
+        }
+        _logger.Info("State " + _state.ToString(), "Tween Finished.");
     }
 
 #if UNITY_EDITOR
@@ -197,14 +218,12 @@ public class TweenController : MonoBehaviour, IController {
 
         switch (_state) {
             case State.Off:
-                _state = State.MovingToOn;
-                _logger.Info("State " + _state.ToString(), "Tween Starting.");
+                OnTweenOnStarted();
                 tweenStarted = true;
                 break;
             case State.MovingToOff:
                 if (force) {
-                    _state = State.MovingToOn;
-                    _logger.Info("State " + _state.ToString(), "Forced Tween Starting.");
+                    OnTweenOnStarted();
                     tweenStarted = true;
                 }
                 break;
@@ -226,14 +245,12 @@ public class TweenController : MonoBehaviour, IController {
 
         switch (_state) {
             case State.On:
-                _state = State.MovingToOff;
-                _logger.Info("State " + _state.ToString(), "Tween Starting.");
+                OnTweenOffStarted();
                 tweenStarted = true;
                 break;
             case State.MovingToOn:
                 if (force) {
-                    _state = State.MovingToOff;
-                    _logger.Info("State " + _state.ToString(), "Forced Tween Starting.");
+                    OnTweenOffStarted();
                     tweenStarted = true;
                 }
                 break;

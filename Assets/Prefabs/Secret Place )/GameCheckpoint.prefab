@@ -1623,7 +1623,7 @@ GameObject:
   - component: {fileID: 114947998892748312}
   - component: {fileID: 114818342601099706}
   m_Layer: 0
-  m_Name: Game
+  m_Name: GameCheckpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2173,6 +2173,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -4760,11 +4761,13 @@ MonoBehaviour:
     BobDuration: 0.2
     BobAmount: 0.1
   m_StepInterval: 5
-  m_FootstepSounds:
-  - {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
-  m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
-  m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  m_FootstepsLight: []
+  m_FootstepsChubby: []
+  m_FootstepsFat: []
+  m_JumpLight: {fileID: 0}
+  m_JumpFat: {fileID: 0}
+  m_LandLight: {fileID: 0}
+  m_LandFat: {fileID: 0}
 --- !u!114 &114626643053831236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5710,9 +5713,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weightRadiusModifier: 0.05
-  _theme: {fileID: 0}
   _onConsumeCake: {fileID: 0}
+  _onConsumeCakeChubby: {fileID: 0}
+  _onConsumeCakeFat: {fileID: 0}
+  _onGainWeight: {fileID: 0}
+  _gainWeightSFXDelayAfterEatInSeconds: 0.5
   _onConsumeTea: {fileID: 0}
+  _onLoseWeight: {fileID: 0}
   _onCheckpointAcquired: {fileID: 0}
   _onResetToCheckpoint: {fileID: 0}
   Settings:

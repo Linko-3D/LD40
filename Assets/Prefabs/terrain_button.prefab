@@ -123,9 +123,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551252536707708}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -2.73, y: 0, z: 3}
-  m_LocalScale: {x: 100, y: 99.99997, z: 99.99997}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -4.4664335, y: 0, z: 7.064142}
+  m_LocalScale: {x: 100, y: 100.000244, z: 100.000244}
   m_Children:
   - {fileID: 4231499078183704}
   - {fileID: 4169666098366280}
@@ -244,6 +244,9 @@ MonoBehaviour:
   _movementSpeed: 5
   _isFloatingPlatform: 0
   _startAutoFloat: 1
+  _isRotationTween: 0
+  _disable: 0
+  _disableOnState: 1
   _onTweenOn: {fileID: 0}
   _onTweenOff: {fileID: 0}
 --- !u!114 &114610488041446494
@@ -257,8 +260,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8055ae9b516d24e4faf102ce0a081036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onPressed: {fileID: 0}
-  _onDepressed: {fileID: 0}
+  _onPressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
+  _onDepressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   TweensOnAtPress:
   - {fileID: 114084727984505164}
   - {fileID: 0}
@@ -268,5 +271,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Settings:
-    WeightRequiredToPress: 1
-    PressDurationInSeconds: 5
+    WeightRequiredToPress: 5
+    PressDurationInSeconds: 1

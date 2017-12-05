@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 65167145075122832}
   - component: {fileID: 114498269273652534}
   m_Layer: 0
-  m_Name: balance_LOD0
+  m_Name: balance_platform_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,8 +303,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235065396282082}
-  m_LocalRotation: {x: -0.5000008, y: -0.49999925, z: -0.49999928, w: 0.5000007}
-  m_LocalPosition: {x: -6.932772, y: -0.8860302, z: 3.9783783}
+  m_LocalRotation: {x: 0.57800597, y: 0.40731952, z: 0.40731955, w: -0.57800585}
+  m_LocalPosition: {x: -2.88, y: 0, z: -5.42}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4894026756307894}
@@ -709,8 +709,8 @@ MonoBehaviour:
   _isRotationTween: 1
   _disable: 0
   _disableOnState: 1
-  _onTweenOn: {fileID: 0}
-  _onTweenOff: {fileID: 0}
+  _onTweenOn: {fileID: 8300000, guid: 07a8af09d6bb4f644a2b90ccd650ba26, type: 3}
+  _onTweenOff: {fileID: 8300000, guid: 07a8af09d6bb4f644a2b90ccd650ba26, type: 3}
 --- !u!114 &114545333257450460
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,7 +731,7 @@ MonoBehaviour:
   _isRotationTween: 0
   _disable: 1
   _disableOnState: 1
-  _onTweenOn: {fileID: 0}
+  _onTweenOn: {fileID: 8300000, guid: 0f14ebb189798c041b52c4036ba07cf8, type: 3}
   _onTweenOff: {fileID: 0}
 --- !u!114 &114566442000250630
 MonoBehaviour:
