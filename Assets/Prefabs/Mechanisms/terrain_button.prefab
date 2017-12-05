@@ -260,6 +260,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8055ae9b516d24e4faf102ce0a081036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _triggeredByPlayerOnly: 0
+  _firstTimeHopedOnButtonNotFatText: You need to to maximize your weight to press
+    buttons.
+  _firstTimeHopedOnButtonFatText: Good job. The button was triggered !!
+  _firstTimeHopedOnButtonFatNoBoxText: Did you know that you can trigger buttons with
+    boxes ?
   _onPressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   _onDepressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   TweensOnAtPress:
