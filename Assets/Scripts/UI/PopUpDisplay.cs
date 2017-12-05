@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -10,23 +11,38 @@ using UnityEditor;
 
 public class PopUpDisplay : Display
 {
-    [SerializeField] private string _welcomMessage = "Welcome, eat them ALL!!! AHAHAHAHA!";
-    [SerializeField] private float _autoCloseTimer = 3f;
+    [SerializeField] private string _welcomeMessage = "Welcome, eat them ALL!!! AHAHAHAHA!";
+    [SerializeField] private string _useCheckpointReset = "Hit R to reset to the last checkpoint !";
+    [SerializeField] private float _autoCloseTimer = 4f;
 
     [SerializeField] private Text _popUpTextField;
 
-	private void Start()
-	{
-		this.Display(_welcomMessage);
-	}
+    private Queue<Action> onHideQueue = new Queue<Action>();
+    protected bool _welcomeDisplayed;
+    
 
-	public void Display(string message)
+    public void TryWelcomeDisplay() {
+        if (!_welcomeDisplayed) {
+
+            this.Display(_welcomeMessage, () => {
+                this.Display(_useCheckpointReset);
+            });
+
+            _welcomeDisplayed = true;
+        }
+    }
+
+	public void Display(string message, Action onHide = null)
 	{
 		this._popUpTextField.text = message;
 
 		Cursor.visible = true;
 
 		this.Open();
+
+        if (onHide != null) {
+            onHideQueue.Enqueue(onHide);
+        }
 
 		this.StartCoroutine (this.CloseTimer ());
 	}
@@ -36,14 +52,26 @@ public class PopUpDisplay : Display
 		Cursor.visible = false;
 
 		this.Close();
-	}
+
+        StartCoroutine(TryFireOnHideAfterSeconds());
+    }
 
 	private IEnumerator CloseTimer()
 	{
 		yield return new WaitForSecondsRealtime (_autoCloseTimer);
 
 		this.Close ();
-	}
+
+        StartCoroutine(TryFireOnHideAfterSeconds());
+    }
+
+    private IEnumerator TryFireOnHideAfterSeconds(float delayInSeconds = 1f) {
+        yield return new WaitForSeconds(delayInSeconds);
+
+        if (onHideQueue.Count != 0) {
+            onHideQueue.Dequeue()();
+        }
+    }
 
 #if UNITY_EDITOR
 	protected override void OnDrawGizmos()

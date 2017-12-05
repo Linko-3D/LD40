@@ -307,6 +307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224794578518589128}
   - component: {fileID: 114529111302134660}
+  - component: {fileID: 225237686712289260}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -809,6 +810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224459520960849584}
   - component: {fileID: 114000975490829374}
+  - component: {fileID: 225202940417680962}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -2080,6 +2082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224484141463025432}
   - component: {fileID: 114835351221062096}
+  - component: {fileID: 225811702605431390}
   m_Layer: 5
   m_Name: Pop Up Display
   m_TagString: Untagged
@@ -2113,6 +2116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224437259861828532}
   - component: {fileID: 114438790617927330}
+  - component: {fileID: 225736228796742502}
   m_Layer: 5
   m_Name: Gameplay Display
   m_TagString: Untagged
@@ -2474,6 +2478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c68cbb78be86504886a0fcee99f57d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 0}
   _playButtonTextField: {fileID: 114334681114795784}
 --- !u!114 &114010789016991376
 MonoBehaviour:
@@ -4119,6 +4124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7def6b7e057f9344bcbdb619e919e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 0}
   _weightTextField: {fileID: 114193329732968906}
   _cakesTextField: {fileID: 114195874329568258}
   _teaTextField: {fileID: 114822375381682256}
@@ -4329,6 +4335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1b1a9fce02e4c42bb096e7afcb336a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 0}
 --- !u!114 &114530309714511224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4455,7 +4462,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 0.16911763, b: 0.66764736, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.16911763, b: 0.66764736, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -5597,6 +5604,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1803706a11d0f9478144de3c0aa20a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvasGroup: {fileID: 0}
+  _welcomeMessage: Welcome, eat them ALL!!! AHAHAHAHA!
+  _useCheckpointReset: Hit R to reset to the last checkpoint !
+  _autoCloseTimer: 3
   _popUpTextField: {fileID: 114832528504351174}
 --- !u!114 &114861260289055198
 MonoBehaviour:
@@ -9000,3 +9011,47 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -44.999985}
   m_SizeDelta: {x: 241.79999, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &225202940417680962
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345141007297736}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225237686712289260
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148745728593666}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225736228796742502
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988141807685066}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!225 &225811702605431390
+CanvasGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959258554637932}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

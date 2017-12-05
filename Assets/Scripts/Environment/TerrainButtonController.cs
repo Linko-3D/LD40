@@ -9,8 +9,13 @@ public class TerrainButtonController : MonoBehaviour, IController {
     private bool _triggeredByPlayerOnly = false;
 
     [SerializeField]
-    private string _firstTimeHopedOnButtonText = "Good job. Did you know that you can use 'E' to move boxes on buttons ?";
-    private bool _firstTimeHopedOnButton = false;
+    private string _firstTimeHopedOnButtonNotFatText = "You need to to maximize your weight to press buttons.";
+    private string _firstTimeHopedOnButtonNotFatGrabBoxesText = "Then, you could also grab & move boxes !!!";
+    private bool _firstTimeHopedOnButtonNotFat = false;
+
+    [SerializeField]
+    private string _firstTimeHopedOnButtonFatText = "Good job. Did you know that you can use 'E' to move boxes on buttons ?";
+    private bool _firstTimeHopedOnFatButton = false;
 
     [SerializeField]
     private string _firstTimeHopedOffButtonText = "Run Forest!! Or use a box. The button is 'E'";
@@ -95,9 +100,9 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
         _audio.TryPlaySFX(_onPressed);
 
-        if (!_firstTimeHopedOnButton && controller == Game.Instance.PrincessCake) {
-            UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonText);
-            _firstTimeHopedOnButton = true;
+        if (!_firstTimeHopedOnFatButton && controller == Game.Instance.PrincessCake) {
+            UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonFatText);
+            _firstTimeHopedOnFatButton = true;
         }
     }
 
@@ -127,6 +132,16 @@ public class TerrainButtonController : MonoBehaviour, IController {
     private void HopedOn(IWeightableController controller) {
         if (Model.HopedOn(controller.Model())) {
             OnHopedOnBy(controller);
+        } else {
+            if (!_firstTimeHopedOnButtonNotFat && controller == Game.Instance.PrincessCake) {
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonNotFatText, () => {
+
+                    UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonNotFatGrabBoxesText);
+
+                });
+
+                _firstTimeHopedOnButtonNotFat = true;
+            }
         }
     }
 

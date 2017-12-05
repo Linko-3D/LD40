@@ -24,8 +24,10 @@ public class GameplayDisplay : Display, IController
 		}
 	}
 
-	private void Start()
+	protected override void Start()
 	{
+        base.Start();
+
 		this.DeactivateTimer();
 
 		this.UpdateWeightDisplay();

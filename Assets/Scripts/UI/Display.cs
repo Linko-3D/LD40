@@ -9,15 +9,36 @@ using UnityEditor;
 
 public class Display : MonoBehaviour
 {
+    [SerializeField]
+    protected CanvasGroup _canvasGroup;
+
+    protected virtual void Start() {
+        if (_canvasGroup == null) {
+            _canvasGroup = GetComponentInChildren<CanvasGroup>();
+        }
+
+        Game.Instance.Logger.Assert(
+            _canvasGroup != null, "Display::" + name,
+            "_canvasGroup not found, make sure its attached on gameObject or a child " +
+            "or drag and drop it to game object."
+        );
+
+        Close();
+    }
+
 	public void Open()
 	{
-		this.gameObject.SetActive(true);
-	}
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.alpha = 1;
+    }
 
 	public void Close()
 	{
-		this.gameObject.SetActive(false);
-	}
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+        _canvasGroup.alpha = 0;
+    }
 
 #if UNITY_EDITOR
 	protected virtual void OnDrawGizmos()

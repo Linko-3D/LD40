@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
@@ -11,8 +8,14 @@ using UnityEditor;
 public class MainMenuDisplay : Display
 {
 	[SerializeField] private Text _playButtonTextField;
-	
-	public void OnPlayClick()
+
+    protected override void Start() {
+        base.Start();
+
+        this.Open();
+    }
+
+    public void OnPlayClick()
 	{
 		this._playButtonTextField.text = "Resume";
 		this.Close();
@@ -20,6 +23,8 @@ public class MainMenuDisplay : Display
 		Time.timeScale = 1;
 
 		Cursor.visible = false;
+
+        UserInterfaceController.Instance_._PopUpDisplay.TryWelcomeDisplay();
 	}
 
 	public void OnExitClick()
