@@ -45,7 +45,7 @@ public class PickUpController : MonoBehaviour
 
 	private IEnumerator HandleInput()
 	{
-		yield return new WaitForEndOfFrame();
+		yield return new WaitForSeconds(3f);
 		while (true)
 		{
 			if (Input.GetKeyDown(KeyCode.E) && this._pickedUpBox != null)
@@ -59,7 +59,7 @@ public class PickUpController : MonoBehaviour
 
 			yield return null;
 		}
-	} 
+	}
 
 #if UNITY_EDITOR
 	protected virtual void OnDrawGizmos()
