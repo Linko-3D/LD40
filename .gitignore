@@ -33,6 +33,5 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-
-*.unity
-*.unity
+**/Master Scene/
+**/Scenes/MasterScene/
