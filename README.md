@@ -28,15 +28,20 @@ Will you be able to find and reach the Ludum Dare flag?
 
 - Audio
 
-  [Aurélien Montéro](https://ldjam.com/users/aurelien-montero/)
+  [Aurélien Montéro](www.aurelienmontero.com)
 
 - Programming
 
-  [Angelos Kyriakopoulos (angelkyriako)](https://github.com/AngelKyriako)   
+  [Angelos Kyriakopoulos](https://github.com/AngelKyriako)   
   [Max (Pixel Lifetime)](https://ldjam.com/users/pixel-lifetime)
 
 #### Tools
 
- Engine: Unity  
- Modeling: Blender
+- Engine
+ 
+  [Unity](https://unity3d.com/)
+ 
+- Modeling
+
+  [Blender](https://blender.org/)
  
