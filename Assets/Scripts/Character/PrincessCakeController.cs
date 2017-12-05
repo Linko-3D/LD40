@@ -33,6 +33,16 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     [SerializeField]
     private AudioClip _onResetToCheckpoint;
 
+    [SerializeField]
+    private string _firstCakeConsumedText = "Nom nom nom !!! Eat three more cakes to maximize your weight.";
+    private bool _firstCakeConsumed = false;
+    [SerializeField]
+    private string _firstTimeFatText = "You've put on some pounds, Try to pick up a box. You are able to press buttons now.";
+    private bool _firstTimeFat = false;
+    [SerializeField]
+    private string _firstTeaConsumedText = "Wow ! Looking gooood. The tea resets your weight, you can jump up heigher now.";
+    private bool _firstTeaConsumed = false;
+
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
 
     public PrincessCakeModel Model { get; private set; }
@@ -49,7 +59,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     private CharacterController _characterCtrl;
     private float _characterCtrlDefaultRadius;
     private AudioSource _audio;
-    
+
     private void Awake() {
         Model = new PrincessCakeModel(name, Settings);
 
@@ -71,6 +81,15 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             );
 
             UpdateCharacterCtrlRadius();
+
+            if (!_firstCakeConsumed) {
+                _firstCakeConsumed = true;
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstCakeConsumedText);
+            }
+            if (!_firstTimeFat && Model.IsFat) {
+                _firstCakeConsumed = true;
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeFatText);
+            }
         };
         Model.OnConsumeTea += () => {
             _audio.TryPlaySFX(_onConsumeTea);
@@ -80,6 +99,11 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             );
 
             UpdateCharacterCtrlRadius();
+
+            if (!_firstTeaConsumed) {
+                _firstCakeConsumed = true;
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTeaConsumedText);
+            }
         };
         
         _lastCheckpoint = transform.position;
