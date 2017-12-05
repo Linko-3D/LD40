@@ -248,23 +248,23 @@ Prefab:
         type: 2}
       propertyPath: m_SubSceneAssets.Array.data[1]
       value: 
-      objectReference: {fileID: 102900000, guid: f49c0ee2c12e8784496d6310ac21ce38,
+      objectReference: {fileID: 102900000, guid: c05ec8ad669c5cc49974dcfec486266f,
         type: 3}
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
       propertyPath: m_SubSceneNames.Array.data[1]
-      value: UI Scene
+      value: UISubScene
       objectReference: {fileID: 0}
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
       propertyPath: m_SubSceneAssets.Array.data[0]
       value: 
-      objectReference: {fileID: 102900000, guid: bdd2ff1e1f8b4f54884df81b6ddff7e2,
+      objectReference: {fileID: 102900000, guid: 2f65331f192bcf74291208b7551d48f1,
         type: 3}
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
       propertyPath: m_SubSceneNames.Array.data[0]
-      value: System Scene
+      value: System SubScene
       objectReference: {fileID: 0}
     - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
         type: 2}
@@ -276,6 +276,11 @@ Prefab:
         type: 2}
       propertyPath: m_SubSceneNames.Array.data[2]
       value: level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114361657567190746, guid: 7bc80f4262825664f83de6e55586d01b,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7bc80f4262825664f83de6e55586d01b, type: 2}
