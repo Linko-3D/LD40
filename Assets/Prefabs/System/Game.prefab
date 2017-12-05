@@ -314,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1160699204926222
 GameObject:
   m_ObjectHideFlags: 1
@@ -2116,7 +2116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224437259861828532}
   - component: {fileID: 114438790617927330}
-  - component: {fileID: 225736228796742502}
+  - component: {fileID: 225289208335715044}
   m_Layer: 5
   m_Name: Gameplay Display
   m_TagString: Untagged
@@ -2479,6 +2479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 0}
+  _controlsDisplay: {fileID: 114529111302134660}
   _playButtonTextField: {fileID: 114334681114795784}
 --- !u!114 &114010789016991376
 MonoBehaviour:
@@ -2492,7 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2502,7 +2503,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 83
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
@@ -2525,7 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2535,7 +2536,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 118
@@ -2939,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2949,7 +2950,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 118
@@ -2972,7 +2973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2982,7 +2983,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 118
@@ -3425,11 +3426,15 @@ MonoBehaviour:
   _onCheckpointAcquired: {fileID: 8300000, guid: 4c955adc64eafaa418b8f17724dee099,
     type: 3}
   _onResetToCheckpoint: {fileID: 0}
-  _firstCakeConsumedText: Nom nom nom !!! Eat three more cakes to maximize your weight.
-  _firstTimeFatText: You've put on some pounds, Try to pick up a box. You are able
-    to press buttons now.
-  _firstTeaConsumedText: Wow ! Looking gooood. The tea resets your weight, you can
-    jump up heigher now.
+  _firstCakeConsumedNomNomText: Nom nom nom, YUMMY !!!
+  _firstCakeConsumedMaximizeWeightText: Eat more cakes to maximize your weight.
+  _firstTimeFatPressButtonsText: You've put on some pounds, You are able to press
+    buttons now !!
+  _firstTimeFatPickupBoxText: Try to pick up a box.
+  _firstTeaConsumedResetWeightText: Wow ! Looking gooood. The tea resets your weight
+    !!
+  _firstTeaConsumeJumpHighText: You can jump up high again now.
+  _firstTeaConsumeFitCorridorsText: And maybe fit through narrow corridors.
   Settings:
     MaxWeight: 5
     MinWeight: 1
@@ -4566,7 +4571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4576,7 +4581,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 118
@@ -4599,7 +4604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4609,7 +4614,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 83
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
@@ -4793,7 +4798,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: Reset Level
 --- !u!114 &114600727272811266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4980,7 +4985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4990,7 +4995,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 83
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 193
@@ -5121,7 +5126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6911765, g: 0.6708478, b: 0.884, a: 0.716}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5131,7 +5136,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 57578e225b1d78f42bbdb705337c0534, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 118
@@ -5607,7 +5612,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 0}
   _welcomeMessage: Welcome, eat them ALL!!! AHAHAHAHA!
   _useCheckpointReset: Hit R to reset to the last checkpoint !
-  _autoCloseTimer: 3
+  _OpenMinIntervalInSeconds: 3
   _popUpTextField: {fileID: 114832528504351174}
 --- !u!114 &114861260289055198
 MonoBehaviour:
@@ -9033,7 +9038,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!225 &225736228796742502
+--- !u!225 &225289208335715044
 CanvasGroup:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

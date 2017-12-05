@@ -34,6 +34,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandLight;
         [SerializeField] private AudioClip m_LandFat;
 
+        private AudioClip m_CurrFootstepLight;
+        private AudioClip m_CurrFootstepChubby;
+        private AudioClip m_CurrFootstepFat;
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -180,11 +184,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             if (Game.Instance.PrincessCake.Model.IsFat) {
-                PlayFootstep(m_FootstepsFat);
-            } else if (Game.Instance.PrincessCake.Model.IsFat) {
-                PlayFootstep(m_FootstepsChubby);
+                PlayFootstep(m_FootstepsFat, ref m_CurrFootstepFat);
+            } else if (Game.Instance.PrincessCake.Model.IsChubby) {
+                PlayFootstep(m_FootstepsChubby, ref m_CurrFootstepChubby);
             } else {
-                PlayFootstep(m_FootstepsLight);
+                PlayFootstep(m_FootstepsLight, ref m_CurrFootstepLight);
             }
             //// pick & play a random footstep sound from the array,
             //// excluding sound at index 0
@@ -195,14 +199,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //m_FootstepSounds[0] = m_AudioSource.clip;
         }
 
-        private void PlayFootstep(AudioClip[] stepClips) {
+        private void PlayFootstep(AudioClip[] stepClips, ref AudioClip m_Curr) {
             // pick & play a random footstep sound from the array,
             // excluding sound at index 0
             int n = Random.Range(1, stepClips.Length);
-            m_AudioSource.TryPlaySFX(stepClips[n]);
+
+            m_Curr = stepClips[n];
+
+            m_AudioSource.TryPlaySFX(m_Curr);
+
             // move picked sound to index 0 so it's not picked next time
             stepClips[n] = stepClips[0];
-            stepClips[0] = m_AudioSource.clip;
+            stepClips[0] = m_Curr;
         }
 
 

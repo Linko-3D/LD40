@@ -41,9 +41,11 @@ public class GameplayDisplay : Display, IController
 
 		Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateWeightDisplay;
 		Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateTeaDisplay;
-	}
 
-	public void UpdateWeightDisplay()
+        Open();
+    }
+    
+    public void UpdateWeightDisplay()
 	{
 		this._weightTextField.text = "Weight - " + Game.Instance.PrincessCake.Model.Weight.ToString();
 	}

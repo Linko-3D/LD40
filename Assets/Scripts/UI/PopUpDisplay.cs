@@ -11,15 +11,37 @@ using UnityEditor;
 
 public class PopUpDisplay : Display
 {
+
+    private class DisplayData {
+        public string Text;
+        public Action OnHide;
+    }
+
     [SerializeField] private string _welcomeMessage = "Welcome, eat them ALL!!! AHAHAHAHA!";
     [SerializeField] private string _useCheckpointReset = "Hit R to reset to the last checkpoint !";
-    [SerializeField] private float _autoCloseTimer = 4f;
+    [SerializeField] private float _OpenMinIntervalInSeconds = 3f;
 
     [SerializeField] private Text _popUpTextField;
 
-    private Queue<Action> onHideQueue = new Queue<Action>();
-    protected bool _welcomeDisplayed;
-    
+    private List<DisplayData> _displayQueue = new List<DisplayData>();
+    private float _lastTimeOpened = 0;
+    private Action _lastOnHide = null;
+
+    private bool _welcomeDisplayed;
+
+    public override void Open() {
+        base.Open();
+
+        _lastTimeOpened = Time.time;
+    }
+
+    public override void Close() {
+        base.Close();
+
+        if (this._lastOnHide != null) {
+            this._lastOnHide();
+        }
+    }
 
     public void TryWelcomeDisplay() {
         if (!_welcomeDisplayed) {
@@ -34,42 +56,40 @@ public class PopUpDisplay : Display
 
 	public void Display(string message, Action onHide = null)
 	{
-		this._popUpTextField.text = message;
-
-		Cursor.visible = true;
-
-		this.Open();
-
-        if (onHide != null) {
-            onHideQueue.Enqueue(onHide);
-        }
-
-		this.StartCoroutine (this.CloseTimer ());
-	}
-
+        _displayQueue.Add(new DisplayData {
+            Text = message,
+            OnHide = onHide
+        });
+    }
+    
 	public void OnOkClick()
 	{
-		Cursor.visible = false;
-
 		this.Close();
 
-        StartCoroutine(TryFireOnHideAfterSeconds());
+        Cursor.visible = false;
     }
 
-	private IEnumerator CloseTimer()
-	{
-		yield return new WaitForSecondsRealtime (_autoCloseTimer);
+    private void OnDisplay(DisplayData data) {
 
-		this.Close ();
+        this._popUpTextField.text = data.Text;
+        this._lastOnHide = data.OnHide;
 
-        StartCoroutine(TryFireOnHideAfterSeconds());
+        this.Open();
+
+        Cursor.visible = true;
     }
 
-    private IEnumerator TryFireOnHideAfterSeconds(float delayInSeconds = 1f) {
-        yield return new WaitForSeconds(delayInSeconds);
+    protected void Update() {
+        if (IsOpen) {
+            if (Time.time - _lastTimeOpened > _OpenMinIntervalInSeconds) {
+                OnOkClick();
+            }
+        } else if (_displayQueue.Count != 0) {
+            DisplayData data = _displayQueue[0];
 
-        if (onHideQueue.Count != 0) {
-            onHideQueue.Dequeue()();
+            _displayQueue.RemoveAt(0);
+
+            OnDisplay(data);
         }
     }
 

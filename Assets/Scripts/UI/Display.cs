@@ -12,11 +12,13 @@ public class Display : MonoBehaviour
     [SerializeField]
     protected CanvasGroup _canvasGroup;
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
         if (_canvasGroup == null) {
             _canvasGroup = GetComponentInChildren<CanvasGroup>();
         }
+    }
 
+    protected virtual void Start() {
         Game.Instance.Logger.Assert(
             _canvasGroup != null, "Display::" + name,
             "_canvasGroup not found, make sure its attached on gameObject or a child " +
@@ -26,14 +28,25 @@ public class Display : MonoBehaviour
         Close();
     }
 
-	public void Open()
+    public bool IsOpen { get { return _canvasGroup.interactable; } }
+
+
+    public virtual void Toggle() {
+        if (!IsOpen) {
+            Open();
+        } else {
+            Close();
+        }
+    }
+
+    public virtual void Open()
 	{
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.alpha = 1;
     }
 
-	public void Close()
+	public virtual void Close()
 	{
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;

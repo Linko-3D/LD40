@@ -22,22 +22,19 @@ public class UserInterfaceController : MonoBehaviourSingleton<UserInterfaceContr
 	[Header("Fonts")]
 	[SerializeField] private Font _globalFont;
 
-	protected override void Awake()
-	{
-		base.Awake();
-
-		Time.timeScale = 0;
-	}
-
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			this._mainMenuDisplay.Open();
+			this._mainMenuDisplay.Toggle();
 
-			Time.timeScale = 0;
-
-			Cursor.visible = true;
+            if (this._mainMenuDisplay.IsOpen) {
+                Time.timeScale = 0;
+                Cursor.visible = true;
+            } else {
+                Time.timeScale = 1;
+                Cursor.visible = false;
+            }
 		}
 	}
 

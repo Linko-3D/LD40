@@ -33,14 +33,17 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     [SerializeField]
     private AudioClip _onResetToCheckpoint;
 
-    [SerializeField]
-    private string _firstCakeConsumedText = "Nom nom nom !!! Eat three more cakes to maximize your weight.";
+    [SerializeField] private string _firstCakeConsumedNomNomText = "Nom nom nom, YUMMY !!!";
+    [SerializeField] private string _firstCakeConsumedMaximizeWeightText = "Eat more cakes to maximize your weight.";
     private bool _firstCakeConsumed = false;
-    [SerializeField]
-    private string _firstTimeFatText = "You've put on some pounds, Try to pick up a box. You are able to press buttons now.";
+
+    [SerializeField] private string _firstTimeFatPressButtonsText = "You've put on some pounds, You are able to press buttons now !!";
+    [SerializeField] private string _firstTimeFatPickupBoxText = "Try to pick up a box with.";
     private bool _firstTimeFat = false;
-    [SerializeField]
-    private string _firstTeaConsumedText = "Wow ! Looking gooood. The tea resets your weight, you can jump up heigher now.";
+
+    [SerializeField] private string _firstTeaConsumedResetWeightText = "Wow ! Looking gooood. The tea resets your weight !!";
+    [SerializeField] private string _firstTeaConsumeJumpHighText = "You can jump up high again now.";
+    [SerializeField] private string _firstTeaConsumeFitCorridorsText = "And maybe fit through narrow corridors.";
     private bool _firstTeaConsumed = false;
 
     public PrincessCakeModel.Settings Settings = new PrincessCakeModel.Settings();
@@ -83,12 +86,21 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             UpdateCharacterCtrlRadius();
 
             if (!_firstCakeConsumed) {
+                
                 _firstCakeConsumed = true;
-                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstCakeConsumedText);
+
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstCakeConsumedNomNomText, () => {
+
+                    UserInterfaceController.Instance_._PopUpDisplay.Display(_firstCakeConsumedMaximizeWeightText);
+                });
             }
             if (!_firstTimeFat && Model.IsFat) {
-                _firstCakeConsumed = true;
-                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeFatText);
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeFatPressButtonsText, () => {
+
+                    UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeFatPickupBoxText);
+                });
+
+                _firstTimeFat = true;
             }
         };
         Model.OnConsumeTea += () => {
@@ -101,8 +113,16 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
             UpdateCharacterCtrlRadius();
 
             if (!_firstTeaConsumed) {
+                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTeaConsumedResetWeightText, () => {
+
+                    UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTeaConsumeJumpHighText, () => {
+
+                        UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTeaConsumeFitCorridorsText);
+                    });
+
+                });
+
                 _firstCakeConsumed = true;
-                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTeaConsumedText);
             }
         };
         

@@ -7,12 +7,27 @@ using UnityEditor;
 
 public class MainMenuDisplay : Display
 {
-	[SerializeField] private Text _playButtonTextField;
+    [SerializeField] private Display _controlsDisplay;
+
+    [SerializeField] private Text _playButtonTextField;
 
     protected override void Start() {
         base.Start();
 
+        Game.Instance.Logger.Assert(
+            _controlsDisplay != null, "MainMenuDisplay",
+            "controlsDisplay not found. Drag and drop it to game object."
+        );
+
         this.Open();
+    }
+
+    public override void Close() {
+        if (_controlsDisplay.IsOpen) {
+            _controlsDisplay.Close();
+        } else {
+            base.Close();
+        }
     }
 
     public void OnPlayClick()
