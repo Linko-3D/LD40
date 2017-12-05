@@ -54329,7 +54329,7 @@ Prefab:
     - target: {fileID: 114854816866461516, guid: fe133d431c6a41f47be511c8ea081827,
         type: 2}
       propertyPath: _externalAccelerationOnStart.z
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4996697057631324, guid: fe133d431c6a41f47be511c8ea081827, type: 2}
       propertyPath: m_LocalScale.x
@@ -54338,6 +54338,11 @@ Prefab:
     - target: {fileID: 4996697057631324, guid: fe133d431c6a41f47be511c8ea081827, type: 2}
       propertyPath: m_LocalScale.y
       value: 100.00012
+      objectReference: {fileID: 0}
+    - target: {fileID: 114854816866461516, guid: fe133d431c6a41f47be511c8ea081827,
+        type: 2}
+      propertyPath: _randomAccelerationOnStart.z
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe133d431c6a41f47be511c8ea081827, type: 2}
