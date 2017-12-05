@@ -5,6 +5,15 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class TerrainButtonController : MonoBehaviour, IController {
 
+
+    [SerializeField]
+    private string _firstTimeHopedOnButtonText = "Good job. Did you know that you can use 'E' to move boxes on buttons ?";
+    private bool _firstTimeHopedOnButton = false;
+
+    [SerializeField]
+    private string _firstTimeHopedOffButtonText = "Run Forest!! Or use a box. The button is 'E'";
+    private static bool _firstTimeHopedOffButton = false;
+
     [SerializeField]
     private AudioClip _onPressed;
     [SerializeField]
@@ -78,10 +87,20 @@ public class TerrainButtonController : MonoBehaviour, IController {
         }
 
         _audio.TryPlaySFX(_onPressed);
+
+        if (!_firstTimeHopedOnButton) {
+            UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonText);
+            _firstTimeHopedOnButton = true;
+        }
     }
 
     protected virtual void OnHopedOffBy(IWeightableController controller) {
         _logger.Info("OnHopedOnBy", controller.Name + " hoped off");
+
+        if (!_firstTimeHopedOffButton) {
+            UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOffButtonText);
+            _firstTimeHopedOffButton = true;
+        }
     }
 
     protected virtual void OnDepressed() {
