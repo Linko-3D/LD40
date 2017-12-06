@@ -1,20 +1,13 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class TerrainButtonController : MonoBehaviour, IController {
-
+    
     [SerializeField]
     private bool _triggeredByPlayerOnly = false;
-
-    [SerializeField] private string _firstTimeHopedOnButtonNotFatText = "You need to to maximize your weight to press buttons.";
-    private static bool _firstTimeHopedOnButtonNotFat = false;
-
-    [SerializeField] private string _firstTimeHopedOnButtonFatText = "Good job. The button was triggered !!";
-    [SerializeField] private string _firstTimeHopedOnButtonFatNoBoxText = "Did you know that you can trigger buttons with boxes ?";
-    private static bool _firstTimeHopedOnButtonFat = false;
 
     [SerializeField]
     private AudioClip _onPressed;
@@ -30,9 +23,13 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
     public TerrainButtonModel Model { get; private set; }
     public string Name { get { return name; } }
+    public bool IsVisible { get { return _renderer != null; } }
 
     private Logger _logger;
     private AudioSource _audio;
+    private MeshRenderer _renderer;
+
+    private static IEnumerator _timerCoroutine;
 
     protected virtual void Start () {
         _logger = Game.Instance.LoggerFactory(name + "::TerrainButtonController");
@@ -40,6 +37,7 @@ public class TerrainButtonController : MonoBehaviour, IController {
         Model = new TerrainButtonModel(name, Settings, Game.Instance.PrincessCake.Settings);
 
         _audio = this.GetOrAddComponent<AudioSource>();
+        _renderer = GetComponentInChildren<MeshRenderer>();
     }
 
     protected virtual void OnTriggerEnter(Collider collider) {
@@ -48,12 +46,9 @@ public class TerrainButtonController : MonoBehaviour, IController {
         _logger.Info("OnTriggerEnter", collider.gameObject.name + " entered");
 
         if (controller != null) {
-
-            if (_triggeredByPlayerOnly && controller != Game.Instance.PrincessCake) {
-                return;
+            if (!_triggeredByPlayerOnly || controller == Game.Instance.PrincessCake) {
+                HopedOn(controller);
             }
-
-            HopedOn(controller);
         }
     }
 
@@ -94,25 +89,18 @@ public class TerrainButtonController : MonoBehaviour, IController {
         }
 
         _audio.TryPlaySFX(_onPressed);
-
-        if (!_firstTimeHopedOnButtonFat) {
-
-
-            Action onHide = null;
-            if (controller == Game.Instance.PrincessCake) {
-                onHide = () => {
-                    UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonFatNoBoxText);
-                };
-            }
-
-            UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonFatText, onHide);
-
-            _firstTimeHopedOnButtonFat = true;
-        }
     }
 
     protected virtual void OnHopedOffBy(IWeightableController controller) {
         _logger.Info("OnHopedOnBy", controller.Name + " hoped off");
+        
+        if (_timerCoroutine != null) {
+            StopCoroutine(_timerCoroutine);
+        }
+
+        _timerCoroutine = this.StartCoundownUI();
+
+        StartCoroutine(_timerCoroutine);
     }
 
     protected virtual void OnDepressed() {
@@ -130,13 +118,16 @@ public class TerrainButtonController : MonoBehaviour, IController {
     }
 
     private void HopedOn(IWeightableController controller) {
+        bool isPrincessCake = controller == Game.Instance.PrincessCake;
+
         if (Model.HopedOn(controller.Model())) {
             OnHopedOnBy(controller);
+            if (IsVisible) {
+                Game.Instance.UI.Popup.TryDisplayHopedOnButtonEnoughWeightTip(isPrincessCake);
+            }
         } else {
-            if (!_firstTimeHopedOnButtonNotFat && controller == Game.Instance.PrincessCake) {
-                UserInterfaceController.Instance_._PopUpDisplay.Display(_firstTimeHopedOnButtonNotFatText);
-
-                _firstTimeHopedOnButtonNotFat = true;
+            if (IsVisible) {
+                Game.Instance.UI.Popup.TryDisplayHopedOnButtonNotEnoughWeightTip(isPrincessCake);
             }
         }
     }
@@ -159,5 +150,23 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
     public void OnDisableEvent() {
         gameObject.SetActive(false);
+    }
+}
+
+public static class TerrainButtonControllerUIExtensions {
+
+    public static IEnumerator StartCoundownUI(this TerrainButtonController ctrl) {
+        Game.Instance.UI.GamePlay.ActivateTimer();
+
+        float secondsLeft = 0.1f;
+        while (secondsLeft > 0) {
+            secondsLeft = ctrl.Model.PressEffectDecaysInSeconds(Time.time);
+
+            Game.Instance.UI.GamePlay.DisplayTimer(secondsLeft);
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Game.Instance.UI.GamePlay.DeactivateTimer();
     }
 }

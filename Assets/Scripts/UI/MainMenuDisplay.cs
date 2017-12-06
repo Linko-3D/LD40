@@ -19,7 +19,7 @@ public class MainMenuDisplay : Display
             "controlsDisplay not found. Drag and drop it to game object."
         );
 
-        this.Open();
+        _controlsDisplay.Close();
     }
 
     public override void Open()
@@ -46,7 +46,7 @@ public class MainMenuDisplay : Display
 		this._playButtonTextField.text = "Resume";
 		this.Close();
         
-        UserInterfaceController.Instance_._PopUpDisplay.TryWelcomeDisplay();
+        UserInterfaceController.Instance.Popup.TryDisplayWelcome();
 	}
 
 	public void OnExitClick()

@@ -85,9 +85,9 @@ public class PrincessCakeModel : IWeightableModel {
         }
     }
     
-    public bool IsThin { get { return Weight == _settings.MinWeight; } }
-    public bool IsFat { get { return Weight == _settings.MaxWeight; } }
-    public bool IsChubby { get { return !IsThin && !IsFat; } }
+    public bool IsAtMinWeight { get { return Weight == _settings.MinWeight; } }
+    public bool IsAtMediumWeight { get { return Weight == _settings.MaxWeight; } }
+    public bool IsAtMaxWeight { get { return !IsAtMinWeight && !IsAtMediumWeight; } }
 
     public bool CanMove(BoxModel box) {
         return box.IsMovable && Weight >= box.Weight;

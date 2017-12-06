@@ -6,7 +6,7 @@
 ///
 /// More info: http://wiki.unity3d.com/index.php/Singleton
 /// </summary>
-public class SingletonMonobehavior<T> : MonoBehaviour where T : MonoBehaviour {
+public class SingletonMonobehaviour<T> : MonoBehaviour where T : MonoBehaviour {
 
     private static string NAME = "Singleton<" + typeof(T).Name + ">";
 
@@ -14,7 +14,7 @@ public class SingletonMonobehavior<T> : MonoBehaviour where T : MonoBehaviour {
     private static bool _applicationIsQuitting = false;
     private static T _instance;
 
-    protected SingletonMonobehavior() { }
+    protected SingletonMonobehaviour() { }
 
     public static T Instance {
         get {

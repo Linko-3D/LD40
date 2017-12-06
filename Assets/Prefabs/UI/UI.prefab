@@ -3552,9 +3552,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 0}
-  _welcomeMessage: Welcome, eat them ALL!!! AHAHAHAHA!
-  _useCheckpointReset: Hit R to reset to the last checkpoint !
-  _OpenMinIntervalInSeconds: 3
+  _welcomeText: Welcome !!! Eat them ALL ! HAHAHAHAHA !
+  _useCheckpointResetText: Hit R to reset to the last checkpoint !
+  _firstCakeConsumedNomNomText: Nom nom nom, YUMMY !!!
+  _firstCakeConsumedMaximizeWeightText: Eat more cakes to maximize your weight.
+  _reachedMaxWeightPressButtonsText: You've put on some pounds, You are able to press
+    buttons now !
+  _reachedMaxWeightPickupItemText: Try to pick up an item with 'E'.
+  _firstTeaConsumedResetWeightText: Wow ! Looking gooood. The tea resets your weight
+    !
+  _firstTeaConsumeFitCorridorsText: You can fit through narrow corridors now.
+  _firstTeaConsumeJumpHighText: And jump high again.
+  _hopedOnButtonNotEnoughWeightText: You need to to maximize your weight to press
+    buttons.
+  _hopedOnButtonEnoughWeightText: Good job. The button was triggered !!
+  _hopedOnButtonEnoughWeightNoItemText: Did you know that you can trigger buttons
+    with items ?
+  _OpenMinIntervalInSeconds: 4
   _popUpTextField: {fileID: 114056026217480222}
 --- !u!114 &114354787223409450
 MonoBehaviour:
@@ -4117,7 +4131,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1612744854403992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff1b1a9fce02e4c42bb096e7afcb336a, type: 3}
+  m_Script: {fileID: 11500000, guid: 45594aec43a23114c9622b48e94b124c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 0}
@@ -6739,7 +6753,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290870285529002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.39}
+  m_LocalPosition: {x: 0, y: 0, z: 4.39}
   m_LocalScale: {x: 0.4734375, y: 0.4734375, z: 0.4734375}
   m_Children:
   - {fileID: 224314111754206780}
