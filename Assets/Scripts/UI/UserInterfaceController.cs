@@ -1,34 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class UserInterfaceController : MonoBehaviourSingleton<UserInterfaceController>
+public class UserInterfaceController : SingletonMonobehaviour<UserInterfaceController>
 {
 	[Header("Displays")]
 	[SerializeField] private GameplayDisplay _gameplayDisplay;
-	public GameplayDisplay _GameplayDisplay { get { return this._gameplayDisplay; } }
-
 	[SerializeField] private MainMenuDisplay _mainMenuDisplay;
-
 	[SerializeField] private PopUpDisplay _popUpDisplay;
-	public PopUpDisplay _PopUpDisplay { get { return this._popUpDisplay; } }
 
 	[Header("Fonts")]
 	[SerializeField] private Font _globalFont;
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			this._mainMenuDisplay.Toggle();
-		}
-	}
+    public GameplayDisplay GamePlay { get { return this._gameplayDisplay; } }
+    public MainMenuDisplay MainMenu { get { return this._mainMenuDisplay; } }
+    public PopUpDisplay Popup { get { return this._popUpDisplay; } }
+
+    protected UserInterfaceController() : base() { }
+
+    public void Initialize() {
+        GamePlay.Open();
+        MainMenu.Open();
+        Popup.Close();
+    }
 
 #if UNITY_EDITOR
 	protected virtual void OnDrawGizmos()

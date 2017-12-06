@@ -3,7 +3,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(GameData))]
-public class Game : SingletonMonobehavior<Game> {
+public class Game : SingletonMonobehaviour<Game> {
 
     private GameData _gameData;
     
@@ -16,6 +16,7 @@ public class Game : SingletonMonobehavior<Game> {
     public Logger Logger { get; private set; }
     public GameData _GameData { get { return _gameData; } }
 
+    public UserInterfaceController UI { get; private set; }
     public PrincessCakeController PrincessCake { get { return _princessCake; } }
     
     private HashSet<IController> _disabledControllers = new HashSet<IController>();
@@ -31,7 +32,8 @@ public class Game : SingletonMonobehavior<Game> {
         if (_princessCake == null) {
             _princessCake = transform.GetOrAddComponent<PrincessCakeController>();
 
-            Logger.Error("PrincessCakeController reference not found. Drag and Drop it and restart the game.");
+            Logger.Error("PrincessCakeController reference not found." +
+                " Drag and Drop it in the Game gameobject for the game to work.");
         }
 
         _princessCake.OnResetToCheckpoint += ResetAllDisabled;
@@ -39,6 +41,19 @@ public class Game : SingletonMonobehavior<Game> {
         //_princessCake.OnCheckpoitAcquired += _disabledControllers.Clear;
     }
 
+    protected void Start() {
+        UI = UserInterfaceController.Instance;
+
+        Logger.Assert(UI != null, "UI Controller not found, make sure to added to the scene.");
+
+        UI.Initialize();
+    }
+
+    protected void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            UI.MainMenu.Toggle();
+        }
+    }
 
     public bool IsPaused {
         get {
@@ -59,7 +74,7 @@ public class Game : SingletonMonobehavior<Game> {
 
         if (_isPausedMutex < 0) {
 
-            Logger.Error("Pause Error", "Resumed more times than paused. isPausedMutex: " + _isPausedMutex);
+            Logger.Warn("Pause Error", "Resumed more times than paused. isPausedMutex: " + _isPausedMutex);
 
             _isPausedMutex = 0;
         }

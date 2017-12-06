@@ -24,19 +24,19 @@ public class Display : MonoBehaviour
             "_canvasGroup not found, make sure its attached on gameObject or a child " +
             "or drag and drop it to game object."
         );
-
-        Close();
     }
 
     public bool IsOpen { get { return _canvasGroup.interactable; } }
 
 
-    public virtual void Toggle() {
+    public virtual bool Toggle() {
         if (!IsOpen) {
             Open();
         } else {
             Close();
         }
+
+        return IsOpen;
     }
 
     public virtual void Open()

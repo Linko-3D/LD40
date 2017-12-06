@@ -11,7 +11,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
-public class SceneInitializer : SingletonMonobehavior<SceneInitializer> {
+public class SceneInitializer : SingletonMonobehaviour<SceneInitializer> {
 
 #if UNITY_EDITOR
     [SerializeField]
@@ -20,7 +20,9 @@ public class SceneInitializer : SingletonMonobehavior<SceneInitializer> {
 
     [SerializeField]
     private List<string> m_SubSceneNames;
-    
+
+    private bool m_LoadSetup = false;
+
     protected void Awake() {
 
 #if UNITY_EDITOR
@@ -68,10 +70,14 @@ public class SceneInitializer : SingletonMonobehavior<SceneInitializer> {
                 };
             }
         }
+
+        m_LoadSetup = true;
     }
 
     protected void OnValidate() {
-        m_SubSceneNames = m_SubSceneAssets.Select(s => s.name).ToList();
+        if (m_LoadSetup) {
+            m_SubSceneNames = m_SubSceneAssets.Select((SceneAsset s) => s.name).ToList();
+        }
     }
 
 #endif

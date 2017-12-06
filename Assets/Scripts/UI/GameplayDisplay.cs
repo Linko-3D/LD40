@@ -1,122 +1,97 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class GameplayDisplay : Display, IController
-{
-	[SerializeField] private Text _weightTextField;
-	[SerializeField] private Text _cakesTextField;
-	[SerializeField] private Text _teaTextField;
-	[SerializeField] private Text _timerTextField;
+public class GameplayDisplay : Display, IController {
+    [SerializeField] private Text _weightTextField;
+    [SerializeField] private Text _cakesTextField;
+    [SerializeField] private Text _teaTextField;
+    [SerializeField] private Text _timerTextField;
 
-	public string Name
-	{
-		get
-		{
-			return "Gameplay Display";
-		}
-	}
+    public string Name { get { return "Gameplay Display"; } }
 
-	protected override void Start()
-	{
+    protected override void Start() {
         base.Start();
 
-		this.DeactivateTimer();
+        this.DeactivateTimer();
 
-		this.UpdateWeightDisplay();
-		this.UpdateCakesDisplay();
-		this.UpdateTeaDisplay();
+        this.UpdateWeightDisplay();
+        this.UpdateCakesDisplay();
+        this.UpdateTeaDisplay();
 
-		Game.Instance.RegisterOnResetEvent(this);
+        Game.Instance.RegisterOnResetEvent(this);
 
-		Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateWeightDisplay;
-		Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateCakesDisplay;
+        Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateWeightDisplay;
+        Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateCakesDisplay;
 
-		Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateWeightDisplay;
-		Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateTeaDisplay;
+        Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateWeightDisplay;
+        Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateTeaDisplay;
 
         Open();
     }
-    
-    public void UpdateWeightDisplay()
-	{
-		this._weightTextField.text = "Weight - " + Game.Instance.PrincessCake.Model.Weight.ToString();
-	}
 
-	public void UpdateCakesDisplay()
-	{
-		this._cakesTextField.text = "Cakes - " + Game.Instance.PrincessCake.Model.CakesEaten.ToString();
-	}
+    public void UpdateWeightDisplay() {
+        this._weightTextField.text = "Weight - " + Game.Instance.PrincessCake.Model.Weight.ToString();
+    }
 
-	public void UpdateTeaDisplay()
-	{
-		this._teaTextField.text = "Tea - " + Game.Instance.PrincessCake.Model.TeasDrunk.ToString();
-	}
+    public void UpdateCakesDisplay() {
+        this._cakesTextField.text = "Cakes - " + Game.Instance.PrincessCake.Model.CakesEaten.ToString();
+    }
 
-	public void ActivateTimer()
-	{
-		this._timerTextField.gameObject.SetActive(true);
-	}
+    public void UpdateTeaDisplay() {
+        this._teaTextField.text = "Tea - " + Game.Instance.PrincessCake.Model.TeasDrunk.ToString();
+    }
 
-	public void DisplayTimer(float time)
-	{
-		this._timerTextField.text = "Time left - " + time.ToString("{0.00}");
-	}
+    public void ActivateTimer() {
+        this._timerTextField.gameObject.SetActive(true);
+    }
 
-	public void DeactivateTimer()
-	{
-		this._timerTextField.gameObject.SetActive(false);
-	}
+    public void DisplayTimer(float time) {
+        this._timerTextField.text = "Time left - " + time.ToString("{0.00}");
+    }
 
-	public void OnResetEvent()
-	{
-		this.DeactivateTimer();
+    public void DeactivateTimer() {
+        this._timerTextField.gameObject.SetActive(false);
+    }
 
-		this.UpdateWeightDisplay();
-		this.UpdateCakesDisplay();
-		this.UpdateTeaDisplay();
-	}
+    public void OnResetEvent() {
+        this.DeactivateTimer();
 
-	public void OnDisableEvent()
-	{
+        this.UpdateWeightDisplay();
+        this.UpdateCakesDisplay();
+        this.UpdateTeaDisplay();
+    }
 
-	}
+    public void OnDisableEvent() {
+
+    }
 
 #if UNITY_EDITOR
-	protected override void OnDrawGizmos()
-	{
-		base.OnDrawGizmos();
-	}
+    protected override void OnDrawGizmos() {
+        base.OnDrawGizmos();
+    }
 #endif
 }
 
-namespace New.UTILITY
-{
+namespace New.UTILITY {
 #if UNITY_EDITOR
-	[CustomEditor(typeof(GameplayDisplay))]
-	[CanEditMultipleObjects]
-	public class GameplayDisplayEditor : Editor
-	{
-		private void OnEnable()
-		{
+    [CustomEditor(typeof(GameplayDisplay))]
+    [CanEditMultipleObjects]
+    public class GameplayDisplayEditor : Editor {
+        private void OnEnable() {
 
-		}
+        }
 
-		public override void OnInspectorGUI()
-		{
-			DrawDefaultInspector();
+        public override void OnInspectorGUI() {
+            DrawDefaultInspector();
 
 #pragma warning disable 0219
-			GameplayDisplay sGameplayDisplay = target as GameplayDisplay;
+            GameplayDisplay sGameplayDisplay = target as GameplayDisplay;
 #pragma warning restore 0219
-		}
-	}
+        }
+    }
 #endif
 }

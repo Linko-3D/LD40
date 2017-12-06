@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using UnityEngine;
 
 public class TerrainButtonModel : IModel {
 
@@ -20,9 +18,7 @@ public class TerrainButtonModel : IModel {
     private Settings _settings;
     private State _state;
     private float _pressDecayStartedAt;
-
-	private Coroutine _timerCoroutine;
-
+    
     public string Name { get; private set; }
 
     public TerrainButtonModel(string name, Settings settings, PrincessCakeModel.Settings princessCakeSettings) {
@@ -61,11 +57,11 @@ public class TerrainButtonModel : IModel {
     public bool HopedOff(IWeightableModel model, float timeInSeconds) {
         if (_state == State.PressedHopedOn) {
             _state = State.PressedHopedOff;
+
             _pressDecayStartedAt = timeInSeconds;
+
             _logger.Info("State: " + _state, " state updated at time: " + timeInSeconds);
-
-			this.StartCountdown();
-
+            
 			return true;
         }
         return false;
@@ -99,38 +95,4 @@ public class TerrainButtonModel : IModel {
     protected bool PressEffectIsDecayed(float timeInSeconds) {
         return PressEffectDecaysInSeconds(timeInSeconds) <= 0;
     }
-
-	private void StartCountdown()
-	{
-		if (this._timerCoroutine != null)
-		{
-			UserInterfaceController.Instance_._GameplayDisplay.StopCoroutine(this._timerCoroutine);
-		}
-
-		this._timerCoroutine = UserInterfaceController.Instance_._GameplayDisplay.StartCoroutine(this.UpdateCountdownGrpahics());
-	}
-
-	private void StopCountdown()
-	{
-		UserInterfaceController.Instance_._GameplayDisplay.DeactivateTimer();
-
-		if (this._timerCoroutine != null)
-		{
-			UserInterfaceController.Instance_._GameplayDisplay.StopCoroutine(this._timerCoroutine);
-		}
-	}
-
-	private IEnumerator UpdateCountdownGrpahics()
-	{
-		UserInterfaceController.Instance_._GameplayDisplay.ActivateTimer();
-
-		while (!PressEffectIsDecayed(Time.time))
-		{
-			UserInterfaceController.Instance_._GameplayDisplay.DisplayTimer(this.PressEffectDecaysInSeconds(Time.time));
-
-			yield return new WaitForSecondsRealtime(0.1f);
-		}
-
-		UserInterfaceController.Instance_._GameplayDisplay.DeactivateTimer();
-	}
 }

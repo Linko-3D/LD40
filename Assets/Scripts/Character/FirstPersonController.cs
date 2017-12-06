@@ -99,7 +99,7 @@ namespace UnityStandardAssets.Characters.FirstPerson.PrincessCake
 
         private void PlayLandingSound()
         {
-            if (Game.Instance.PrincessCake.Model.IsFat) {
+            if (Game.Instance.PrincessCake.Model.IsAtMediumWeight) {
                 m_AudioSource.TryPlaySFX(m_LandFat);
             } else {
                 m_AudioSource.TryPlaySFX(m_LandLight);
@@ -152,7 +152,7 @@ namespace UnityStandardAssets.Characters.FirstPerson.PrincessCake
 
         private void PlayJumpSound()
         {
-            if (Game.Instance.PrincessCake.Model.IsFat) {
+            if (Game.Instance.PrincessCake.Model.IsAtMediumWeight) {
                 m_AudioSource.TryPlaySFX(m_JumpFat);
             } else {
                 m_AudioSource.TryPlaySFX(m_JumpLight);
@@ -186,9 +186,9 @@ namespace UnityStandardAssets.Characters.FirstPerson.PrincessCake
                 return;
             }
 
-            if (Game.Instance.PrincessCake.Model.IsFat) {
+            if (Game.Instance.PrincessCake.Model.IsAtMediumWeight) {
                 PlayFootstep(m_FootstepsFat, ref m_CurrFootstepFat);
-            } else if (Game.Instance.PrincessCake.Model.IsChubby) {
+            } else if (Game.Instance.PrincessCake.Model.IsAtMaxWeight) {
                 PlayFootstep(m_FootstepsChubby, ref m_CurrFootstepChubby);
             } else {
                 PlayFootstep(m_FootstepsLight, ref m_CurrFootstepLight);
