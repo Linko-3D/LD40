@@ -45,3 +45,6 @@ Will you be able to find and reach the Ludum Dare flag?
 
   [Blender](https://blender.org/)
  
+ #### Disclaimer
+
+ All the gameplay features and core graphics were implementation during the course of the 72 hour time frame. However, more decoration graphics, level design updates and patch fixes were made after the game jam.
