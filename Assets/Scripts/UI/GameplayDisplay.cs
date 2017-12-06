@@ -34,15 +34,15 @@ public class GameplayDisplay : Display, IController {
     }
 
     public void UpdateWeightDisplay() {
-        this._weightTextField.text = "Weight - " + Game.Instance.PrincessCake.Model.Weight.ToString();
+        this._weightTextField.text = "Weight: " + Game.Instance.PrincessCake.Model.Weight.ToString();
     }
 
     public void UpdateCakesDisplay() {
-        this._cakesTextField.text = "Cakes - " + Game.Instance.PrincessCake.Model.CakesEaten.ToString();
+        this._cakesTextField.text = "Cakes: " + Game.Instance.PrincessCake.Model.CakesEaten.ToString();
     }
 
     public void UpdateTeaDisplay() {
-        this._teaTextField.text = "Tea - " + Game.Instance.PrincessCake.Model.TeasDrunk.ToString();
+        this._teaTextField.text = "Teas: " + Game.Instance.PrincessCake.Model.TeasDrunk.ToString();
     }
 
     public void ActivateTimer() {
@@ -50,7 +50,7 @@ public class GameplayDisplay : Display, IController {
     }
 
     public void DisplayTimer(float time) {
-        this._timerTextField.text = "Time left - " + time.ToString("{0.00}");
+        this._timerTextField.text = time.ToString("0.0");
     }
 
     public void DeactivateTimer() {

@@ -15,8 +15,8 @@ public class PopUpDisplay : Display {
         public Action OnHide;
     }
 
-    [SerializeField] private string _welcomeText = "Welcome !!! Eat them ALL ! HAHAHAHAHA !";
-    [SerializeField] private string _useCheckpointResetText = "Hit R to reset to the last checkpoint !";
+    [SerializeField] private string _welcomeText = "Welcome !!! Eat them all Ms Nom !";
+    [SerializeField] private string _useCheckpointResetText = "Hit 'R' to reset to the last checkpoint !";
     private bool _welcomeDisplayed;
 
     [SerializeField] private string _firstCakeConsumedNomNomText = "Nom nom nom, YUMMY !!!";
@@ -35,7 +35,7 @@ public class PopUpDisplay : Display {
     [SerializeField] private string _hopedOnButtonNotEnoughWeightText = "You need to to maximize your weight to press buttons.";
     private bool _hopedOnButtonNotEnoughWeightDisplayed = false;
     
-    [SerializeField] private string _hopedOnButtonEnoughWeightText = "Good job. The button was triggered !!";
+    [SerializeField] private string _hopedOnButtonEnoughWeightText = "Good job. The button was triggered !";
     [SerializeField] private string _hopedOnButtonEnoughWeightNoItemText = "Did you know that you can trigger buttons with items ?";
     private bool _hopedOnButtonEnoughWeightDisplayed = false;
 
@@ -98,9 +98,9 @@ public class PopUpDisplay : Display {
         if (!_firstTeaConsumedDisplayed) {
             Game.Instance.UI.Popup.Display(_firstTeaConsumedResetWeightText, () => {
 
-                Game.Instance.UI.Popup.Display(_firstTeaConsumeJumpHighText, () => {
+                Game.Instance.UI.Popup.Display(_firstTeaConsumeFitCorridorsText, () => {
 
-                    Game.Instance.UI.Popup.Display(_firstTeaConsumeFitCorridorsText);
+                    Game.Instance.UI.Popup.Display(_firstTeaConsumeJumpHighText);
                 });
 
             });
