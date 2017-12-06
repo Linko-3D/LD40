@@ -1,4 +1,4 @@
-# Princess Cake
+# The Big Nom
 
 ## A Ludum Dare 40 Game Jam project
 
