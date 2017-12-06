@@ -33,7 +33,7 @@ Will you be able to find and reach the Ludum Dare flag?
 - Programming
 
   [Angelos Kyriakopoulos](https://github.com/AngelKyriako)   
-  [Max (Pixel Lifetime)](https://ldjam.com/users/pixel-lifetime)
+  [Max Karpinsky (Pixel Lifetime)](https://github.com/MaxKarpinsky)
 
 #### Tools
 

@@ -1,0 +1,26 @@
+{
+  "name": "princess-cake-webgl",
+  "version": "1.0.0",
+  "description": "A game made for the ludum dare 40 game jam. You incarnate as a greedy princess that wants to eat every cake in her line of sight. The more she eats, the heaviest she gets and becomes unable to jump and go on tiny spaces. Will you be able to find and reach the Ludum Dare flag ?",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "static-expiry": "^0.0.11"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "princess",
+    "cake",
+    "puzzle",
+    "game",
+    "ludumdare40",
+    "gamejam"
+  ],
+  "author": "angelkyriako",
+  "license": "ISC"
+}
