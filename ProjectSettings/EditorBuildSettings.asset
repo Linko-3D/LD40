@@ -17,6 +17,3 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1SubScene.unity
     guid: ccc5898117790584d9be954d8931095c
-  - enabled: 0
-    path: Assets/Scenes/Dressing.unity
-    guid: ef511dca5b49e8e448b2fe12d7b3c452
