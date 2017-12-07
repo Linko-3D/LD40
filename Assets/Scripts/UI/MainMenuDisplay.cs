@@ -11,6 +11,9 @@ public class MainMenuDisplay : Display
 
     [SerializeField] private Text _playButtonTextField;
 
+    [SerializeField] private string _StartText = "PLAY";
+    [SerializeField] private string _resumeText = "RESUME";
+
     protected override void Start() {
         base.Start();
 
@@ -18,6 +21,8 @@ public class MainMenuDisplay : Display
             _controlsDisplay != null, "MainMenuDisplay",
             "controlsDisplay not found. Drag and drop it to game object."
         );
+
+        _playButtonTextField.text = _StartText;
 
         _controlsDisplay.Close();
     }
@@ -43,8 +48,9 @@ public class MainMenuDisplay : Display
 
     public void OnPlayClick()
 	{
-		this._playButtonTextField.text = "Resume";
-		this.Close();
+        _playButtonTextField.text = _resumeText;
+
+        Close();
         
         UserInterfaceController.Instance.Popup.TryDisplayWelcome();
 	}
