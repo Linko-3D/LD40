@@ -12,6 +12,8 @@ Will you be able to find and reach the Ludum Dare flag?
 
 #### [Windows Build](https://linko3d.itch.io/princess-cake)
 
+#### [Web Build](https://linko-3d.github.io/LD40/)
+
 #### Preview
 
 ![](./Readme/GameplayScreenshot1.png)
