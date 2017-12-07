@@ -24,7 +24,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1054982167035548
 GameObject:
@@ -39,7 +39,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1081207951092016
 GameObject:
@@ -54,7 +54,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1115868380614440
 GameObject:
@@ -73,7 +73,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1334510825776708
 GameObject:
@@ -91,7 +91,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1446047727503124
 GameObject:
@@ -108,7 +108,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1475680223337508
 GameObject:
@@ -122,12 +122,14 @@ GameObject:
   - component: {fileID: 23963123562759666}
   - component: {fileID: 114300650032207600}
   - component: {fileID: 65925300599984868}
+  - component: {fileID: 65211355627843512}
+  - component: {fileID: 65166781453253216}
   m_Layer: 0
   m_Name: door_right_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1545076155045126
 GameObject:
@@ -141,12 +143,14 @@ GameObject:
   - component: {fileID: 23818083494499942}
   - component: {fileID: 114386532638600624}
   - component: {fileID: 65417521043415498}
+  - component: {fileID: 65067328264708970}
+  - component: {fileID: 65900253971603628}
   m_Layer: 0
   m_Name: door_left_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1865152591376900
 GameObject:
@@ -161,7 +165,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1867835798611900
 GameObject:
@@ -176,7 +180,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!1 &1885594782449462
 GameObject:
@@ -191,7 +195,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967273
   m_IsActive: 1
 --- !u!4 &4068493491783844
 Transform:
@@ -214,16 +218,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1446047727503124}
-  m_LocalRotation: {x: -0.00001180172, y: 0.7071068, z: 0.7071068, w: 0.00001180172}
-  m_LocalPosition: {x: 14, y: 0, z: -11}
-  m_LocalScale: {x: 100.00009, y: 100.00006, z: 100.00006}
+  m_LocalRotation: {x: 0.707107, y: 0.000011712311, z: 0.000011793109, w: -0.70710665}
+  m_LocalPosition: {x: -10, y: 0, z: -21}
+  m_LocalScale: {x: 100.000374, y: 100.00016, z: 100.00016}
   m_Children:
   - {fileID: 4068493491783844}
   - {fileID: 4774413755230020}
   - {fileID: 4800923746007182}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 359.998}
 --- !u!4 &4119388083189434
 Transform:
   m_ObjectHideFlags: 1
@@ -312,7 +316,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115868380614440}
   m_LocalRotation: {x: -1.8189894e-12, y: 0.00000008940697, z: -1, w: 0.000016690152}
-  m_LocalPosition: {x: -0.06, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.021, y: -0.0085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4119388083189434}
@@ -564,7 +568,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.005}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65067328264708970
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545076155045126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009988625, y: 0.0020000099, z: 0.04000001}
+  m_Center: {x: 0.0040057017, y: 0.0015031593, z: 0.020000005}
+--- !u!65 &65166781453253216
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475680223337508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009988624, y: 0.0020000099, z: 0.04000001}
+  m_Center: {x: -0.0040056743, y: 0.0015031667, z: 0.020000005}
+--- !u!65 &65211355627843512
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475680223337508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009988624, y: 0.0020000099, z: 0.04000001}
+  m_Center: {x: -0.0040056743, y: 0.0015031667, z: 0.020000005}
 --- !u!65 &65417521043415498
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545076155045126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009988625, y: 0.0020000099, z: 0.04000001}
+  m_Center: {x: 0.0040057017, y: 0.0015031593, z: 0.020000005}
+--- !u!65 &65900253971603628
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -666,11 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggeredByPlayerOnly: 0
-  _firstTimeHopedOnButtonNotFatText: You need to to maximize your weight to press
-    buttons.
-  _firstTimeHopedOnButtonFatText: Good job. The button was triggered !!
-  _firstTimeHopedOnButtonFatNoBoxText: Did you know that you can trigger buttons with
-    items ?
   _onPressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   _onDepressed: {fileID: 8300000, guid: 508694ed176b3a447ad2a702a8fdace8, type: 3}
   TweensOnAtPress:
