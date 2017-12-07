@@ -131,8 +131,7 @@ public class PrincessCakeController : MonoBehaviour, IWeightableController {
     public void SetCheckpoint(Vector3 pos) {
         _lastCheckpoint = pos;
 
-        // uncomment to keep last stats as previous checkpoint
-        //_lastCheckpointState.CopyStats(Model);
+        _lastCheckpointState.CopyStats(Model);
 
         _audio.TryPlaySFX(_onCheckpointAcquired);
 

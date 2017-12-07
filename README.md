@@ -25,7 +25,8 @@ Will you be able to find and reach the Ludum Dare flag?
 - Level Design
 
   [Danyl Bekhoucha (Linko)](https://ldjam.com/users/danyl/)
-
+  [Angelos Kyriakopoulos](https://github.com/AngelKyriako)   
+  
 - Audio
 
   [Aurélien Montéro](www.aurelienmontero.com)

@@ -663,8 +663,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025, y: 0.01, z: 0.005}
-  m_Center: {x: 0.003, y: 0, z: 0}
+  m_Size: {x: 0.03, y: 0.013, z: 0.01}
+  m_Center: {x: 0.001, y: 0, z: 0.002}
 --- !u!65 &65288099084930300
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -745,11 +745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggeredByPlayerOnly: 1
-  _firstTimeHopedOnButtonNotFatText: You need to to maximize your weight to press
-    buttons.
-  _firstTimeHopedOnButtonFatText: Good job. The button was triggered !!
-  _firstTimeHopedOnButtonFatNoBoxText: Did you know that you can trigger buttons with
-    boxes ?
   _onPressed: {fileID: 0}
   _onDepressed: {fileID: 0}
   TweensOnAtPress:

@@ -37,8 +37,7 @@ public class Game : SingletonMonobehaviour<Game> {
         }
 
         _princessCake.OnResetToCheckpoint += ResetAllDisabled;
-        // uncomment to reset only the disabled objects between current and previous checkpoint.
-        //_princessCake.OnCheckpoitAcquired += _disabledControllers.Clear;
+        _princessCake.OnCheckpointAcquired += _disabledControllers.Clear;
     }
 
     protected void Start() {
