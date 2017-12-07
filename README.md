@@ -16,7 +16,11 @@ Will you be able to find and reach the Ludum Dare flag?
 
 #### Preview
 
-![](./Readme/GameplayScreenshot1.png)
+![](./Readme/screenshot-1.png)
+
+![](./Readme/screenshot-2.png)
+
+![](./Readme/screenshot-3.png)
 
 #### Team
 
@@ -26,7 +30,7 @@ Will you be able to find and reach the Ludum Dare flag?
 
 - Level Design
 
-  [Danyl Bekhoucha (Linko)](https://ldjam.com/users/danyl/)
+  [Danyl Bekhoucha (Linko)](https://ldjam.com/users/danyl/)   
   [Angelos Kyriakopoulos](https://github.com/AngelKyriako)   
   
 - Audio
@@ -51,3 +55,4 @@ Will you be able to find and reach the Ludum Dare flag?
  #### Disclaimer
 
  All the gameplay features and core graphics were implementation during the course of the 72 hour time frame. However, more decoration graphics, level design updates and patch fixes were made after the game jam.
+ 
