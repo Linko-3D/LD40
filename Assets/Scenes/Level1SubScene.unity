@@ -47881,6 +47881,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 100.00006
       objectReference: {fileID: 0}
+    - target: {fileID: 1898879547130312, guid: ca3e30052d7e3894883b694cc8adb257, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca3e30052d7e3894883b694cc8adb257, type: 2}
   m_IsPrefabParent: 0
@@ -71069,7 +71073,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: be86f96d90dbac141a5eadd1755455e3, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: be86f96d90dbac141a5eadd1755455e3, type: 3}
       propertyPath: m_LocalScale.x
