@@ -37,7 +37,7 @@ public class TerrainButtonController : MonoBehaviour, IController {
         Model = new TerrainButtonModel(name, Settings, Game.Instance.PrincessCake.Settings);
 
         _audio = this.GetOrAddComponent<AudioSource>();
-        _renderer = GetComponentInChildren<MeshRenderer>();
+        _renderer = this.GetComponentInChildren<MeshRenderer>();
     }
 
     protected virtual void OnTriggerEnter(Collider collider) {

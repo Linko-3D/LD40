@@ -9,7 +9,9 @@ using UnityEditor;
 /// GameData Layer abstraction to hide the .json nature of the data in the codebase.
 /// </summary>
 public class GameData : SingletonMonobehaviour<GameData> {
-    
+
+    private const string JSON_EXT = ".json";
+
     [SerializeField] private LayerMask _groundLayerMask;
 
     public LayerMask _GroundLayerMask { get { return _groundLayerMask; } }
@@ -21,19 +23,19 @@ public class GameData : SingletonMonobehaviour<GameData> {
     }
 
     public T LoadReadonly<T>(string path) {
-        return Load<T>(Path.Combine(Application.streamingAssetsPath, path));
+        return Load<T>(Path.Combine(Application.streamingAssetsPath, path + JSON_EXT));
     }
 
     public void SaveReadonly(string path, object data) {
-        Save(Path.Combine(Application.streamingAssetsPath, path), data);
+        Save(Path.Combine(Application.streamingAssetsPath, path), data + JSON_EXT);
     }
 
     public T LoadState<T>(string path) {
-        return Load<T>(Path.Combine(Application.persistentDataPath, path));
+        return Load<T>(Path.Combine(Application.persistentDataPath, path + JSON_EXT));
     }
 
     public void SaveState(string path, object data) {
-        Save(Path.Combine(Application.persistentDataPath, path), data);
+        Save(Path.Combine(Application.persistentDataPath, path), data + JSON_EXT);
     }
 
     protected T Load<T>(string filePath) {

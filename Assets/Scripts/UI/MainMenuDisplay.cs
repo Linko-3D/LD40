@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class MainMenuDisplay : Display
-{
+public class MainMenuDisplay : Display {
     [SerializeField] private Display _controlsDisplay;
 
-    [SerializeField] private Text _playButtonTextField;
-
-    [SerializeField] private string _StartText = "PLAY";
-    [SerializeField] private string _resumeText = "RESUME";
+    [SerializeField] private TextDisplay _playButtonText;
+    private bool _playButtonUpdated = false;
 
     protected override void Start() {
         base.Start();
@@ -22,17 +18,19 @@ public class MainMenuDisplay : Display
             "controlsDisplay not found. Drag and drop it to game object."
         );
 
-        _playButtonTextField.text = _StartText;
+        _playButtonText.Set(Game.Instance.Locale.Text.MenuStart);
 
         _controlsDisplay.Close();
     }
 
-    public override void Open()
-    {
+    public override void Open() {
         base.Open();
 
         Game.Instance.Pause();
         Cursor.visible = true;
+
+        Game.Instance.UI.GamePlay.Close();
+        Game.Instance.UI.Popup.Close();
     }
 
     public override void Close() {
@@ -41,53 +39,56 @@ public class MainMenuDisplay : Display
         } else {
             base.Close();
 
+            Game.Instance.UI.GamePlay.Open();
+            Game.Instance.UI.Popup.Open();
+
             Game.Instance.Resume();
             Cursor.visible = false;
         }
     }
 
-    public void OnPlayClick()
-	{
-        _playButtonTextField.text = _resumeText;
+    public void OnPlayClick() {
+        if (!_playButtonUpdated) {
+            _playButtonText.Set(Game.Instance.Locale.Text.MenuResume);
+            _playButtonUpdated = true;
+        }
 
         Close();
-        
-        UserInterfaceController.Instance.Popup.TryDisplayWelcome();
-	}
 
-	public void OnExitClick()
-	{
-		Application.Quit();
-	}
+        UI.Instance.Popup.TryDisplayWelcome();
+    }
+
+    public void OnLanguageClick() {
+        Game.Instance.Locale.SetLanguage(Game.Instance.Locale.Language.NextEnumValue());
+    }
+
+    public void OnExitClick() {
+        Application.Quit();
+    }
 
 #if UNITY_EDITOR
-	protected override void OnDrawGizmos()
-	{
-		base.OnDrawGizmos();
-	}
+    protected override void OnDrawGizmos() {
+        base.OnDrawGizmos();
+    }
 #endif
 }
 
-namespace New.UTILITY
-{
+namespace New.UTILITY {
 #if UNITY_EDITOR
-	[CustomEditor(typeof(MainMenuDisplay))]
-	[CanEditMultipleObjects]
-	public class MainMenuDisplayEditor : Editor
-	{
-		private void OnEnable()
-		{
+    [CustomEditor(typeof(MainMenuDisplay))]
+    [CanEditMultipleObjects]
+    public class MainMenuDisplayEditor : Editor {
+        private void OnEnable() {
 
-		}
+        }
 
-		public override void OnInspectorGUI()
-		{
-			DrawDefaultInspector();
+        public override void OnInspectorGUI() {
+            DrawDefaultInspector();
 
 #pragma warning disable 0219
-			MainMenuDisplay sMainMenuDisplay = target as MainMenuDisplay;
+            MainMenuDisplay sMainMenuDisplay = target as MainMenuDisplay;
 #pragma warning restore 0219
-		}
-	}
+        }
+    }
 #endif
 }

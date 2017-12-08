@@ -12,9 +12,9 @@ public class Game : SingletonMonobehaviour<Game> {
     private Logger.Level _logLevel = Logger.Level.Error;
     
     public Logger Logger { get; private set; }
-    public GameData Data { get; private set; }
-
-    public UserInterfaceController UI { get; private set; }
+    public GameData Data { get { return GameData.Instance; } }
+    public Localization Locale { get { return Localization.Instance; } }
+    public UI UI { get { return UI.Instance; } }
     public PrincessCakeController PrincessCake { get { return _princessCake; } }
     
     private HashSet<IController> _disabledControllers = new HashSet<IController>();
@@ -24,8 +24,7 @@ public class Game : SingletonMonobehaviour<Game> {
 
     protected void Awake() {
         Logger = new Logger("Game", _logLevel);
-        Data = GetComponent<GameData>();
-
+        
         if (_princessCake == null) {
             _princessCake = transform.GetOrAddComponent<PrincessCakeController>();
 
@@ -35,12 +34,12 @@ public class Game : SingletonMonobehaviour<Game> {
 
         _princessCake.OnResetToCheckpoint += ResetAllDisabled;
         _princessCake.OnCheckpointAcquired += _disabledControllers.Clear;
+
+        Locale.Initialize();
     }
 
     protected void Start() {
-        UI = UserInterfaceController.Instance;
-
-        Logger.Assert(UI != null, "UI Controller not found, make sure to added to the scene.");
+        Logger.Assert(UI != null, "UI not found, make sure to added to the scene.");
 
         UI.Initialize();
     }

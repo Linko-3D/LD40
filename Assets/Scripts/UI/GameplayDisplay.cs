@@ -6,63 +6,80 @@ using UnityEditor;
 #endif
 
 public class GameplayDisplay : Display, IController {
-    [SerializeField] private Text _weightTextField;
-    [SerializeField] private Text _cakesTextField;
-    [SerializeField] private Text _teaTextField;
-    [SerializeField] private Text _timerTextField;
+
+    [SerializeField] private TextDisplay _weightText;
+    [SerializeField] private TextDisplay _cakesText;
+    [SerializeField] private TextDisplay _teasText;
+    [SerializeField] private Image _timerBackground;
+    [SerializeField] private TextDisplay _timerText;
 
     public string Name { get { return "Gameplay Display"; } }
 
+    private PrincessCakeModel _model;
+    private string _weightTextFormat;
+    private string _cakesTextFormat;
+    private string _teaTextFormat;
+    
     protected override void Start() {
         base.Start();
 
-        this.DeactivateTimer();
-
-        this.UpdateWeightDisplay();
-        this.UpdateCakesDisplay();
-        this.UpdateTeaDisplay();
-
         Game.Instance.RegisterOnResetEvent(this);
 
-        Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateWeightDisplay;
-        Game.Instance.PrincessCake.Model.OnConsumeCake += this.UpdateCakesDisplay;
+        Game.Instance.Locale.OnLanguageUpdated += UpdateTexts;
 
-        Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateWeightDisplay;
-        Game.Instance.PrincessCake.Model.OnConsumeTea += this.UpdateTeaDisplay;
+        _model = Game.Instance.PrincessCake.Model;
+        _model.OnConsumeCake += UpdateWeightDisplay;
+        _model.OnConsumeCake += UpdateCakesDisplay;
+        _model.OnConsumeTea += UpdateWeightDisplay;
+        _model.OnConsumeTea += UpdateTeaDisplay;
 
-        Open();
+        DeactivateTimer();
+        UpdateTexts();
+
+        Close();
     }
 
-    public void UpdateWeightDisplay() {
-        this._weightTextField.text = "Weight: " + Game.Instance.PrincessCake.Model.Weight.ToString();
+    protected void UpdateWeightDisplay() {
+        _weightText.SetFormat(_weightTextFormat, _model.Weight);
     }
 
-    public void UpdateCakesDisplay() {
-        this._cakesTextField.text = "Cakes: " + Game.Instance.PrincessCake.Model.CakesEaten.ToString();
+    protected void UpdateCakesDisplay() {
+        _cakesText.SetFormat(_cakesTextFormat, _model.Weight);
     }
 
-    public void UpdateTeaDisplay() {
-        this._teaTextField.text = "Teas: " + Game.Instance.PrincessCake.Model.TeasDrunk.ToString();
+    protected void UpdateTeaDisplay() {
+        _teasText.SetFormat(_teaTextFormat, _model.Weight);
+    }
+
+    protected void UpdateTexts() {
+        _weightTextFormat = Game.Instance.Locale.Text.StatWeight;
+        _cakesTextFormat = Game.Instance.Locale.Text.StatCakes;
+        _teaTextFormat = Game.Instance.Locale.Text.StatTeas;
+
+        UpdateWeightDisplay();
+        UpdateCakesDisplay();
+        UpdateTeaDisplay();
     }
 
     public void ActivateTimer() {
-        this._timerTextField.gameObject.SetActive(true);
+        _timerBackground.enabled = true;
     }
 
     public void DisplayTimer(float time) {
-        this._timerTextField.text = time.ToString("0.0");
+        _timerText.Set(time.ToString("0.0"));
     }
 
     public void DeactivateTimer() {
-        this._timerTextField.gameObject.SetActive(false);
+        _timerText.Set("");
+        _timerBackground.enabled = false;
     }
 
     public void OnResetEvent() {
-        this.DeactivateTimer();
+        DeactivateTimer();
 
-        this.UpdateWeightDisplay();
-        this.UpdateCakesDisplay();
-        this.UpdateTeaDisplay();
+        UpdateWeightDisplay();
+        UpdateCakesDisplay();
+        UpdateTeaDisplay();
     }
 
     public void OnDisableEvent() {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEditor;
 #endif
 
-public class UserInterfaceController : SingletonMonobehaviour<UserInterfaceController>
+public class UI : SingletonMonobehaviour<UI>
 {
 	[Header("Displays")]
 	[SerializeField] private GameplayDisplay _gameplayDisplay;
@@ -15,11 +15,11 @@ public class UserInterfaceController : SingletonMonobehaviour<UserInterfaceContr
 	[Header("Fonts")]
 	[SerializeField] private Font _globalFont;
 
-    public GameplayDisplay GamePlay { get { return this._gameplayDisplay; } }
-    public MainMenuDisplay MainMenu { get { return this._mainMenuDisplay; } }
-    public PopUpDisplay Popup { get { return this._popUpDisplay; } }
+    public GameplayDisplay GamePlay { get { return _gameplayDisplay; } }
+    public MainMenuDisplay MainMenu { get { return _mainMenuDisplay; } }
+    public PopUpDisplay Popup { get { return _popUpDisplay; } }
 
-    protected UserInterfaceController() : base() { }
+    protected UI() : base() { }
 
     public void Initialize() {
         GamePlay.Open();
@@ -38,7 +38,7 @@ public class UserInterfaceController : SingletonMonobehaviour<UserInterfaceContr
 namespace New.UTILITY
 {
 #if UNITY_EDITOR
-	[CustomEditor(typeof(UserInterfaceController))]
+	[CustomEditor(typeof(UI))]
 	[CanEditMultipleObjects]
 	public class UserInterfaceControllerEditor : Editor
 	{
@@ -46,7 +46,7 @@ namespace New.UTILITY
 
 		private void OnEnable()
 		{
-			this._globalFontProperty = serializedObject.FindProperty("_globalFont");
+			_globalFontProperty = serializedObject.FindProperty("_globalFont");
 		}
 
 		private void ApplyFont(Font font)
@@ -59,19 +59,27 @@ namespace New.UTILITY
 			}
 		}
 
-		public override void OnInspectorGUI()
+        public override void OnInspectorGUI()
 		{
 			DrawDefaultInspector();
 			
 			if (GUILayout.Button("Apply Font"))
 			{
-				this.ApplyFont(this._globalFontProperty.objectReferenceValue as Font);
+				ApplyFont(_globalFontProperty.objectReferenceValue as Font);
 
 				UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
 			}
 
+            if (GUILayout.Button("Ensure TextDisplay")) {
+                Text[] textFields = FindObjectsOfType<Text>();
+
+                for (int i = 0; i < textFields.Length; i++) {
+                    textFields[i].transform.GetOrAddComponent<TextDisplay>();
+                }
+            }
+
 #pragma warning disable 0219
-			UserInterfaceController sUserInterfaceController = target as UserInterfaceController;
+			UI sUserInterfaceController = target as UI;
 #pragma warning restore 0219
 		}
 	}

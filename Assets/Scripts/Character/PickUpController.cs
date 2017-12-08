@@ -18,27 +18,27 @@ public class PickUpController : MonoBehaviour {
     private AudioSource _audio;
 
     private void Awake() {
-        this._audio = this.GetOrAddComponent<AudioSource>();
+        _audio = this.GetOrAddComponent<AudioSource>();
     }
 
     private void OnTriggerStay(Collider other) {
-        if (Input.GetKeyDown(KeyCode.E) && this._pickedUpBox == null) {
-            this._pickedUpBox = other.GetComponent<BoxController>();
+        if (Input.GetKeyDown(KeyCode.E) && _pickedUpBox == null) {
+            _pickedUpBox = other.GetComponent<BoxController>();
 
-            Game.Instance.Logger.Info(this._pickedUpBox);
+            Game.Instance.Logger.Info(_pickedUpBox);
 
-            if (this._pickedUpBox != null && this._pickedUpBox.Model.CanMoveBy(Game.Instance.PrincessCake.Model)) {
-                this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
-                this._pickedUpBox.transform.position = this.transform.position;
-                this._pickedUpBox.transform.SetParent(this.transform);
+            if (_pickedUpBox != null && _pickedUpBox.Model.CanMoveBy(Game.Instance.PrincessCake.Model)) {
+                _pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
+                _pickedUpBox.transform.position = transform.position;
+                _pickedUpBox.transform.SetParent(transform);
 
-                this.StopAllCoroutines();
-                this.StartCoroutine(this.HandleInput());
+                StopAllCoroutines();
+                StartCoroutine(HandleInput());
 
-                this._audio.TryPlaySFX(this._onPickUp);
+                _audio.TryPlaySFX(_onPickUp);
             } else {
-                this.StopAllCoroutines();
-                this._pickedUpBox = null;
+                StopAllCoroutines();
+                _pickedUpBox = null;
             }
         }
     }
@@ -46,13 +46,13 @@ public class PickUpController : MonoBehaviour {
     private IEnumerator HandleInput() {
         yield return new WaitForSeconds(_initialDelayBeforeAllowDrop);
 
-        while (this._pickedUpBox != null) {
+        while (_pickedUpBox != null) {
             if (Input.GetKeyDown(KeyCode.E)) {
-                this._pickedUpBox.GetComponent<Rigidbody>().isKinematic = false;
-                this._pickedUpBox.transform.SetParent(null);
-                this._pickedUpBox = null;
+                _pickedUpBox.GetComponent<Rigidbody>().isKinematic = false;
+                _pickedUpBox.transform.SetParent(null);
+                _pickedUpBox = null;
 
-                this._audio.TryPlaySFX(this._onPut);
+                _audio.TryPlaySFX(_onPut);
             }
 
             yield return null;

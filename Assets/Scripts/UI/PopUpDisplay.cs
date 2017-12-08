@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine.UI;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -15,33 +14,16 @@ public class PopUpDisplay : Display {
         public Action OnHide;
     }
 
-    [SerializeField] private string _welcomeText = "Welcome !!! Eat them all Ms Nom !";
-    [SerializeField] private string _useCheckpointResetText = "Hit 'R' to reset to the last checkpoint !";
-    private bool _welcomeDisplayed;
-
-    [SerializeField] private string _firstCakeConsumedNomNomText = "Nom nom nom, YUMMY !!!";
-    [SerializeField] private string _firstCakeConsumedMaximizeWeightText = "Eat more cakes to maximize your weight.";
+    private bool _welcomeDisplayed = false;
     private bool _firstCakeConsumedDisplayed = false;
-
-    [SerializeField] private string _reachedMaxWeightPressButtonsText = "You've put on some pounds, You are able to press buttons now !";
-    [SerializeField] private string _reachedMaxWeightPickupItemText = "Try to pick up an item with 'E'.";
     private bool _reachedMaxWeightDisplayed = false;
-
-    [SerializeField] private string _firstTeaConsumedResetWeightText = "Wow ! Looking gooood. The tea resets your weight !";
-    [SerializeField] private string _firstTeaConsumeFitCorridorsText = "You can fit through narrow corridors now.";
-    [SerializeField] private string _firstTeaConsumeJumpHighText = "And jump high again.";
     private bool _firstTeaConsumedDisplayed = false;
-
-    [SerializeField] private string _hopedOnButtonNotEnoughWeightText = "You need to to maximize your weight to press buttons.";
     private bool _hopedOnButtonNotEnoughWeightDisplayed = false;
-    
-    [SerializeField] private string _hopedOnButtonEnoughWeightText = "Good job. The button was triggered !";
-    [SerializeField] private string _hopedOnButtonEnoughWeightNoItemText = "Did you know that you can trigger buttons with items ?";
     private bool _hopedOnButtonEnoughWeightDisplayed = false;
 
     [SerializeField] private float _OpenMinIntervalInSeconds = 4f;
 
-    [SerializeField] private Text _popUpTextField;
+    [SerializeField] private TextDisplay _popUpText;
 
     private List<DisplayData> _displayQueue = new List<DisplayData>();
     private float _lastTimeOpened = 0;
@@ -65,8 +47,8 @@ public class PopUpDisplay : Display {
     public void TryDisplayWelcome() {
         if (!_welcomeDisplayed) {
 
-            Display(_welcomeText, () => {
-                Display(_useCheckpointResetText);
+            Display(Game.Instance.Locale.Text.TipWelcome, () => {
+                Display(Game.Instance.Locale.Text.TipUseCheckpointReset);
             });
 
             _welcomeDisplayed = true;
@@ -75,8 +57,8 @@ public class PopUpDisplay : Display {
 
     public void TryDisplayCakeConsumedTip() {
         if (!_firstCakeConsumedDisplayed) {
-            Game.Instance.UI.Popup.Display(_firstCakeConsumedNomNomText, () => {
-                Game.Instance.UI.Popup.Display(_firstCakeConsumedMaximizeWeightText);
+            Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipFirstCakeConsumedNomNom, () => {
+                Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipFirstCakeConsumedMaximizeWeight);
             });
 
             _firstCakeConsumedDisplayed = true;
@@ -86,8 +68,8 @@ public class PopUpDisplay : Display {
     public void TryDisplayReachedMaxWeightTip() {
         if (!_reachedMaxWeightDisplayed) {
 
-            Game.Instance.UI.Popup.Display(_reachedMaxWeightPressButtonsText, () => {
-                Game.Instance.UI.Popup.Display(_reachedMaxWeightPickupItemText);
+            Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipReachedMaxWeightPressButtons, () => {
+                Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipReachedMaxWeightPickupItem);
             });
 
             _reachedMaxWeightDisplayed = true;
@@ -96,11 +78,11 @@ public class PopUpDisplay : Display {
 
     public void TryDisplayTeaConsumedTip() {
         if (!_firstTeaConsumedDisplayed) {
-            Game.Instance.UI.Popup.Display(_firstTeaConsumedResetWeightText, () => {
+            Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipFirstTeaConsumedResetWeight, () => {
 
-                Game.Instance.UI.Popup.Display(_firstTeaConsumeFitCorridorsText, () => {
+                Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipFirstTeaConsumeFitCorridors, () => {
 
-                    Game.Instance.UI.Popup.Display(_firstTeaConsumeJumpHighText);
+                    Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipFirstTeaConsumeJumpHigh);
                 });
 
             });
@@ -115,11 +97,11 @@ public class PopUpDisplay : Display {
             Action onHide = null;
             if (isPrincessCake) {
                 onHide = () => {
-                    Display(_hopedOnButtonEnoughWeightNoItemText);
+                    Display(Game.Instance.Locale.Text.TipHopedOnButtonEnoughWeightNoItem);
                 };
             }
 
-            Display(_hopedOnButtonEnoughWeightText, onHide);
+            Display(Game.Instance.Locale.Text.TipHopedOnButtonEnoughWeight, onHide);
 
             _hopedOnButtonEnoughWeightDisplayed = true;
         }
@@ -129,7 +111,7 @@ public class PopUpDisplay : Display {
         if (!_hopedOnButtonEnoughWeightDisplayed) {
 
             if (isPrincessCake) {
-                Game.Instance.UI.Popup.Display(_hopedOnButtonNotEnoughWeightText);
+                Game.Instance.UI.Popup.Display(Game.Instance.Locale.Text.TipHopedOnButtonNotEnoughWeight);
             }
 
             _hopedOnButtonEnoughWeightDisplayed = true;
@@ -150,14 +132,20 @@ public class PopUpDisplay : Display {
         Cursor.visible = false;
     }
 
-    private void OnDisplay(DisplayData data) {
+    private void OnDisplay() {
+        DisplayData data = _displayQueue[0];
 
-        _popUpTextField.text = data.Text;
-        _lastOnHide = data.OnHide;
+        _popUpText.Set(data.Text);
 
-        Open();
+        if (!Game.Instance.UI.MainMenu.IsOpen) {
+            _displayQueue.RemoveAt(0);
 
-        Cursor.visible = true;
+            _lastOnHide = data.OnHide;
+
+            Open();
+
+            Cursor.visible = true;
+        }
     }
 
     protected void Update() {
@@ -166,11 +154,7 @@ public class PopUpDisplay : Display {
                 OnOkClick();
             }
         } else if (_displayQueue.Count != 0) {
-            DisplayData data = _displayQueue[0];
-
-            _displayQueue.RemoveAt(0);
-
-            OnDisplay(data);
+            OnDisplay();
         }
     }
 
