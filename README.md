@@ -52,7 +52,8 @@ Will you be able to find and reach the Ludum Dare flag?
 
   [Blender](https://blender.org/)
  
- #### Disclaimer
+ #### Change Log
 
- All the gameplay features and core graphics were implementation during the course of the 72 hour time frame. However, more decoration graphics, level design updates and patch fixes were made after the game jam.
- 
+- 5-12-2017 v1 Core Gameplay and Graphics [Jam Deadline] 
+- 6-12-2017 v1.1 Level Design update, Background & Player Graphics and UI update.
+- 9-12-2017 v1.2 Checkpoint state, Lights Update, UI update and Localization system.

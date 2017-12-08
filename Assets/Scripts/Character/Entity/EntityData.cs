@@ -65,7 +65,7 @@ public class EntityData : MonoBehaviour
 			this._isGrounded = Physics.CheckSphere(
 				this._groundCheckPoint.transform.position,
 				this._groundCheckRadius,
-				Game.Instance._GameData._GroundLayerMask);
+				Game.Instance.Data._GroundLayerMask);
 		}
 		this._groundCheckCooldown += Time.deltaTime;
 	}

@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(GameData))]
 public class Game : SingletonMonobehaviour<Game> {
 
-    private GameData _gameData;
-    
     [SerializeField]
     private PrincessCakeController _princessCake;
 
@@ -14,7 +12,7 @@ public class Game : SingletonMonobehaviour<Game> {
     private Logger.Level _logLevel = Logger.Level.Error;
     
     public Logger Logger { get; private set; }
-    public GameData _GameData { get { return _gameData; } }
+    public GameData Data { get; private set; }
 
     public UserInterfaceController UI { get; private set; }
     public PrincessCakeController PrincessCake { get { return _princessCake; } }
@@ -26,8 +24,7 @@ public class Game : SingletonMonobehaviour<Game> {
 
     protected void Awake() {
         Logger = new Logger("Game", _logLevel);
-
-        _gameData = GetComponent<GameData>();
+        Data = GetComponent<GameData>();
 
         if (_princessCake == null) {
             _princessCake = transform.GetOrAddComponent<PrincessCakeController>();
