@@ -15,13 +15,22 @@ public class GameplayDisplay : Display, IController {
 
     public string Name { get { return "Gameplay Display"; } }
 
+    private Logger _logger;
     private PrincessCakeModel _model;
     private string _weightTextFormat;
     private string _cakesTextFormat;
     private string _teaTextFormat;
-    
-    protected override void Start() {
-        base.Start();
+
+    public override void Initialize() {
+        base.Initialize();
+
+        _logger = Game.Instance.LoggerFactory("PopupDisplay");
+
+        _logger.Assert(_weightText != null, "WeightText not found. Drag and drop it to game object.");
+        _logger.Assert(_cakesText != null, "CakesText not found. Drag and drop it to game object.");
+        _logger.Assert(_teasText != null, "TeasText not found. Drag and drop it to game object.");
+        _logger.Assert(_timerBackground != null, "TimerBackground not found. Drag and drop it to game object.");
+        _logger.Assert(_timerText != null, "TimerText not found. Drag and drop it to game object.");
 
         Game.Instance.RegisterOnResetEvent(this);
 
@@ -35,8 +44,6 @@ public class GameplayDisplay : Display, IController {
 
         DeactivateTimer();
         UpdateTexts();
-
-        Close();
     }
 
     protected void UpdateWeightDisplay() {

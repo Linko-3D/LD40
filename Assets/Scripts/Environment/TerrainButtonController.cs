@@ -146,6 +146,10 @@ public class TerrainButtonController : MonoBehaviour, IController {
 
     public void OnResetEvent() {
         gameObject.SetActive(true);
+
+        if (_timerCoroutine != null) {
+            StopCoroutine(_timerCoroutine);
+        }
     }
 
     public void OnDisableEvent() {

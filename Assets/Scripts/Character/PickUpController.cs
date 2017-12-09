@@ -25,9 +25,10 @@ public class PickUpController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E) && _pickedUpBox == null) {
             _pickedUpBox = other.GetComponent<BoxController>();
 
-            Game.Instance.Logger.Info(_pickedUpBox);
-
             if (_pickedUpBox != null && _pickedUpBox.Model.CanMoveBy(Game.Instance.PrincessCake.Model)) {
+
+                Game.Instance.Logger.Info("Picked Up box: " +_pickedUpBox);
+
                 _pickedUpBox.GetComponent<Rigidbody>().isKinematic = true;
                 _pickedUpBox.transform.position = transform.position;
                 _pickedUpBox.transform.SetParent(transform);
@@ -58,30 +59,4 @@ public class PickUpController : MonoBehaviour {
             yield return null;
         }
     }
-
-#if UNITY_EDITOR
-    protected virtual void OnDrawGizmos() {
-
-    }
-#endif
-}
-
-namespace New.UTILITY {
-#if UNITY_EDITOR
-    [CustomEditor(typeof(PickUpController))]
-    [CanEditMultipleObjects]
-    public class PickUpControllerEditor : Editor {
-        private void OnEnable() {
-
-        }
-
-        public override void OnInspectorGUI() {
-            DrawDefaultInspector();
-
-#pragma warning disable 0219
-            PickUpController sPickUpController = target as PickUpController;
-#pragma warning restore 0219
-        }
-    }
-#endif
 }

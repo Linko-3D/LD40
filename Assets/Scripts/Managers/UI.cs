@@ -22,17 +22,13 @@ public class UI : SingletonMonobehaviour<UI>
     protected UI() : base() { }
 
     public void Initialize() {
+        GamePlay.Initialize();
+        Popup.Initialize();
+        MainMenu.Initialize();
+
         GamePlay.Open();
         MainMenu.Open();
-        Popup.Close();
     }
-
-#if UNITY_EDITOR
-	protected virtual void OnDrawGizmos()
-	{
-
-	}
-#endif
 }
 
 namespace New.UTILITY

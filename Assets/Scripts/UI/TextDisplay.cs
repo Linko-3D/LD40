@@ -8,12 +8,10 @@ public class TextDisplay : MonoBehaviour {
 
     protected Text _text;
 
-    protected virtual void Start () {
+    protected virtual void Awake () {
         _text = GetComponent<Text>();
 
         Game.Instance.Locale.OnLanguageUpdated += OnLanguageUpdated;
-
-        OnLanguageUpdated();
     }
 
     protected virtual void OnLanguageUpdated() {

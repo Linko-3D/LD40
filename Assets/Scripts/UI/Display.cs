@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-using UnityEngine;
+﻿using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -11,19 +8,19 @@ public class Display : MonoBehaviour
 {
     [SerializeField]
     protected CanvasGroup _canvasGroup;
-
-    protected virtual void Awake() {
+    
+    public virtual void Initialize() {
         if (_canvasGroup == null) {
             _canvasGroup = GetComponentInChildren<CanvasGroup>();
         }
-    }
 
-    protected virtual void Start() {
         Game.Instance.Logger.Assert(
             _canvasGroup != null, "Display::" + name,
             "_canvasGroup not found, make sure its attached on gameObject or a child " +
             "or drag and drop it to game object."
         );
+
+        Close();
     }
 
     public bool IsOpen { get { return _canvasGroup.interactable; } }

@@ -29,6 +29,16 @@ public class PopUpDisplay : Display {
     private float _lastTimeOpened = 0;
     private Action _lastOnHide = null;
 
+    private Logger _logger;
+
+    public override void Initialize() {
+        base.Initialize();
+
+        _logger = Game.Instance.LoggerFactory("PopupDisplay");
+
+        _logger.Assert(_popUpText != null, "PopUpText not found. Drag and drop it to game object.");
+    }
+
     public override void Open() {
         base.Open();
 

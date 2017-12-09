@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 
 public class ItemController : MonoBehaviour, IController {
-
-    //protected bool _consumeOnce = false;
-
+    
     protected Logger _logger;
     protected Collider _collider;
 
@@ -17,11 +15,11 @@ public class ItemController : MonoBehaviour, IController {
             _collider != null,
             "Controller requires a collider(.eg BoxCollider) attached to it."
         );
-        _logger.Assert(
-            _collider.isTrigger,
-            "Controller requires a collider(.eg BoxCollider) marked as trigger"
-          + " attached to it. Make sure you configured the object's collider properly."
-        );
+        //_logger.Assert(
+        //    _collider.isTrigger,
+        //    "Controller requires a collider(.eg BoxCollider) marked as trigger"
+        //  + " attached to it. Make sure you configured the object's collider properly."
+        //);
     }
 
     private void OnTriggerEnter(Collider collider) {
@@ -36,8 +34,6 @@ public class ItemController : MonoBehaviour, IController {
 
     public virtual void OnConsumedBy(PrincessCakeController controller) {
         Game.Instance.Disable(this);
-
-        //_collider.enabled = !_consumeOnce;
     }
 
     public virtual void OnResetEvent() {

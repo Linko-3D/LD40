@@ -9,18 +9,18 @@ public class MainMenuDisplay : Display {
 
     [SerializeField] private TextDisplay _playButtonText;
     private bool _playButtonUpdated = false;
+    private Logger _logger;
 
-    protected override void Start() {
-        base.Start();
+    public override void Initialize() {
+        _logger = Game.Instance.LoggerFactory("MainMenuDisplay");
 
-        Game.Instance.Logger.Assert(
-            _controlsDisplay != null, "MainMenuDisplay",
-            "controlsDisplay not found. Drag and drop it to game object."
-        );
+        _logger.Assert( _controlsDisplay != null, "controlsDisplay not found. Drag and drop it to game object.");
+        _logger.Assert(_playButtonText != null, "PlayButtonText not found. Drag and drop it to game object.");
 
         _playButtonText.Set(Game.Instance.Locale.Text.MenuStart);
 
-        _controlsDisplay.Close();
+        _controlsDisplay.Initialize();
+        base.Initialize();
     }
 
     public override void Open() {
