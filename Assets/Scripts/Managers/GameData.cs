@@ -18,7 +18,7 @@ public class GameData : SingletonMonobehaviour<GameData> {
 
     private Logger _logger;
 
-    protected void Awake() {
+    public void Initialize() {
         _logger = Game.Instance.LoggerFactory("GameData");
     }
 

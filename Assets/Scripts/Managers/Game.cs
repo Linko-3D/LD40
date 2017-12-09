@@ -24,7 +24,10 @@ public class Game : SingletonMonobehaviour<Game> {
 
     protected void Awake() {
         Logger = new Logger("Game", _logLevel);
-        
+
+        Data.Initialize();
+        Locale.Initialize();
+
         if (_princessCake == null) {
             _princessCake = transform.GetOrAddComponent<PrincessCakeController>();
 
@@ -34,8 +37,6 @@ public class Game : SingletonMonobehaviour<Game> {
 
         _princessCake.OnResetToCheckpoint += ResetAllDisabled;
         _princessCake.OnCheckpointAcquired += _disabledControllers.Clear;
-
-        Locale.Initialize();
     }
 
     protected void Start() {
