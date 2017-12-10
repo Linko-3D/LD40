@@ -16,11 +16,19 @@ Will you be able to find and reach the Ludum Dare flag?
 
 #### Preview
 
-![](./Readme/screenshot-1.png)
+##### Gameplay video
 
-![](./Readme/screenshot-2.png)
+<div align="center">
+  <a href="https://youtu.be/HB3FgHqssQU"><img src="https://img.youtube.com/vi/HB3FgHqssQU/0.jpg" alt="Gameplay Video"></a>
+</div>
 
-![](./Readme/screenshot-3.png)
+##### Screenshots
+
+![Photo preview 1](./Readme/screenshot-1.png)
+
+![Photo preview 2](./Readme/screenshot-2.png)
+
+![Photo preview 3](./Readme/screenshot-3.png)
 
 #### Team
 
