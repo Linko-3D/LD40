@@ -4278,6 +4278,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 0}
   _controlsDisplay: {fileID: 114764716656735534}
   _playButtonText: {fileID: 114302737103459204}
+  _exitButtonGameObject: {fileID: 1707139006538052}
 --- !u!114 &114543638438867322
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,9 @@ public class MainMenuDisplay : Display {
     [SerializeField] private Display _controlsDisplay;
 
     [SerializeField] private TextDisplay _playButtonText;
+
+    [SerializeField] private GameObject _exitButtonGameObject;
+
     private bool _playButtonUpdated = false;
     private Logger _logger;
 
@@ -16,10 +19,16 @@ public class MainMenuDisplay : Display {
 
         _logger.Assert( _controlsDisplay != null, "controlsDisplay not found. Drag and drop it to game object.");
         _logger.Assert(_playButtonText != null, "PlayButtonText not found. Drag and drop it to game object.");
-
+        _logger.Assert(_exitButtonGameObject != null, "exitButtonGameObject not found. Drag and drop it to game object.");
+        
         _playButtonText.Set(Game.Instance.Locale.Text.MenuStart);
 
         _controlsDisplay.Initialize();
+
+#if UNITY_WEBGL || UNITY_EDITOR
+        _exitButtonGameObject.SetActive(false);
+#endif
+
         base.Initialize();
     }
 
@@ -59,7 +68,17 @@ public class MainMenuDisplay : Display {
     }
 
     public void OnLanguageClick() {
-        Game.Instance.Locale.SetLanguage(Game.Instance.Locale.Language.NextEnumValue());
+        Localization.LanguageId lang = Game.Instance.Locale.Language.NextEnumValue();
+
+        // Dynamic font issue in webgl.
+        // Bored to look into it, let's just skip chinese in webGL.
+#if UNITY_WEBGL
+        if (lang == Localization.LanguageId.Chinese) {
+            lang = lang.NextEnumValue();
+        }
+#endif
+
+        Game.Instance.Locale.SetLanguage(lang);
     }
 
     public void OnExitClick() {
