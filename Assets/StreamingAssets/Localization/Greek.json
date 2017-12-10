@@ -7,9 +7,9 @@
   "MenuControls": "ΚΟΥΜΠΙΑ",
   "MenuLanguage": "ΓΛΩΣΣΑ",
   "MenuExit": "ΕΞΩ",
-  "ControlsMovement": "Κούνα",
+  "ControlsMovement": "Πέρα δώθε",
   "ControlsJumping": "Πήδα",
-  "ControlsPickup": "Πάρε",
+  "ControlsPickup": "Σήκωσε",
   "ControlsResetLevel": "Κύκλους",
   "ControlsMenu": "Ποζ",
   "TipWelcome": "Γεία σου κόκλα !!! Τσίμπα τα τουρτάκια !",
@@ -23,5 +23,5 @@
   "TipFirstTeaConsumeJumpHigh": "Και μπορείς να πηδήξεις ψηλα ξανά.",
   "TipHopedOnButtonNotEnoughWeight": "Πρέπει να τελικιάσεις το βάρος σου για να πατήσεις κουμπιά.",
   "TipHopedOnButtonEnoughWeight": "Μπράβο. Το κουμπι ενεργοποιήθηκε !",
-  "TipHopedOnButtonEnoughWeightNoItem": "Το ξέρεις οτι μπορείς να ενεργοποιήσεις κουμπια με το αντικείμενα ;"
+  "TipHopedOnButtonEnoughWeightNoItem": "Το ξέρεις οτι μπορείς να ενεργοποιήσεις κουμπια με αντικείμενα ;"
 }

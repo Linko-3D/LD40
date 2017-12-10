@@ -88,7 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-  m_LightingDataAsset: {fileID: 112002232, guid: dd084e01131bc0f438669a50b9395211,
+  m_LightingDataAsset: {fileID: 112002236, guid: 19ef8e6c0381ac949929afb16c748455,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -476,6 +476,41 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 473.90436
+      objectReference: {fileID: 0}
+    - target: {fileID: 224305644671603358, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224439491768137480, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 86.350006
+      objectReference: {fileID: 0}
+    - target: {fileID: 224325364024932266, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -3.649994
+      objectReference: {fileID: 0}
+    - target: {fileID: 224723294851233886, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224554997205970122, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -93.649994
+      objectReference: {fileID: 0}
+    - target: {fileID: 224150601955388380, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -183.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 224581034366538712, guid: e487e8f7a43bd654480b741f193eac99,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e487e8f7a43bd654480b741f193eac99, type: 2}
