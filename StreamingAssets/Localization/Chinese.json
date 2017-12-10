@@ -1,0 +1,28 @@
+﻿{
+  "StatWeight": "重量: {0}",
+  "StatCakes": "蛋糕: {0}",
+  "StatTeas": "茶: {0}",
+  "MenuStart": "玩",
+  "MenuResume": "恢复",
+  "MenuControls": "控制",
+  "MenuLanguage": "语言",
+  "MenuExit": "出口",
+  "ControlsMovement": "移动",
+  "ControlsJumping": "跳",
+  "ControlsPickup": "捡起",
+  "ControlsResetLevel": "重试",
+  "ControlsMenu": "主菜单",
+  "TipWelcome": "欢迎！全部吃",
+  "TipUseCheckpointReset": "如果卡住了，打“R”",
+  "TipFirstCakeConsumedNomNom": "Nom nom nom, YUMMY !!!",
+  "TipFirstCakeConsumedMaximizeWeight": "吃更多的蛋糕，你会感觉更好",
+  "TipReachedMaxWeightPressButtons": "你已经穿上了一些磅，你现在可以按下按钮",
+  "TipReachedMaxWeightPickupItem": "尝试用“E”选取一个项目。",
+  "TipFirstTeaConsumedResetWeight": "哇 ！看起来不错。茶重新设置你的体重",
+  "TipFirstTeaConsumeFitCorridors": "你现在可以穿过狭窄的走廊。",
+  "TipFirstTeaConsumeJumpHigh": "又一次跳高",
+  "TipHopedOnButtonNotEnoughWeight": "你需要最大化你的体重来按下按钮",
+  "TipHopedOnButtonEnoughWeight": "做得好。发生了一些事 ",
+  "TipHopedOnButtonEnoughWeightNoItem": "你知道你可以用物品触发按钮吗"
+}
+
