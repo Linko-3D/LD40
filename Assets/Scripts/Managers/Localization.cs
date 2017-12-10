@@ -9,7 +9,8 @@ public class Localization {
     public enum LanguageId {
         English,
         //French,
-        Greek
+        Greek,
+        Chinese
     }
 
     [Serializable]
