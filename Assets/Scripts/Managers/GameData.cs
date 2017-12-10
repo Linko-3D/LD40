@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+
+using UnityEngine;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -52,7 +54,15 @@ public class GameData : SingletonMonobehaviour<GameData> {
 
     protected T LoadFromHolder<T>(string path)
     {
-        _logger.Assert(GameDataHolder.Data.ContainsKey(path), "file: " + path + " does not exist.");
+        if (!GameDataHolder.Data.ContainsKey(path))
+        {
+            _logger.Error("data holder path: " + path + " does not exist.");
+            _logger.Error("Available data paths: " + GameDataHolder.Data.Keys
+                                                    .Aggregate(string.Empty, (string curr, string next) => {
+                                                        return curr + ", " + next;
+                                                    })
+            );
+        }
 
         string dataAsJson = GameDataHolder.Data[path];
         return JsonUtility.FromJson<T>(dataAsJson);
@@ -113,7 +123,8 @@ namespace New.UTILITY {
             {
                 string locFileNameNoExtension = Path.GetFileNameWithoutExtension(locFilePath);
                 string locFileExtension = Path.GetExtension(locFilePath);
-                string locFileRelativePath = Path.Combine(GAME_DATA_LOCALIZATION_DIR, locFileNameNoExtension).Replace("\\", "\\\\");
+                //string locFileRelativePath = Path.Combine(GAME_DATA_LOCALIZATION_DIR, locFileNameNoExtension).Replace("\\", "\\\\");
+                string locFileRelativePath = GAME_DATA_LOCALIZATION_DIR + "/" +  locFileNameNoExtension;
 
                 if (locFileExtension == ".json")
                 {
