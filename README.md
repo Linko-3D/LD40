@@ -18,9 +18,7 @@ Will you be able to find and reach the Ludum Dare flag?
 
 ##### Gameplay video
 
-<div align="center">
-  <a href="https://youtu.be/HB3FgHqssQU"><img src="https://img.youtube.com/vi/HB3FgHqssQU/0.jpg" alt="Gameplay Video"></a>
-</div>
+[![Gameplay Video](https://img.youtube.com/vi/HB3FgHqssQU/0.jpg)](https://www.youtube.com/watch?v=HB3FgHqssQU)
 
 ##### Screenshots
 
